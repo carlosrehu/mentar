@@ -1,132 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Practice Questions</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <title>Practice Questions</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!--backgroung color-->
-  <style>
-  body{
-  background-color: black;
-  }
-  </style>
-</head>
 
-<!--main body-->
-<body>
-  <!--header needs to be on all pages-->
-  <div class="container">
-    <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
-      <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
+   <!--backgroung color-->
+     <style>
+     body{
+     background-color: black;
+     }
+     </style>
+   </head>
+
+
+   <!--main body-->
+   <body>
+     <!--header needs to be on all pages-->
+     <div class="container">     <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+        <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
+       </div>
+     </div>
+   <!-- CSS code for the header-->
+     <style>
+    .container {
+       padding: 20px 20px;
+       border-style: solid;
+       border-width: 10px;
+       border-color: #424242;
+     }
+     </style>
+
+
+   <style>
+   .navbar-header{
+     background-color: #000000;
+     color:#FFBF00;
+   }
+   </style>
+
+
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-inverse">
+     <div class="container-fluid">
+       <div class="navbar-header">
+       <a class="navbar-brand redtext" href="#">MenTar</a>
+       </div>
+     <ul class="nav navbar-nav">
+         <li class="active"><a href="homepage.html">Home</a></li>
+         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
+             <li><a href="alumniconnection.html">Alumni Connection</a></li>
+             <li><a href="#">Careers</a></li>
+           </ul>
+         </li>
+         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="#">Post Interview Tips</a></li>
+               <li><a href="#">Student Connection</a></li>
+               <li><a href="#">PostCareers</a></li>
+             </ul>
+         </li>
+         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="#">Post Interview Tips</a></li>
+               <li><a href="#">Student Connection</a></li>
+               <li><a href="#">PostCareers</a></li>
+             </ul>
+         </li>
+         <li class="active"><a href="aboutus.html">About Us</a></li>
+         <li class="active"><a href="contactus.html">Contact Us</a></li>
+       </ul>
+         <ul class="nav navbar-nav navbar-right">
+           <li><form class="form-signin navbar-form">
+             <label for="inputEmail" class="sr-only">Email address</label>
+             <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+             <label for="inputPassword" class="sr-only">Password</label>
+             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+             </form>
+           </li>
+           <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+       </ul>
+     </div>
+   </nav>
+   <div class="row">
+       <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
+    <br>
+    <br>
+      <div class="col-sm-6">
+        <h3 style="color: white; font-size:300%">Java practice questions</h3>
+        <br>
+        <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
+          <li><a href="#java1" data-toggle="collapse">What is an iterator</a></li>
+          <div id="java1" class="collapse">
+          <p> The iterator interface providess a number of methods that are
+              able to iterate over any collection.  Each Java collection
+              contains the iterator method that returns an Iterator instance.
+              Iterator are capable of removing elements from the underlying
+               collection during the iteration. </p></div>
+
+
+           <li><a href="#java2" data-toggle="collapse">What does the "static" keyword mean?
+                            Can you override private or static method in Java?</a></li>
+           <div id="java2" class="collapse">
+           <p>The static keyword denotes that a member variable or method
+              can be accessed, without requiring an instanstiation of the class
+              to which it belongs.  A user cannot overrride static methods in Java,
+              because method overriding is based upon dynamic binding at runtime
+              and static methods are statically binded at compile time.  A static
+             method is not associated with any instance of a class so the concept
+             is not applicable.</p></div>
+
+
+          <li><a href="#java3" data-toggle="collapse">What is the tradeoff between using
+                              an unordered array versus and ordered array?</a></li>
+           <div id="java3" class="collapse">
+          <p>The major advantage of an ordered array is that the search times
+              have time complexity of O(log n), compared to that of an unordered
+              array, which is O(n).  The disadvantage of an ordered array is that
+              the insertion operation has a time complexity of O(n), because the
+              elements with higher values must be moved to make room for the new
+              element.  Instead, the insertion operation for unordered array takes
+              constant time of O(1).</p></div>
+         </ul>
+      </div>
+        <div class="col-sm-6"><img src="javalogo.jpg" class="img-rounded" alt="whiteboard interview" width="600" height="450">
+      </div>
     </div>
-  </div>
-<!--> CSS code for the header-->
-  <style>
-  .container {
-    padding: 20px 20px;
-    border-style: solid;
-    border-width: 10px;
-    border-color: #424242;
-  }
-  </style>
-
-<style>
-.navbar-header{
-  background-color: #000000;
-  color:#FFBF00;
-}
-</style>
-
-  <!--Navigation Bar-->
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    <a class="navbar-brand redtext" href="#">MenTar</a>
-    </div>
-  <ul class="nav navbar-nav">
-      <li class="active"><a href="homepage.html">Home</a></li>
-      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
-          <li><a href="alumniconnection.html">Alumni Connection</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </li>
-      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Post Interview Tips</a></li>
-            <li><a href="#">Student Connection</a></li>
-            <li><a href="#">PostCareers</a></li>
-          </ul>
-      </li>
-      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Post Interview Tips</a></li>
-            <li><a href="#">Student Connection</a></li>
-            <li><a href="#">PostCareers</a></li>
-          </ul>
-      </li>
-      <li class="active"><a href="aboutus.html">About Us</a></li>
-      <li class="active"><a href="contactus.html">Contact Us</a></li>
-    </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><form class="form-signin navbar-form">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          </form>
-        </li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="row">
-  <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
-  <br>
-  <br>
-    <div class="col-sm-6">
-      <h3 style="color: white; font-size:300%">Java practice questions</h3>
-      <br>
-      <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
-        <li><a href="#java1" data-toggle="collapse">What is an iterator</a></li>
-        <div id="java1" class="collapse">
-        <p> The iterator interface providess a number of methods that are
-            able to iterate over any collection.  Each Java collection
-            contains the iterator method that returns an Iterator instance.
-            Iterator are capable of removing elements from the underlying
-            collection during the iteration. </p></div>
-
-        <li><a href="#java2" data-toggle="collapse">What does the "static" keyword mean?
-                          Can you override private or static method in Java?</a></li>
-        <div id="java2" class="collapse">
-        <p>The static keyword denotes that a member variable or method
-           can be accessed, without requiring an instanstiation of the class
-           to which it belongs.  A user cannot overrride static methods in Java,
-           because method overriding is based upon dynamic binding at runtime
-           and static methods are statically binded at compile time.  A static
-           method is not associated with any instance of a class so the concept
-           is not applicable.</p></div>
-
-        <li><a href="#java3" data-toggle="collapse">What is the tradeoff between using
-                            an unordered array versus and ordered array?</a></li>
-        <div id="java3" class="collapse">
-        <p>The major advantage of an ordered array is that the search times
-           have time complexity of O(log n), compared to that of an unordered
-           array, which is O(n).  The disadvantage of an ordered array is that
-           the insertion operation has a time complexity of O(n), because the
-           elements with higher values must be moved to make room for the new
-           element.  Instead, the insertion operation for unordered array takes
-           constant time of O(1).</p></div>
-      </ul>
-    </div>
-      <div class="col-sm-6"><img src="javalogo.jpg" class="img-rounded" alt="whiteboard interview" width="700" height="550">
-    </div>
-  </div>
-</body/>
-</html>
+   </body/>
+  </html>

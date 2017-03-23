@@ -1,136 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Practice Questions</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <html lang="en">
+ <head>
+   <title>Practice Questions</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!--backgroung color-->
-  <style>
-  body{
-  background-color: black;
-  }
-  </style>
-</head>
 
-<!--main body-->
-<body>
-  <!--header needs to be on all pages-->
-  <div class="container">
-    <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
-      <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
-    </div>
-  </div>
-<!--> CSS code for the header-->
-  <style>
-  .container {
-    padding: 20px 20px;
-    border-style: solid;
-    border-width: 10px;
-    border-color: #424242;
-  }
-  </style>
+ <!--backgroung color-->
+   <style>
+   body{
+   background-color: black;
+   }
+   </style>
+ </head>
 
-<style>
-.navbar-header{
-  background-color: #000000;
-  color:#FFBF00;
-}
-</style>
 
-  <!--Navigation Bar-->
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    <a class="navbar-brand redtext" href="#">MenTar</a>
-    </div>
-  <ul class="nav navbar-nav">
-      <li class="active"><a href="homepage.html">Home</a></li>
-      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
-          <li><a href="alumniconnection.html">Alumni Connection</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </li>
-      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Post Interview Tips</a></li>
-            <li><a href="#">Student Connection</a></li>
-            <li><a href="#">PostCareers</a></li>
-          </ul>
-      </li>
-      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Post Interview Tips</a></li>
-            <li><a href="#">Student Connection</a></li>
-            <li><a href="#">PostCareers</a></li>
-          </ul>
-      </li>
-      <li class="active"><a href="aboutus.html">About Us</a></li>
-      <li class="active"><a href="contactus.html">Contact Us</a></li>
-    </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><form class="form-signin navbar-form">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          </form>
-        </li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="row">
-  <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
-  <br>
-  <br>
-    <div class="col-sm-6">
-      <h3 style="color: white; font-size:300%">C practice questions</h3>
-      <br>
-      <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
-        <li><a href="#c1" data-toggle="collapse">How do you construct an increment
-                                 statement or decrement statement in C?</a></li>
-        <div id="c1" class="collapse">
-        <p> There are actually two ways you can do this.  One is to use the
-            increment operator ++ and decrement operator --.  For example,
-            the statement "x++" means to increment the value of x by 1.
-            Likewise, the statement "x--" means to decrement the valude of x
-            by 1.  Another way of writing increment statements is to use the
-            conventional + plus sign or - minus sign.  In the case of "x++",
-            another way to write it is "x = x +1".</p></div>
+ <!--main body-->
+ <body>
+   <!--header needs to be on all pages-->
+   <div class="container">
+     <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
+     </div>
+   </div>
+ <!-- CSS code for the header-->
+   <style>
+   .container {
+     padding: 20px 20px;
+     border-style: solid;
+     border-width: 10px;
+     border-color: #424242;
+   }
+   </style>
 
-        <li><a href="#c2" data-toggle="collapse">What are the header files and
-                          what are its uses in C programming</a></li>
-        <div id="c2" class="collapse">
-        <p>Header files are also known as library files.  They contain two
-           essential things: the definitions and prototypes of functions being
-           used in a program.  Simply put, commands that you use in C
-           programming are actually functions that are defined from within each
-           header files.  Each header file contains a set of functions.  For
-           example: stdio.h is a header file that contains definition and
-           prototypes of commands like printf and scanf.</p></div>
+ <style>
+ .navbar-header{
+   background-color: #000000;
+   color:#FFBF00;
+ }
+ </style>
 
-        <li><a href="#c3" data-toggle="collapse">What does the format %10.2
-                            mean when included in a printf statement?</a></li>
-        <div id="c3" class="collapse">
-        <p>The format is used for two things: to set the number of spaces
-           alloted for the output number and to set the number of decimal
-           places.  The number before the decimal point is for the alloted
-           space, in this case it would allot 10 spaces for the output number.
-           If the number of space occupied by the output number is less than
-           10, additional space characters will be inserted before the actual
-           output number.  The number after the decimal point sets the number
-           of decimal places, in this case, it's 2 decimal places.</p></div>
-      </ul>
-    </div>
-      <div class="col-sm-6"><img src="javalogo.jpg" class="img-rounded" alt="whiteboard interview" width="700" height="550">
-    </div>
-  </div>
-</body/>
-</html>
+
+   <!--Navigation Bar-->
+   <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+     <a class="navbar-brand redtext" href="#">MenTar</a>
+     </div>
+   <ul class="nav navbar-nav">
+       <li class="active"><a href="homepage.html">Home</a></li>
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
+         <ul class="dropdown-menu">
+           <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
+           <li><a href="alumniconnection.html">Alumni Connection</a></li>
+           <li><a href="#">Careers</a></li>
+         </ul>
+       </li>
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <li class="active"><a href="aboutus.html">About Us</a></li>
+       <li class="active"><a href="contactus.html">Contact Us</a></li>
+     </ul>
+       <ul class="nav navbar-nav navbar-right">
+         <li><form class="form-signin navbar-form">
+           <label for="inputEmail" class="sr-only">Email address</label>
+           <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+           <label for="inputPassword" class="sr-only">Password</label>
+           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+           </form>
+         </li>
+         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     </ul>
+   </div>
+ </nav>
+ <div class="row">
+   <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
+   <br>
+   <br>
+     <div class="col-sm-6">
+       <h3 style="color: white; font-size:300%">C practice questions</h3>
+       <br>
+       <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
+         <li><a href="#c1" data-toggle="collapse">How do you construct an increment
+                                  statement or decrement statement in C?</a></li>
+         <div id="c1" class="collapse">
+         <p> There are actually two ways you can do this.  One is to use the
+             increment operator ++ and decrement operator --.  For example,
+             the statement "x++" means to increment the value of x by 1.
+             Likewise, the statement "x--" means to decrement the valude of x
+             by 1.  Another way of writing increment statements is to use the
+             conventional + plus sign or - minus sign.  In the case of "x++",
+             another way to write it is "x = x +1".</p></div>
+
+
+         <li><a href="#c2" data-toggle="collapse">What are the header files and
+                           what are its uses in C programming</a></li>
+         <div id="c2" class="collapse">
+         <p>Header files are also known as library files.  They contain two
+            essential things: the definitions and prototypes of functions being
+            used in a program.  Simply put, commands that you use in C
+            programming are actually functions that are defined from within each
+            header files.  Each header file contains a set of functions.  For
+            example: stdio.h is a header file that contains definition and
+            prototypes of commands like printf and scanf.</p></div>
+
+
+         <li><a href="#c3" data-toggle="collapse">What does the format %10.2
+                             mean when included in a printf statement?</a></li>
+         <div id="c3" class="collapse">
+         <p>The format is used for two things: to set the number of spaces
+            alloted for the output number and to set the number of decimal
+            places.  The number before the decimal point is for the alloted
+            space, in this case it would allot 10 spaces for the output number.
+            If the number of space occupied by the output number is less than
+            10, additional space characters will be inserted before the actual
+            output number.  The number after the decimal point sets the number
+            of decimal places, in this case, it's 2 decimal places.</p></div>
+       </ul>
+     </div>
+       <div class="col-sm-6"><img src="clogo.png" class="img-rounded" alt="whiteboard interview" width="600" height="450">
+     </div>
+   </div>
+ </body/>
+ </html>
