@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <title>Python Questions</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <!--backgroung color-->
+   <style>
+   body{
+   background-color: black;
+   }
+   </style>
+ </head>
+
+ <!--main body-->
+ <body>
+   <!--header needs to be on all pages-->
+   <div class="container">     <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+      <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
+     </div>
+   </div>
+ <!-- CSS code for the header-->
+   <style>
+  .container {
+     padding: 20px 20px;
+     border-style: solid;
+     border-width: 10px;
+     border-color: #424242;
+   }
+   </style>
+
+ <!-- CSS code for the navbar header-->
+  <style>
+  .navbar-header{
+   background-color: #000000;
+   color:#FFBF00;
+  }
+  </style>
+
+
+  <!--Navigation Bar-->
+  <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+     <a class="navbar-brand redtext" href="#">MenTar</a>
+     </div>
+   <ul class="nav navbar-nav">
+       <li class="active"><a href="homepage.html">Home</a></li>
+       <!-- drop down selection for Student-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
+         <ul class="dropdown-menu">
+           <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
+           <li><a href="alumniconnection.html">Alumni Connection</a></li>
+           <li><a href="#">Careers</a></li>
+         </ul>
+       </li>
+       <!-- drop down selection for Alumni-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <!-- drop down selection for Faculty-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <!-- to read about the team or contact the team-->
+       <li class="active"><a href="aboutus.html">About Us</a></li>
+       <li class="active"><a href="contactus.html">Contact Us</a></li>
+     </ul>
+       <ul class="nav navbar-nav navbar-right">
+         <!--Email address, password box plus login and sign up -->
+         <li><form class="form-signin navbar-form">
+           <label for="inputEmail" class="sr-only">Email address</label>
+           <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+           <label for="inputPassword" class="sr-only">Password</label>
+           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+           </form>
+         </li>
+         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     </ul>
+   </div>
+ </nav>
+ <div class="row">
+     <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
+  <br>
+  <br>
+    <div class="col-sm-6">
+      <!--Language type header-->
+      <h3 style="color: white; font-size:300%">Python Practice Questions</h3>
+      <br>
+      <!--Questions for specific language-->
+      <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
+        <li><a href="#java1" data-toggle="collapse">What is Python? What are the benefits of using Python?</a></li>
+        <div id="java1" class="collapse">
+        <p> Python is a programming language with objects, modules, threads,
+            exceptions and automatic memory management. The benefits of pythons
+            are that it is simple and easy, portable, extensible, build-in data
+            structure and it is an open source.
+        </p></div>
+
+
+         <li><a href="#java2" data-toggle="collapse">What is pickling and unpickling?</a></li>
+         <div id="java2" class="collapse">
+         <p>Pickle module accepts any Python object and converts it into a
+            string representation and dumps it into a file by using dump
+            function, this process is called pickling.  While the process of
+            retrieving original Python objects from the stored string
+            representation is called unpickling.
+         </p></div>
+
+
+        <li><a href="#java3" data-toggle="collapse">How is memory managed in Python?</a></li>
+         <div id="java3" class="collapse">
+        <p>•	Python memory is managed by Python private heap space. All
+              Python objects and data structures are located in a private heap.
+              The programmer does not have an access to this private heap and
+              interpreter takes care of this Python private heap.<br>
+              •	The allocation of Python heap space for Python objects is done
+              by Python memory manager.  The core API gives access to some tools
+              for the programmer to code.<br>
+              •	Python also have an inbuilt garbage collector, which recycle all
+              the unused memory and frees the memory and makes it available
+              to the heap space.
+        </p></div>
+       </ul>
+    </div>
+    <!--Language type logo-->
+      <div class="col-sm-6"><img src="python.png" class="img-rounded" alt="python logo" width="600" height="450">
+    </div>
+  </div>
+ </body/>
+</html>
