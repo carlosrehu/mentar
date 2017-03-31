@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <title>SQL Questions</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <!--backgroung color-->
+   <style>
+   body{
+   background-color: black;
+   }
+   </style>
+ </head>
+
+ <!--main body-->
+ <body>
+   <!--header needs to be on all pages-->
+   <div class="container">     <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+      <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
+     </div>
+   </div>
+ <!-- CSS code for the header-->
+   <style>
+  .container {
+     padding: 20px 20px;
+     border-style: solid;
+     border-width: 10px;
+     border-color: #424242;
+   }
+   </style>
+
+ <!-- CSS code for the navbar header-->
+  <style>
+  .navbar-header{
+   background-color: #000000;
+   color:#FFBF00;
+  }
+  </style>
+
+
+  <!--Navigation Bar-->
+  <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+     <a class="navbar-brand redtext" href="#">MenTar</a>
+     </div>
+   <ul class="nav navbar-nav">
+       <li class="active"><a href="homepage.html">Home</a></li>
+       <!-- drop down selection for Student-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
+         <ul class="dropdown-menu">
+           <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
+           <li><a href="alumniconnection.html">Alumni Connection</a></li>
+           <li><a href="#">Careers</a></li>
+         </ul>
+       </li>
+       <!-- drop down selection for Alumni-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <!-- drop down selection for Faculty-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <!-- to read about the team or contact the team-->
+       <li class="active"><a href="aboutus.html">About Us</a></li>
+       <li class="active"><a href="contactus.html">Contact Us</a></li>
+     </ul>
+       <ul class="nav navbar-nav navbar-right">
+         <!--Email address, password box plus login and sign up -->
+         <li><form class="form-signin navbar-form">
+           <label for="inputEmail" class="sr-only">Email address</label>
+           <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+           <label for="inputPassword" class="sr-only">Password</label>
+           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+           </form>
+         </li>
+         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     </ul>
+   </div>
+ </nav>
+ <div class="row">
+     <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
+  <br>
+  <br>
+    <div class="col-sm-6">
+      <!--Language type header-->
+      <h3 style="color: white; font-size:300%">SQL Practice Questions</h3>
+      <br>
+      <!--Questions for specific language-->
+      <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
+        <li><a href="#java1" data-toggle="collapse">What is RDBMS?</a></li>
+        <div id="java1" class="collapse">
+        <p> RDBMS stands for Relational Database Management System. RDBMS store
+           the data into the collection of tables, which is related by common
+           fields between the columns of the table. It also provides relational
+           operators to manipulate the data stored into the tables.
+        </p></div>
+
+
+         <li><a href="#java2" data-toggle="collapse">What is a unique key?</a></li>
+         <div id="java2" class="collapse">
+         <p>A Unique key constraint uniquely identified each record in the
+           database. This provides uniqueness for the column or set of columns.<br>
+           A Primary key constraint has automatic unique constraint defined on
+           it. But not, in the case of Unique Key.  There can be many unique
+           constraint defined per table, but only one Primary key constraint
+           defined per table.
+         </p></div>
+
+
+        <li><a href="#java3" data-toggle="collapse">What is normalization?</a></li>
+         <div id="java3" class="collapse">
+        <p>Normalization is the process of minimizing redundancy and dependency
+          by organizing fields and table of a database. The main aim of Normalization
+          is to add, delete or modify field that can be made in a single table.
+        </p></div>
+       </ul>
+    </div>
+    <!--Language type logo-->
+      <div class="col-sm-6"><img src="mysql.png" class="img-rounded" alt="SQL logo" width="600" height="450">
+    </div>
+  </div>
+ </body/>
+</html>

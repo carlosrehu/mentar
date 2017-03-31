@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <title>C# Questions</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <!--backgroung color-->
+   <style>
+   body{
+   background-color: black;
+   }
+   </style>
+ </head>
+
+ <!--main body-->
+ <body>
+   <!--header needs to be on all pages-->
+   <div class="container"> <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+      <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
+     </div>
+   </div>
+ <!-- CSS code for the header-->
+   <style>
+  .container {
+     padding: 20px 20px;
+     border-style: solid;
+     border-width: 10px;
+     border-color: #424242;
+   }
+   </style>
+
+ <!-- CSS code for the navbar header-->
+  <style>
+  .navbar-header{
+   background-color: #000000;
+   color:#FFBF00;
+  }
+  </style>
+
+
+  <!--Navigation Bar-->
+  <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+     <a class="navbar-brand redtext" href="#">MenTar</a>
+     </div>
+   <ul class="nav navbar-nav">
+       <li class="active"><a href="homepage.html">Home</a></li>
+       <!-- drop down selection for Student-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
+         <ul class="dropdown-menu">
+           <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
+           <li><a href="alumniconnection.html">Alumni Connection</a></li>
+           <li><a href="#">Careers</a></li>
+         </ul>
+       </li>
+       <!-- drop down selection for Alumni-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <!-- drop down selection for Faculty-->
+       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="#">Post Interview Tips</a></li>
+             <li><a href="#">Student Connection</a></li>
+             <li><a href="#">PostCareers</a></li>
+           </ul>
+       </li>
+       <!-- to read about the team or contact the team-->
+       <li class="active"><a href="aboutus.html">About Us</a></li>
+       <li class="active"><a href="contactus.html">Contact Us</a></li>
+     </ul>
+       <ul class="nav navbar-nav navbar-right">
+         <!--Email address, password box plus login and sign up -->
+         <li><form class="form-signin navbar-form">
+           <label for="inputEmail" class="sr-only">Email address</label>
+           <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+           <label for="inputPassword" class="sr-only">Password</label>
+           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+           </form>
+         </li>
+         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     </ul>
+   </div>
+ </nav>
+ <div class="row">
+     <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
+  <br>
+  <br>
+    <div class="col-sm-6">
+      <!--Language type header-->
+      <h3 style="color: white; font-size:300%">C# Practice Questions</h3>
+      <br>
+      <!--Questions for specific language-->
+      <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
+        <li><a href="#java1" data-toggle="collapse">Can multiple catch blocks be executed?</a></li>
+        <div id="java1" class="collapse">
+        <p> No, Multiple catch blocks can’t be executed. Once the proper catch code
+          executed, the control is transferred to the finally block and then the
+          code that follows the finally block gets executed.
+        </p></div>
+
+
+         <li><a href="#java2" data-toggle="collapse">What are Custom Control and User Control?</a></li>
+         <div id="java2" class="collapse">
+         <p>Custom Controls are controls generated as compiled code (Dlls), those are
+           easier to use and can be added to toolbox. Developers can drag and drop
+           controls to their web forms. Attributes can be set at design time. We can
+           easily add custom controls to Multiple Applications (If Shared Dlls), If
+           they are private then we can copy to dll to bin directory of web application
+           and then add reference and can use them.  User Controls are very much similar
+           to ASP include files, and are easy to create. User controls can’t be placed in
+           the toolbox and dragged – dropped from it. They have their design and code
+           behind. The file extension for user controls is ascx.
+         </p></div>
+
+
+        <li><a href="#java3" data-toggle="collapse">What are sealed classes in C#?</a></li>
+         <div id="java3" class="collapse">
+        <p>We create sealed classes when we want to restrict the class to be
+          inherited. Sealed modifier used to prevent derivation from a class.
+          If we forcefully specify a sealed class as base class then a compile-time
+          error occurs.
+        </p></div>
+       </ul>
+    </div>
+    <!--Language type logo-->
+      <div class="col-sm-6"><img src="csharplogo.jpg" class="img-rounded" alt="csharp logo" width="600" height="450">
+    </div>
+  </div>
+ </body/>
+</html>
