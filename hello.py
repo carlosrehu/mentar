@@ -1,18 +1,5 @@
-from flask import Flask
-from flask import render_template
+from app import application
 
-app = Flask(__name__)
-
-@app.route('/', methods=['GET', 'POST'])
-def homepage(name=None):
-    return render_template('createprofile.html')
-
-#@app.route("/aboutus/")
-#def aboutus():
-#    return render_template('aboutus.html')
-
-if __name__ == "__main__":
-
-    app.run(host='0.0.0.0', port=5000, debug=True)
+application.run(host='0.0.0.0', port=4000, debug=True)
 
 

@@ -1,4 +1,5 @@
 from app import application
+from app import forms
 from flask import render_template
 
 
@@ -21,7 +22,7 @@ def cquestions():
 
 @application.route('/createprofile.html')
 def createprofile():
-    return render_template('/createprofile.html')
+    return render_template('/createprofile.html', form = SignupForm(), page_title = 'Signup to Bio Application')
 
 @application.route('/experience.html')
 def experience():
