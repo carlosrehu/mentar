@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  <html lang="en">
  <head>
-   <title>PHP Questions</title>
+   <title>Verbal Questions</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,7 +19,7 @@
  <!--main body-->
  <body>
    <!--header needs to be on all pages-->
-   <div class="container">     <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+   <div class="container">     <img class="img-responsive" src="static/MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
      </div>
    </div>
@@ -40,6 +40,7 @@
    color:#FFBF00;
   }
   </style>
+
 
   <!--Navigation Bar-->
   <nav class="navbar navbar-inverse">
@@ -97,36 +98,38 @@
   <br>
     <div class="col-sm-6">
       <!--Language type header-->
-      <h3 style="color: white; font-size:300%">PHP Practice Questions</h3>
+      <h3 style="color: white; font-size:300%">Verbal Practice Questions</h3>
       <br>
       <!--Questions for specific language-->
       <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
-        <li><a href="#java1" data-toggle="collapse">How can we display the output directly to the browser?</a></li>
+        <li><a href="#java1" data-toggle="collapse">What are the different operating systems?</a></li>
         <div id="java1" class="collapse">
-        <p> To be able to display the output directly to the browser, we have
-            to use the special tags <?=, and ?>.
+        <p> Batched operating systems<br>
+            Multi-programmed operating systems<br>
+            Timesharing operating systems<br>
+            Distributed operating systems<br>
+            Real-time operating systems
         </p></div>
 
 
-         <li><a href="#java2" data-toggle="collapse">How can we check the value of a given variable is a number?</a></li>
+         <li><a href="#java2" data-toggle="collapse">What is semaphore?</a></li>
          <div id="java2" class="collapse">
-         <p>It is possible to use the dedicated function, is_numeric() to
-            check whether it is a number or not.
+         <p>Semaphore is a variable, whose status reports common resource,
+           Semaphore is of two types one is Binary semaphore and other is
+           Counting semaphore.
          </p></div>
 
 
-        <li><a href="#java3" data-toggle="collapse">What is the most convenient hashing method to be used to hash passwords?</a></li>
+        <li><a href="#java3" data-toggle="collapse">What is context switching?</a></li>
          <div id="java3" class="collapse">
-        <p>It is preferable to use crypt() which natively supports several
-          hashing algorithms or the function hash() which supports more
-          variants than crypt() rather than using the common hashing algorithms
-          such as md5, sha1 or sha256 because they are conceived to be fast.
-          Hence, hashing passwords with these algorithms can vulnerability.
+        <p>Transferring the control from one process to other process requires
+           saving the state of the old process and loading the saved state for
+           new process. This task is known as context switching
         </p></div>
        </ul>
     </div>
     <!--Language type logo-->
-      <div class="col-sm-6"><img src="phplogo.png" class="img-rounded" alt="PHP logo" width="600" height="450">
+      <div class="col-sm-6"><img src="static/verbal.jpg" class="img-rounded" alt="Verbal logo" width="600" height="450">
     </div>
   </div>
  </body/>

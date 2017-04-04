@@ -1,5 +1,9 @@
 from flask import Flask
+from flask import render_template
 
-applicaton = Flask(__name__)
+application = Flask(__name__)
 
 from app import views
+
+
+
