@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Interview Tips</title>
+  <title>practicequestionsgeneral</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,6 +24,7 @@
       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
     </div>
   </div>
+
 <!-- CSS code for the header-->
   <style>
   .container {
@@ -33,7 +34,7 @@
     border-color: #424242;
   }
   </style>
-
+<!-- CSS code for the nav bar -->
 <style>
 .navbar-header{
   background-color: #000000;
@@ -41,16 +42,16 @@
 }
 </style>
 
-  <!--Navigation Bar needs to be on all pages-->
+  <!--Navigation Bar-->
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
     <a class="navbar-brand redtext" href="#">MenTar</a>
     </div>
+
+  <!-- drop down selection for Student-->
   <ul class="nav navbar-nav">
       <li class="active"><a href="homepage.html">Home</a></li>
-
-    <!-- drop down selection for Student-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
@@ -68,7 +69,7 @@
           </ul>
       </li>
 
-      <!-- drop down selection for Faculty-->
+    <!-- drop down selection for Faculty-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Post Interview Tips</a></li>
@@ -80,7 +81,7 @@
       <li class="active"><a href="contactus.html">Contact Us</a></li>
     </ul>
 
-    <!--Email address, password box plus login and sign up -->
+    <!-- Section to log in-->
       <ul class="nav navbar-nav navbar-right">
         <li><form class="form-signin navbar-form">
           <label for="inputEmail" class="sr-only">Email address</label>
@@ -90,83 +91,40 @@
           </form>
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+      <!-- Link to create profile-->
       <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
     </ul>
   </div>
 </nav>
 
-<!--Add a carousel of photos-->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-<!-- Indicators -->
-<ol class="carousel-indicators">
-  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-  <li data-target="#myCarousel" data-slide-to="1"></li>
-  <li data-target="#myCarousel" data-slide-to="2"></li>
-  <li data-target="#myCarousel" data-slide-to="3"></li>
-</ol>
-
-<!-- Wrapper for slides -->
-<div class="carousel-inner" role="listbox">
-  <div class="item active">
-    <img src="static/java.png" alt="Java logo" width="300" height="300">
-  </div>
-  <div class="item">
-    <img src="static/cplus.png" alt="C++ Logo" width="250" height="250">
-  </div>
-  <div class="item">
-    <img src="static/python.png" alt="Python logo" width="300" height="300">
-  </div>
-  <div class="item">
-    <img src="static/mysql.png" alt="MySQL logo" width="300" height="300">
-  </div>
-</div>
-
-<!-- Left and right controls for carousel of photos -->
-<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-  <span class="sr-only">Previous</span>
-</a>
-<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-  <span class="sr-only">Next</span>
-</a>
-</div>
-
-<!--Carousel features CSS-->
+<!--css code for list-->
 <style>
-.carousel-inner img {
-    margin:auto;
-}
-.carousel-caption h3 {
-    color: #fff !important;
-}
-@media (max-width: 600px) {
-    .carousel-caption {
-        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-    }
-}
-</style>
-
-<!-- List of choices for interview tips page-->
-<style>
-.list-group-interview{
+.row{
   padding-left: 50px;
   padding-right:50px;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 </style>
-<!-- code for selection on what the student would like to know about-->
-<div class="list-group-interview">
-  <h3 style="color: white"> What would you like to do next?</h3>
-  <a href="typeofquestions.html" class="list-group-item">Practice Interview Questions: Other students, Alumni and Faculty have posted frequently
-  asked Interview Questions. Take a look and try them yourself!!</a>
-  <a href="postaquestion.html" class="list-group-item">Post a Question: Were you asked a specific question in an interview?
-  Post it here for others to look at or help with an answer.</a>
-  <a href="eperience.html" class="list-group-item">Tell us about your Interview Experiences: Recently been on an interview? Tell us all
-  about the experience.</a>
-</div>
+
+<div class="row">
+    <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
+ <br>
+ <br>
+   <div class="col-sm-6">
+     <!--Language type header-->
+     <h3 style="color: white; font-size:300%">General Questions</h3>
+     <br>
+     <!--Questions for specific language-->
+     <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
+       <li><a href="#java1" data-toggle="collapse">@@@@@@@@@@@</a></li>
+       <div id="java1" class="collapse">
+       <p> @@@@@@@@@@@@@@@@@ANSWER@@@@@@@@@@@@@@@@@@@
+       </p></div>
+     </div>
+
+   </div>
 
 </body>
-</html>
+<html>
