@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Table, Column, Integer, String
 from app.database import Base
 
-class User(object):
+class User(db.Model):
     query = db_session.query_property()
 
     def __init__(self, firstname=None, lastname=None, email=None,

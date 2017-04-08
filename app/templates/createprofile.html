@@ -20,7 +20,7 @@
 <body>
   <!--header needs to be on all pages-->
     <div class="container">
-    <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+    <img class="img-responsive" src="static/MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
     </div>
   </div>
 
@@ -104,54 +104,70 @@
 
     <!--Personal information section-->
     <h3 style="align:center; color:white">Personal Information</h3>
-    <form class="form-horizontal">
+    <form action="/createprofile" method = "POST" class="form-horizontal">
+		<fieldset>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="firstname">First Name:</label>
-        <div class="col-sm-5">
-          <input type="firstname" class="form-control" id="firstname" placeholder="Enter first name">
+        <!--{{forms.firstname.label(class="col-sm-4") }}-->
+        
+			        <div class="col-sm-5">
+		{{forms.firstname(placeholder="Enter first name", class="form-control") }}
+          <!--<input type="firstname" class="form-control" id="firstname" placeholder="Enter first name">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="lastname">Last name:</label>
         <div class="col-sm-5">
-          <input type="lastname" class="form-control" id="lastname" placeholder="Enter last name">
+			{{forms.lastname(placeholder="Enter last name", class="form-control") }}
+          <!--<input type="lastname" class="form-control" id="lastname" placeholder="Enter last name">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="email">Email:</label>
         <div class="col-sm-5">
-          <input type="email" class="form-control" id="email" placeholder="Enter email address">
+			{{forms.email(placeholder="Enter email address", class="form-control") }}
+          <!--<<input type="email" class="form-control" id="email" placeholder="Enter email address">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="username">User name:</label>
         <div class="col-sm-5">
-          <input type="username" class="form-control" id="username" placeholder="Create user name">
+			{{forms.username(placeholder="Enter username", class="form-control") }}
+          <!--<input type="username" class="form-control" id="username" placeholder="Create user name">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="password">Password:</label>
         <div class="col-sm-5">
-          <input type="password" class="form-control" id="password" placeholder="Create password">
+			{{forms.password(placeholder="Create password", class="form-control") }}
+          <!--<input type="password" class="form-control" id="password" placeholder="Create password">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="city">City:</label>
         <div class="col-sm-5">
-          <input type="city" class="form-control" id="city" placeholder="Enter city">
+			{{forms.city(placeholder="Enter city", class="form-control") }}
+          <!--<input type="city" class="form-control" id="city" placeholder="Enter city">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="state">State:</label>
         <div class="col-sm-5">
-          <input type="state" class="form-control" id="state" placeholder="Enter state">
+			{{forms.state(placeholder="Enter state", class="form-control") }}
+          <!--<input type="state" class="form-control" id="state" placeholder="Enter state">-->
         </div>
       </div>
       <div class="dropdown">
         <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="profiletype">Profile Type:</label>
         <div class="col-sm-5">
-          <input type="profiletype" class="form-control" id="profiletype" placeholder="Select profile type">
+<!--
+
+
+
+-->
+			{{forms.profiletype  }}
+          <!--<input type="profiletype" class="form-control" id="profiletype" placeholder="Select profile type">-->
             <select class="form-control" id="profiletype">
               <option>Student</option>
               <option>Alumni</option>
@@ -167,7 +183,14 @@
         <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="major">Major:</label>
         <div class="col-sm-5">
-          <input type="major" class="form-control" id="major" placeholder="Select major">
+			{{forms.major}} 
+			{{forms.major.label}}
+			
+			{% for message in forms.major.errors %}
+			{{message}}
+			{% endfor %}
+			
+         <!-- <input type="major" class="form-control" id="major" placeholder="Select major">-->
           <select class="form-control" id="major">
               <option>African and African American Students</option>
               <option>American Studies</option>
@@ -232,7 +255,8 @@
       <div class="form-group">
       <label class="control-label col-sm-2" style="color:#BDBDBD" for="minor">Minor:</label>
       <div class="col-sm-5">
-        <input type="minor" class="form-control" id="minor" placeholder="Select minor">
+		  {{forms.minor }}
+        <!--<input type="minor" class="form-control" id="minor" placeholder="Select minor">-->
         <select class="form-control" id="minor">
             <option>African and African American Students</option>
             <option>American Studies</option>
@@ -330,7 +354,9 @@
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="submit"></label>
           <button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">
             Submit</button>
+            {{ forms.submit }}
       </div>
+      </fieldset>
     </form>
     <!--end of form-->
   </div>
