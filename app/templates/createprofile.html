@@ -41,13 +41,13 @@
         <a class="navbar-brand" href="#">MenTar</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="homepage.html">Home</a></li>
+        <li class="active"><a href="/homepage">Home</a></li>
 
       <!-- drop down selection for Student-->
         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="interviewtipsstudent.html">Interview Tips</a></li>
-        <li><a href="alumniconnection.html">Alumni Connection</a></li>
+        <li><a href="/interviewtipsstudent">Interview Tips</a></li>
+        <li><a href="/alumniconnection">Alumni Connection</a></li>
         <li><a href="#">Careers</a></li>
       </ul>
         </li>
@@ -69,8 +69,8 @@
         <li><a href="#">PostCareers</a></li>
       </ul>
         </li>
-        <li class="active"><a href="aboutus.html">About Us</a></li>
-        <li class="active"><a href="contactus.html">Contact Us</a></li>
+        <li class="active"><a href="/aboutus">About Us</a></li>
+        <li class="active"><a href="/contactus+">Contact Us</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
 
@@ -105,55 +105,88 @@
     <!--Personal information section-->
     <h3 style="align:center; color:white">Personal Information</h3>
     <form action="/createprofile" method = "POST" class="form-horizontal">
+		{{ forms.hidden_tag() }}
 		<fieldset>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="firstname">First Name:</label>
         <!--{{forms.firstname.label(class="col-sm-4") }}-->
         
 			        <div class="col-sm-5">
-		{{forms.firstname(placeholder="Enter first name", class="form-control") }}
+		{{forms.firstname.label}}
+		{{forms.firstname}}
+		
+		{% for message in forms.firstname.errors %}
+			{{message}}
+			{% endfor %}
           <!--<input type="firstname" class="form-control" id="firstname" placeholder="Enter first name">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="lastname">Last name:</label>
         <div class="col-sm-5">
-			{{forms.lastname(placeholder="Enter last name", class="form-control") }}
+			{{forms.lastname.label}}
+			{{forms.lastname}}
+			
+			{% for message in forms.lastname.errors %}
+			{{message}}
+			{% endfor %}
           <!--<input type="lastname" class="form-control" id="lastname" placeholder="Enter last name">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="email">Email:</label>
         <div class="col-sm-5">
-			{{forms.email(placeholder="Enter email address", class="form-control") }}
+			{{forms.email.label}}
+			{{forms.email }}
+			{% for message in forms.email.errors %}
+			{{message}}
+			{% endfor %}
           <!--<<input type="email" class="form-control" id="email" placeholder="Enter email address">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="username">User name:</label>
         <div class="col-sm-5">
-			{{forms.username(placeholder="Enter username", class="form-control") }}
+			{{forms.username.label}}
+			{{forms.username}}
+			{% for message in forms.username.errors %}
+			{{message}}
+			{% endfor %}
           <!--<input type="username" class="form-control" id="username" placeholder="Create user name">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="password">Password:</label>
         <div class="col-sm-5">
-			{{forms.password(placeholder="Create password", class="form-control") }}
+			{{forms.password.label}}
+			{{forms.password}}
+			{% for message in forms.password.errors %}
+			<div style="color = red">
+			{{message}}
+			</div>
+			{% endfor %}
           <!--<input type="password" class="form-control" id="password" placeholder="Create password">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="city">City:</label>
         <div class="col-sm-5">
-			{{forms.city(placeholder="Enter city", class="form-control") }}
+			{{forms.city.label}}
+			{{forms.city}}
+			{% for message in forms.city.errors %}
+			{{message}}
+			{% endfor %}
           <!--<input type="city" class="form-control" id="city" placeholder="Enter city">-->
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="state">State:</label>
         <div class="col-sm-5">
-			{{forms.state(placeholder="Enter state", class="form-control") }}
+			{{forms.state.label}}
+			{{forms.state}}
+			{% for message in forms.state.errors %}
+			{{message}}
+			{% endfor %}
           <!--<input type="state" class="form-control" id="state" placeholder="Enter state">-->
         </div>
       </div>
@@ -165,14 +198,17 @@
 
 
 
--->
+-->			{{forms.profiletype.label}}
 			{{forms.profiletype  }}
+			{% for message in forms.profiletype.errors %}
+			{{message}}
+			{% endfor %}
           <!--<input type="profiletype" class="form-control" id="profiletype" placeholder="Select profile type">-->
-            <select class="form-control" id="profiletype">
+            <!--<select class="form-control" id="profiletype">
               <option>Student</option>
               <option>Alumni</option>
               <option>Faculty</option>
-            </select>
+            </select>-->
           </div>
         </div>
       </div>
@@ -191,7 +227,7 @@
 			{% endfor %}
 			
          <!-- <input type="major" class="form-control" id="major" placeholder="Select major">-->
-          <select class="form-control" id="major">
+          <!--<select class="form-control" id="major">
               <option>African and African American Students</option>
               <option>American Studies</option>
               <option>Anthropology</option>
@@ -247,7 +283,7 @@
               <option>Theatre Arts</option>
               <option>Sexuality, Women's and Gender Studies</option>
               <option>Writing</option>
-            </select>
+            </select>-->
           </div>
       </div>
     </div>
@@ -255,9 +291,15 @@
       <div class="form-group">
       <label class="control-label col-sm-2" style="color:#BDBDBD" for="minor">Minor:</label>
       <div class="col-sm-5">
-		  {{forms.minor }}
+		  {{forms.minor}}
+		  {{forms.minor.label}}
+		  
+		  {% for message in forms.minor.errors %}
+		  {{message}}
+		  {% endfor %}
+		 
         <!--<input type="minor" class="form-control" id="minor" placeholder="Select minor">-->
-        <select class="form-control" id="minor">
+        <!--<select class="form-control" id="minor">
             <option>African and African American Students</option>
             <option>American Studies</option>
             <option>Anthropology</option>
@@ -314,20 +356,27 @@
             <option>Sexuality, Women's and Gender Studies</option>
             <option>Writing</option>
           </select>
+          -->
         </div>
     </div>
   </div>
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="graddate">Graduation date:</label>
+        <!--<label class="control-label col-sm-2" style="color:#BDBDBD" for="graddate">Graduation date:</label>-->
+        	{{forms.graddate}} 
+			{{forms.graddate.label}}
+			
+			{% for message in forms.graddate.errors %}
+			{{message}}
+			{% endfor %}
         <div class="col-sm-5">
-          <input type="graddate" class="form-control" id="graddate" placeholder="Enter graduation date">
+          <!--<input type="graddate" class="form-control" id="graddate" placeholder="Enter graduation date">-->
         </div>
       </div>
       
         <!--Other information section-->
       <h3 style="align:center; color:white">Other Information</h3>
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="profession">Profession:</label>
+        <!--<label class="control-label col-sm-2" style="color:#BDBDBD" for="profession">Profession:</label>
         <div class="col-sm-5">
           <input type="profession" class="form-control" id="profession" placeholder="Enter profession">
         </div>
@@ -349,11 +398,11 @@
         <div class="col-sm-5">
           <input type="aboutme" class="form-control" id="aboutme" placeholder="Enter about me">
         </div>
-      </div>
+      </div>-->
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="submit"></label>
-          <button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">
-            Submit</button>
+          <!--<button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">
+            Submit</button>-->
             {{ forms.submit }}
       </div>
       </fieldset>

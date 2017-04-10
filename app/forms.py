@@ -16,9 +16,10 @@ class SignupForm(Form):
     major = SelectField('Major', validators = [ DataRequired("Select your major.")])
     minor = SelectField('Minor')
     graddate = StringField("Graduation Date", validators = [ DataRequired("Please enter your graduation date, or anticipated date of graduation.")])
-    profession = StringField("Profession", validators = [ DataRequired("Please enter your current occupation.")])
-    interests = StringField("What are your professional interets?", validators = [ DataRequired("Please enter at least one.")])
-    skills = StringField("Skills", validators = [ DataRequired("Please enter at least one skill.")])
-    aboutme = StringField("Tell us about yourself.", validators = [ DataRequired("Please create an about me for your profile.")])
+    profession = StringField("Profession")
+    interests = StringField("What are your professional interets?")
+    skills = StringField("Skills")
+    aboutme = StringField("Tell us about yourself.")
 
     submit = SubmitField("Submit")
+

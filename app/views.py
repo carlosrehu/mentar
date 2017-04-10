@@ -43,7 +43,7 @@ def cquestions():
 
 @application.route('/createprofile', methods = ['POST', 'GET'])
 def createprofile():
-    forms = SignupForm()
+    forms = SignupForm(request.form)
 
     cur.execute(""" SELECT * FROM degrees ORDER BY degree_type """)
     major_data = cur.fetchall()
@@ -59,12 +59,14 @@ def createprofile():
     forms.profiletype.choices = [(row[1], row[1]) for row in profile_data ]
 
     if request.method == 'POST':
+        print forms.validate(), 'somemmmmm'
         if forms.validate() == False:
             flash('ALL FIELDS ARE REQURIED')
+            print 'do i get here/'
             return render_template('createprofile.html', forms = forms)
         else:
             print "cur.execute(''' INSERT INTO users ( major) values(%s)''', (forms.major.data))", "db.commit", "db.autocommit(True)", forms.major.data
-            return redirect(url_for('homepage.html'))
+            return redirect(url_for('homepage'))
     elif request.method == 'GET':
         return render_template('createprofile.html', forms = forms)
 
