@@ -134,6 +134,18 @@
         </div>
       </div>
       <div class="form-group">
+        <label class="control-label col-sm-2" style="color:#BDBDBD" for="age">Age:</label>
+        <div class="col-sm-5">
+			{{forms.age.label}}
+			{{forms.age}}
+			
+			{% for message in forms.age.errors %}
+			{{message}}
+			{% endfor %}
+          <!--<input type="lastname" class="form-control" id="lastname" placeholder="Enter last name">-->
+        </div>
+      </div>
+      <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="email">Email:</label>
         <div class="col-sm-5">
 			{{forms.email.label}}
@@ -161,6 +173,19 @@
 			{{forms.password.label}}
 			{{forms.password}}
 			{% for message in forms.password.errors %}
+			<div style="color = red">
+			{{message}}
+			</div>
+			{% endfor %}
+          <!--<input type="password" class="form-control" id="password" placeholder="Create password">-->
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" style="color:#BDBDBD" for="phonenumber">Phone Number:</label>
+        <div class="col-sm-5">
+			{{forms.phonenumber.label}}
+			{{forms.phonenumber}}
+			{% for message in forms.phonenumber.errors %}
 			<div style="color = red">
 			{{message}}
 			</div>

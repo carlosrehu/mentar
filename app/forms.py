@@ -5,21 +5,27 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
 
 class SignupForm(Form):
-    firstname = StringField("First Name", validators = [ DataRequired("Please enter your name.")])
-    lastname = StringField("Last Name", validators = [ DataRequired("Please enter your name.")])
-    email = EmailField("Email", validators = [ DataRequired("Please enter your email address.")])
-    username = StringField("Username", validators = [ DataRequired("Please enter a valid username.")])
-    password = StringField("Password", validators = [ DataRequired("Please enter a password.")])
-    city = StringField("City", validators = [ DataRequired("Please enter your city.")])
-    state = StringField("State", validators = [ DataRequired("Please enter your state.")])
-    profiletype = SelectField('Profile Type', validators = [ DataRequired("Select your profile type.")])
-    major = SelectField('Major', validators = [ DataRequired("Select your major.")])
+    firstname = StringField("First Name")
+    lastname = StringField("Last Name")
+    email = EmailField("Email")
+    gender = StringField("Gender")
+    major = SelectField('Major')
     minor = SelectField('Minor')
-    graddate = StringField("Graduation Date", validators = [ DataRequired("Please enter your graduation date, or anticipated date of graduation.")])
+    age = IntegerField("Age")
+    username = StringField("Username")
+    password = StringField("Password")
+    phonenumber = StringField("Phone Number")
+    profiletype = SelectField('Profile Type')
+    graddate = StringField("Graduation Date")
     profession = StringField("Profession")
+    aboutme = StringField("Tell us about yourself.")
     interests = StringField("What are your professional interets?")
     skills = StringField("Skills")
-    aboutme = StringField("Tell us about yourself.")
+    city = StringField("City")
+    state = StringField("State")
+
+    
+    
 
     submit = SubmitField("Submit")
 

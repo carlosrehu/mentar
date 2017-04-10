@@ -65,8 +65,19 @@ def createprofile():
             print 'do i get here/'
             return render_template('createprofile.html', forms = forms)
         else:
+            cur.execute(""" INSERT INTO user(f_name, l_name, email, gender, major, minor,
+                            age, user_name, password, phone_number, profile_type, graduate_date,
+                            profession, about_me, interests, skills, city, state) VALUES(%s, %s, %s,
+                            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                        ( forms.firstname.data, forms.lastname.data, forms.email.data, forms.gender.data,   
+                          forms.major.data, forms.minor.data, forms.age.data, forms.username.data,
+                          forms.password.data, forms.phonenumber.data, forms.profiletype.data, forms.graddate.data,
+                          forms.profession.data, forms.aboutme.data, forms.interests.data, forms.skills.data, forms.city.data, forms.state.data))
+            conn.commit
+            conn.autocommit(True)
+                        
             print "cur.execute(''' INSERT INTO users ( major) values(%s)''', (forms.major.data))", "db.commit", "db.autocommit(True)", forms.major.data
-            return redirect(url_for('homepage'))
+            return redirect(url_for('studentmainpage'))
     elif request.method == 'GET':
         return render_template('createprofile.html', forms = forms)
 
@@ -122,7 +133,7 @@ def sqlquestions():
 
 @application.route('/studentmainpage')
 def studenttmainpage():
-    return render_template('studenttmainpage.html')
+    return render_template('studentmainpage.html')
 
 @application.route('/verbalquestions')
 def verbalquestions():
