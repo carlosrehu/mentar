@@ -81,6 +81,12 @@ def createprofile():
     elif request.method == 'GET':
         return render_template('createprofile.html', forms = forms)
 
+@application.route('/signout')
+def signout():
+    application.logger.info("user Logged out username: " + current_user.username)
+    logout_user()
+    return redirect(url_for('mainpage'))
+
 @application.route('/csharpquestions')
 def csharpquestions():
     return render_template('csharpquestions.html')
@@ -132,7 +138,7 @@ def sqlquestions():
     return render_template('sqlquestions.html')
 
 @application.route('/studentmainpage')
-def studenttmainpage():
+def studentmainpage():
     return render_template('studentmainpage.html')
 
 @application.route('/verbalquestions')
