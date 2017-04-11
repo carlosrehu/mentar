@@ -95,10 +95,9 @@ def createprofile():
 
 @application.route('/signinpage', methods=['GET', 'POST'])
 def signin():
-
     session.clear()
     if 'username' in session:
-        return redirect(url_for('studentmainpage'))
+        return redirect(url_for('profilepage'))
     error = None
     try:
         if request.method == 'POST':
@@ -115,7 +114,7 @@ def signin():
                 if password_form == row[0]:
                     session['username'] = request.form['username']
                     
-                    return redirect(url_for('studentmainpage'))
+                    return redirect(url_for('profilepage'))
             raise ServerError('Invalid password')
     except ServerError as e:
         error = str(e)
@@ -163,9 +162,19 @@ def postaquestion():
 def practicequestions():
     return render_template('practicequestions.html')
 
-@application.route('/profilepage')
+@application.route('/profilepage', methods=['GET', 'POST'])
 def profilepage():
-    return render_template('profilepage.html')
+    if 'username' in session:
+        username=session['username']
+##        firstname=session['firstname']
+        print sessions, '1', username
+        
+        major_user = cur.execute("SELECT  FROM user WHERE user_name = %s", [username])
+        print major_user, 'numer'
+##        print name
+        return render_template('profilepage.html', username=username)
+
+    return redirect(url_for('signin'))
 
 @application.route('/pythonquestions')
 def pythonquestions():
@@ -179,10 +188,12 @@ def rubyquestions():
 def sqlquestions():
     return render_template('sqlquestions.html')
 
-@application.route('/studentmainpage')
+@application.route('/studentmainpage', methods=['GET', 'POST'])
 def studentmainpage():
     if 'username' in session:
-        return render_template('studentmainpage.html')
+        name=session['username']
+        print name
+        return render_template('studentmainpage.html', username=name)
 
     return redirect(url_for('signin'))
 
