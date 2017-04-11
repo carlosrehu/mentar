@@ -3,6 +3,9 @@ import MySQLdb
 from app import forms
 from flask import *
 from forms import SignupForm
+from flask import session
+from hashlib import md5
+import os
 
 
 
@@ -12,14 +15,18 @@ conn = MySQLdb.connect(host="localhost",
                        db = "mentar")
 
 cur = conn.cursor()
+application.secret_key = os.urandom(32)
 
-####DELIMITER $$
-##CREATE DEFINER='root'@'localhost' PROCEDURE 'sp_validateLogin'(IN 
+class ServerError(Exception):pass
 
 
 @application.route('/')
 @application.route('/homepage')
 def homepage():
+    print session
+    if 'username' not in session:
+        return redirect(url_for('signin'))
+    print session
     return render_template('homepage.html')
 
 @application.route('/aboutus', methods = ['GET'])
@@ -84,19 +91,42 @@ def createprofile():
     elif request.method == 'GET':
         return render_template('createprofile.html', forms = forms)
 
+    
+
 @application.route('/signinpage', methods=['GET', 'POST'])
 def signin():
-    if request.method == 'POST':
-        username_form = request.form['username']
-        password_form = request.form['password']
-        cur.execute("SELECT COUNT(1) FROM user WHERE user_name = %s", [username_form])
+
+    session.clear()
+    if 'username' in session:
         return redirect(url_for('studentmainpage'))
+    error = None
+    try:
+        if request.method == 'POST':
+            username_form = request.form['username']
+            cur.execute("SELECT COUNT(1) FROM user WHERE user_name = %s", [username_form])
+            if not cur.fetchone()[0]:
+                raise ServerError('Invalid username')
+            print cur.fetchone()
+            password_form = request.form['password']
+
+            cur.execute("SELECT password FROM user WHERE user_name = %s", [username_form])
+            
+            for row in cur.fetchall():
+                if password_form == row[0]:
+                    session['username'] = request.form['username']
+                    
+                    return redirect(url_for('studentmainpage'))
+            raise ServerError('Invalid password')
+    except ServerError as e:
+        error = str(e)
     return render_template('signinpage.html')
 
 @application.route('/signout')
 def signout():
-    application.logger.info("user Logged out username: " + current_user.username)
-    logout_user()
+    print session['username']
+    session.pop('username', None)
+    session.clear()
+    print session
     return redirect(url_for('mainpage'))
 
 @application.route('/csharpquestions')
@@ -151,21 +181,14 @@ def sqlquestions():
 
 @application.route('/studentmainpage')
 def studentmainpage():
-    
-    return render_template('studentmainpage.html', username='eddy van halen')
+    if 'username' in session:
+        return render_template('studentmainpage.html')
+
+    return redirect(url_for('signin'))
 
 @application.route('/verbalquestions')
 def verbalquestions():
     return render_template('verbalquestions.html')
-
-@application.route('/validateLogin', methods = ['POST'])
-def validateLogin():
-    try:
-        _username = request.forms['username']
-        _password = reuqest.forms['password']
-
-    except Exception as e:
-        return render_template('error.html', error = str(e))
 
     
 
