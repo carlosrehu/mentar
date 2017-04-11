@@ -13,6 +13,9 @@ conn = MySQLdb.connect(host="localhost",
 
 cur = conn.cursor()
 
+####DELIMITER $$
+##CREATE DEFINER='root'@'localhost' PROCEDURE 'sp_validateLogin'(IN 
+
 
 @application.route('/')
 @application.route('/homepage')
@@ -81,6 +84,15 @@ def createprofile():
     elif request.method == 'GET':
         return render_template('createprofile.html', forms = forms)
 
+@application.route('/signinpage', methods=['GET', 'POST'])
+def signin():
+    if request.method == 'POST':
+        username_form = request.form['username']
+        password_form = request.form['password']
+        cur.execute("SELECT COUNT(1) FROM user WHERE user_name = %s", [username_form])
+        return redirect(url_for('studentmainpage'))
+    return render_template('signinpage.html')
+
 @application.route('/signout')
 def signout():
     application.logger.info("user Logged out username: " + current_user.username)
@@ -139,11 +151,23 @@ def sqlquestions():
 
 @application.route('/studentmainpage')
 def studentmainpage():
-    return render_template('studentmainpage.html')
+    
+    return render_template('studentmainpage.html', username='eddy van halen')
 
 @application.route('/verbalquestions')
 def verbalquestions():
     return render_template('verbalquestions.html')
+
+@application.route('/validateLogin', methods = ['POST'])
+def validateLogin():
+    try:
+        _username = request.forms['username']
+        _password = reuqest.forms['password']
+
+    except Exception as e:
+        return render_template('error.html', error = str(e))
+
+    
 
 
 
