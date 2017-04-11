@@ -169,7 +169,7 @@ def profilepage():
 ##        firstname=session['firstname']
         print sessions, '1', username
         
-        major_user = cur.execute("SELECT  FROM user WHERE user_name = %s", [username])
+        major_user = cur.execute("SELECT f_name FROM user WHERE user_name = %s", [username])
         print major_user, 'numer'
 ##        print name
         return render_template('profilepage.html', username=username)
