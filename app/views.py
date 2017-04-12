@@ -72,7 +72,6 @@ def createprofile():
         print forms.validate(), 'somemmmmm'
         if forms.validate() == False:
             flash('ALL FIELDS ARE REQURIED')
-            print 'do i get here/'
             return render_template('createprofile.html', forms = forms)
         else:
             cur.execute(""" INSERT INTO user(f_name, l_name, email, gender, major, minor,
@@ -164,15 +163,22 @@ def practicequestions():
 
 @application.route('/profilepage', methods=['GET', 'POST'])
 def profilepage():
-    if 'username' in session:
-        username=session['username']
-##        firstname=session['firstname']
-        print sessions, '1', username
-        
-        major_user = cur.execute("SELECT f_name FROM user WHERE user_name = %s", [username])
-        print major_user, 'numer'
-##        print name
-        return render_template('profilepage.html', username=username)
+
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+
+            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, prone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
+##            cur.fetchone()
+            
+
+            data = cur.fetchone()
+            print data
+##            print test
+##            print major_user, 'numer', firstname
+##          print name
+            print cur.fetchone()
+            return render_template('profilepage.html', items=data)
 
     return redirect(url_for('signin'))
 
