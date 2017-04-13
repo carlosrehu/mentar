@@ -39,6 +39,10 @@ def aboutus():
 def alumniconnection():
     return render_template('alumniconnection.html')
 
+@application.route('/careeropportunities')
+def careeropportunities():
+    return render_template('careeropportunities.html')
+
 @application.route('/contactus')
 def contactus():
     return render_template('contactus.html')
@@ -161,6 +165,22 @@ def postaquestion():
 def practicequestions():
     return render_template('practicequestions.html')
 
+@application.route('/practicequestionsbiology')
+def practicequestionsbiology():
+    return render_template('practicequestionsbiology.html')
+
+@application.route('/practicequestionsbusiness')
+def practicequestionsbusiness():
+    return render_template('practicequestionsbusiness.html')
+
+@application.route('/practicequestionsgeneral')
+def practicequestionsgeneral():
+    return render_template('practicequestionsgeneral.html')
+
+@application.route('/practicequestionsmath')
+def practicequestionsmath():
+    return render_template('practicequestionsmath.html')
+
 @application.route('/profilepage', methods=['GET', 'POST'])
 def profilepage():
 
@@ -202,6 +222,10 @@ def studentmainpage():
         return render_template('studentmainpage.html', username=name)
 
     return redirect(url_for('signin'))
+
+@application.route('/typeofquestions')
+def typeofquestions():
+    return render_template('typeofquestions.html')
 
 @application.route('/verbalquestions')
 def verbalquestions():
