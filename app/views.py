@@ -23,51 +23,51 @@ class ServerError(Exception):pass
 @application.route('/')
 @application.route('/homepage', methods = ['POST', 'GET'])
 def homepage():
-##    print session
-## 3   if 'username' not in session:
-## 3       return redirect(url_for('signin'))
-##3    print session
-## 3   return render_template('homepage.html')
+    print session
+    if 'username' not in session:
+        return redirect(url_for('signin'))
+    print session
+    return render_template('homepage.html')
 
 ##    3session.clear()
 ##    3if 'username' in session:
 ##     3   return redirect(url_for('studentmainpage'))
-    error = None
-    try:
-        if request.method == 'POST':
-            username_form = request.form['username']
-            print username_form
-            cur.execute("SELECT COUNT(1) FROM user WHERE user_name = %s", [username_form])
-            if not cur.fetchone()[0]:
-                raise ServerError('Invalid username')
-            print cur.fetchone()
-            password_form = request.form['password']
+##    error = None
+##    try:
+##        if request.method == 'POST':
+##            username_form = request.form['username']
+##            print username_form
+##            cur.execute("SELECT COUNT(1) FROM user WHERE user_name = %s", [username_form])
+##            if not cur.fetchone()[0]:
+##                raise ServerError('Invalid username')
+##            print cur.fetchone()
+##            password_form = request.form['password']
+##
+##            cur.execute("SELECT password FROM user WHERE user_name = %s", [username_form])
+##            
+##            for row in cur.fetchall():
+##                if password_form == row[0]:
+##                    session['username'] = request.form['username']
+##                    
+##                    return redirect(url_for('studentmainpage'))
+##            raise ServerError('Invalid password')
+##    except ServerError as e:
+##        error = str(e)
+##    return render_template('homepage.html')
 
-            cur.execute("SELECT password FROM user WHERE user_name = %s", [username_form])
-            
-            for row in cur.fetchall():
-                if password_form == row[0]:
-                    session['username'] = request.form['username']
-                    
-                    return redirect(url_for('studentmainpage'))
-            raise ServerError('Invalid password')
-    except ServerError as e:
-        error = str(e)
-    return render_template('homepage.html')
 
 
 @application.route('/aboutus', methods = ['GET'])
 def aboutus():
     print session
-    if 'username' in session:
-        name=session['username']
-        print name
-        return render_template('aboutus.html', username=name)
-    else:
+    if 'username' not in session:
+        
+        
         return redirect(url_for('homepage'))
-    
-    if request.method == 'GET':
+    else:
         return render_template('aboutus.html')
+    
+##3        return render_template('aboutus.html')
 
 @application.route('/alumniconnection')
 def alumniconnection():
@@ -85,7 +85,7 @@ def alumnipostquestion():
     if 'username' in session:
         name=session['username']
         print name
-        return render_template('alumnipostquestions.html', username=name)
+        return render_template('alumnipostquestion.html', username=name)
     else:
         return redirect(url_for('homepage'))
 

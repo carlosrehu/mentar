@@ -1,27 +1,77 @@
-<html>
++<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact Us</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<head>
+<!--backgroung color-->
+  <style>
+  body{
+  background-color: black;
+  }
+  </style>
+</head>
+
+<!--main body-->
+<body>
+	
+  <!--header needs to be on all pages-->
+  <div class="container">
+    <img class="static/img-responsive" src="static/MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+      <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
+    </div>
+  </div>
+  
+<!-- CSS code for the header-->
+  <style>
+  .container {
+    padding: 20px 20px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #424242;
+  }
+  </style>
+
+<style>
+.navbar-header{
+  background-color: #000000;
+  color:#FFBF00;
+}
+</style>
+	
+<!--Code for sign in boxes-->
+	
+	<div class="container">
 		
-		<title>Test log in page</title>
-		<meta name = "viewport" content="width=device-width, initial-scale=1.0">
-		<link href="static/boostrap.min.css" rel="stylesheet" media="screen">
-	
-	</head>
-	
-	<body>
-	
-		<div class="container">
-			<h1>sign in, son</h1>
+		<h1 style="text-align:center; color:white; font-size:400%"> Please sign in</h1>
+		<br>
+		<form action="" method="post">
+			<input type="text" placeholder="Username" name="username" value="{{ request.form.username }}">
 			<br>
-			<form action="" method="post">
-				<input type="text" placeholder="Username" name="username" value="{{ request.form.username }}">
-				<input type="password" placeholder="Password" name="password" value="{{ request.form.password }}">
-				<input class="btn btn-default" type="submit" value="Login">
-			</form>
+			<br>
+			<input type="password" placeholder="Password" name="password" value="{{ request.form.password }}">
+			<br>
+			<br>
+			<input class="btn btn-default" type="submit" value="Login">
+		</form>
 			{% if error %}
 				<p class="error"><strong>ERROR:</strong></p> {{ error }}
 			{% endif %}
+		
 		</div>
+
+<!--CSS Code for sign in boxes-->		
+<style>
+ .container{
+	 paddin:50px 50px;
+	 font-color:white;
+	 text-align:center;
+ }
+</style>		
 	
 	</body>
 

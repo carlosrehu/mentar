@@ -98,6 +98,19 @@
         background-color: #BDBDBD;
       }
     </style>
+    
+   <!--CSS code for sign up form-->
+   <style>
+   .container{
+	 text-color:white;
+	 text-align:center;  
+   }
+   </style>
+   <style>
+   .class{
+	   text-align:center;
+   }
+   </style>
 
   <!--sign up form  -->
   <div class="container">
@@ -108,10 +121,9 @@
 		{{ forms.hidden_tag() }}
 		<fieldset>
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="firstname">First Name:</label>
-        <!--{{forms.firstname.label(class="col-sm-4") }}-->
+        <!--<label class="control-label col-sm-2" style="color:#BDBDBD" for="firstname">First Name:</label>-->
         
-			        <div class="col-sm-5">
+		<div class="col-sm-5">
 		{{forms.firstname.label}}
 		{{forms.firstname}}
 		
@@ -251,8 +263,8 @@
 			{{message}}
 			{% endfor %}
 			
-         <!-- <input type="major" class="form-control" id="major" placeholder="Select major">-->
-          <!--<select class="form-control" id="major">
+          <input type="major" class="form-control" id="major" placeholder="Select major">
+          <select class="form-control" id="major">
               <option>African and African American Students</option>
               <option>American Studies</option>
               <option>Anthropology</option>
@@ -308,7 +320,7 @@
               <option>Theatre Arts</option>
               <option>Sexuality, Women's and Gender Studies</option>
               <option>Writing</option>
-            </select>-->
+            </select>
           </div>
       </div>
     </div>
@@ -323,8 +335,8 @@
 		  {{message}}
 		  {% endfor %}
 		 
-        <!--<input type="minor" class="form-control" id="minor" placeholder="Select minor">-->
-        <!--<select class="form-control" id="minor">
+        <input type="minor" class="form-control" id="minor" placeholder="Select minor">
+        <select class="form-control" id="minor">
             <option>African and African American Students</option>
             <option>American Studies</option>
             <option>Anthropology</option>
@@ -381,7 +393,7 @@
             <option>Sexuality, Women's and Gender Studies</option>
             <option>Writing</option>
           </select>
-          -->
+          
         </div>
     </div>
   </div>
@@ -401,7 +413,7 @@
         <!--Other information section-->
       <h3 style="align:center; color:white">Other Information</h3>
       <div class="form-group">
-        <!--<label class="control-label col-sm-2" style="color:#BDBDBD" for="profession">Profession:</label>
+        <label class="control-label col-sm-2" style="color:#BDBDBD" for="profession">Profession:</label>
         <div class="col-sm-5">
           <input type="profession" class="form-control" id="profession" placeholder="Enter profession">
         </div>
@@ -423,11 +435,11 @@
         <div class="col-sm-5">
           <input type="aboutme" class="form-control" id="aboutme" placeholder="Enter about me">
         </div>
-      </div>-->
+      </div>
       <div class="form-group">
         <label class="control-label col-sm-2" style="color:#BDBDBD" for="submit"></label>
-          <!--<button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">
-            Submit</button>-->
+          <button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">
+            Submit</button>
             {{ forms.submit }}
       </div>
       </fieldset>
