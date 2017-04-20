@@ -2,7 +2,7 @@ from app import application
 import MySQLdb
 from app import forms
 from flask import *
-from forms import SignupForm
+from forms import *
 from flask import session
 from hashlib import md5
 import os
@@ -79,15 +79,33 @@ def alumniconnection():
     else:
         return redirect(url_for('homepage'))
 
-@application.route('/alumnipostquestion')
+@application.route('/alumnipostquestion', methods = ['POST', 'GET'])
 def alumnipostquestion():
 
-    if 'username' in session:
-        name=session['username']
-        print name
-        return render_template('alumnipostquestion.html', username=name)
-    else:
-        return redirect(url_for('homepage'))
+##    if 'username' in session:
+##        name=session['username']
+##        print name
+##        return render_template('alumnipostquestion.html', username=name)
+##    else:
+##        return redirect(url_for('homepage'))
+
+    forms =  InterviewTips(request.form)
+
+    cur.execute(""" SELECT * FROM interview_tips """)
+    tips = cur.fetchall()
+    print tips
+    if request.method == 'POST':
+        if forms.validate() == False:
+            flash('AN INTERVIEW TIP IS REQUIRED')
+            return render_template('alumnipostquestion.html')
+        else:
+            cur.execute(""" INSERT INTO interview_tips(tips) VALUES(%S)""", (froms.tips.data))
+            conn.commit
+            conn.autocommit(True)
+            return redirect_(url_for('alumnipostquestion.html'))
+    elif request.method == 'GET':
+        return render_template('alumnipostquestion.html', forms = forms)
+    
 
 @application.route('/careeropportunities')
 def careeropportunities():
@@ -150,7 +168,7 @@ def createprofile():
 def signin():
     session.clear()
     if 'username' in session:
-        return redirect(url_for('profilepage'))
+        return redirect(url_for('homepage'))
     error = None
     try:
         if request.method == 'POST':
@@ -167,7 +185,7 @@ def signin():
                 if password_form == row[0]:
                     session['username'] = request.form['username']
                     
-                    return redirect(url_for('profilepage'))
+                    return redirect(url_for('homepage'))
             raise ServerError('Invalid password')
     except ServerError as e:
         error = str(e)
@@ -192,8 +210,6 @@ def csharpquestions():
 @application.route('/experience')
 def experience():
     return render_template('experience.html')
-
-
 
 @application.route('/interviewtipsstudent')
 def interviewtipsstudent():
@@ -244,7 +260,7 @@ def profilepage():
 
             cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
 ##            cur.fetchone()
-            
+
 
             data = cur.fetchone()
             print data
