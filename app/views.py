@@ -92,14 +92,14 @@ def alumnipostquestion():
     forms =  InterviewTips(request.form)
 
     cur.execute(""" SELECT * FROM interview_tips """)
-    tips = cur.fetchall()
-    print tips
+    tip = cur.fetchall()
+    print tip
     if request.method == 'POST':
         if forms.validate() == False:
             flash('AN INTERVIEW TIP IS REQUIRED')
             return render_template('alumnipostquestion.html')
         else:
-            cur.execute(""" INSERT INTO interview_tips(tips) VALUES(%S)""", (froms.tips.data))
+            cur.execute(""" INSERT INTO interview_tips(tips) VALUES(%S)""", (forms.tip.data))
             conn.commit
             conn.autocommit(True)
             return redirect_(url_for('alumnipostquestion.html'))

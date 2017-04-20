@@ -110,9 +110,16 @@
   <form action="" method="post">
     <div class="form-group">
       <label for="comment">Comment:</label>
-      <textarea class="form-control" rows="10" id="comment" name="tip" value="{{ request.form.tip }}"></textarea>
+      <!--<input class="form-control" placeholder="Tips"rows="10" id="comment" name="tip" value="{{ request.form.tip }}"><!--</textarea>-->
+             {{forms.tip}} 
+			{{forms.tip.label}}
+			
+			{% for message in forms.tip.errors %}
+			{{message}}
+			{% endfor %}
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-default">Submit</button>
+    {{ forms.submit }}
   </form>
 </div>
 
