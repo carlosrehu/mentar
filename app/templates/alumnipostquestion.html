@@ -105,12 +105,12 @@
 </style>
 <!-- Post a question box -->
 <div class="container-interview">
-  <h2>Ask a question</h2>
+  <h2>Post an Interview Tip</h2>
   <p>Post your question/comments here!!</p>
-  <form>
+  <form action="" method="post">
     <div class="form-group">
       <label for="comment">Comment:</label>
-      <textarea class="form-control" rows="10" id="comment"></textarea>
+      <textarea class="form-control" rows="10" id="comment" name="tip" value="{{ request.form.tip }}"></textarea>
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>

@@ -29,3 +29,8 @@ class SignupForm(Form):
 
     submit = SubmitField("Submit")
 
+class InterviewTips(Form):
+    tip = StringField("Tip", validators = [ DataRequired("Please post an interview tip.")])
+
+    submit = SubmitField("Submit")
+
