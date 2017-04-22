@@ -44,11 +44,11 @@ def homepage():
 ##            password_form = request.form['password']
 ##
 ##            cur.execute("SELECT password FROM user WHERE user_name = %s", [username_form])
-##            
+##
 ##            for row in cur.fetchall():
 ##                if password_form == row[0]:
 ##                    session['username'] = request.form['username']
-##                    
+##
 ##                    return redirect(url_for('studentmainpage'))
 ##            raise ServerError('Invalid password')
 ##    except ServerError as e:
@@ -61,12 +61,12 @@ def homepage():
 def aboutus():
     print session
     if 'username' not in session:
-        
-        
+
+
         return redirect(url_for('homepage'))
     else:
         return render_template('aboutus.html')
-    
+
 ##3        return render_template('aboutus.html')
 
 @application.route('/alumniconnection')
@@ -105,7 +105,7 @@ def alumnipostquestion():
             return redirect_(url_for('alumnipostquestion.html'))
     elif request.method == 'GET':
         return render_template('alumnipostquestion.html', forms = forms)
-    
+
 
 @application.route('/careeropportunities')
 def careeropportunities():
@@ -150,19 +150,19 @@ def createprofile():
                             age, user_name, password, phone_number, profile_type, graduate_date,
                             profession, about_me, interests, skills, city, state) VALUES(%s, %s, %s,
                             %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-                        ( forms.firstname.data, forms.lastname.data, forms.email.data, forms.gender.data,   
+                        ( forms.firstname.data, forms.lastname.data, forms.email.data, forms.gender.data,
                           forms.major.data, forms.minor.data, forms.age.data, forms.username.data,
                           forms.password.data, forms.phonenumber.data, forms.profiletype.data, forms.graddate.data,
                           forms.profession.data, forms.aboutme.data, forms.interests.data, forms.skills.data, forms.city.data, forms.state.data))
             conn.commit
             conn.autocommit(True)
-                        
+
             print "cur.execute(''' INSERT INTO users ( major) values(%s)''', (forms.major.data))", "db.commit", "db.autocommit(True)", forms.major.data
             return redirect(url_for('studentmainpage'))
     elif request.method == 'GET':
         return render_template('createprofile.html', forms = forms)
 
-    
+
 
 @application.route('/signinpage', methods=['GET', 'POST'])
 def signin():
@@ -180,11 +180,11 @@ def signin():
             password_form = request.form['password']
 
             cur.execute("SELECT password FROM user WHERE user_name = %s", [username_form])
-            
+
             for row in cur.fetchall():
                 if password_form == row[0]:
                     session['username'] = request.form['username']
-                    
+
                     return redirect(url_for('homepage'))
             raise ServerError('Invalid password')
     except ServerError as e:
@@ -210,6 +210,22 @@ def csharpquestions():
 @application.route('/experience')
 def experience():
     return render_template('experience.html')
+
+@application.route('/internships')
+def experience():
+    return render_template('internships.html')
+
+@application.route('/partfulltime')
+def experience():
+    return render_template('partfulltime.html')
+
+@application.route('/internationalstudentsposts')
+def experience():
+    return render_template('internationalstudentsposts.html')
+
+@application.route('/alumnijobpost')
+def experience():
+    return render_template('alumnijobpost.html')
 
 @application.route('/interviewtipsstudent')
 def interviewtipsstudent():
@@ -304,12 +320,3 @@ def typeofquestions():
 @application.route('/verbalquestions')
 def verbalquestions():
     return render_template('verbalquestions.html')
-
-    
-
-
-
-
-
-
-
