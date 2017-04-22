@@ -207,24 +207,24 @@ def clearsession():
 def csharpquestions():
     return render_template('csharpquestions.html')
 
-@application.route('/experience')
-def experience():
-    return render_template('experience.html')
+##@application.route('/experience')
+##def experience():
+##    return render_template('experience.html')
 
 @application.route('/internships')
-def experience():
+def internships():
     return render_template('internships.html')
 
 @application.route('/partfulltime')
-def experience():
+def partfulltime():
     return render_template('partfulltime.html')
 
 @application.route('/internationalstudentsposts')
-def experience():
+def internationalstudentsposts():
     return render_template('internationalstudentsposts.html')
 
 @application.route('/alumnijobpost')
-def experience():
+def alumnijobpost():
     return render_template('alumnijobpost.html')
 
 @application.route('/interviewtipsstudent')
