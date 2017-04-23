@@ -286,7 +286,7 @@ def profilepage():
             print cur.fetchone()
             return render_template('profilepage.html', items=data)
 
-    return redirect(url_for('pythonquestions'))
+    return redirect(url_for('signinpage'))
 
 @application.route('/pythonquestions')
 def pythonquestions():
