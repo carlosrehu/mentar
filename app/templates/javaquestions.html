@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Practice Questions</title>
+  <title>Java Questions</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,7 +24,8 @@
       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
     </div>
   </div>
-<!--> CSS code for the header-->
+
+<!-- CSS code for the header-->
   <style>
   .container {
     padding: 20px 20px;
@@ -73,23 +74,21 @@
       <li class="active"><a href="/aboutus">About Us</a></li>
       <li class="active"><a href="/contactus">Contact Us</a></li>
     </ul>
+
+    <!-- Code for buttons to appear to the far right of the nav bar-->
       <ul class="nav navbar-nav navbar-right">
-        <li><form class="form-signin navbar-form">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          </form>
-        </li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="/createprofile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    </ul>
+
+        <!-- Link to Sign out-->
+        <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+      </ul>
+
   </div>
 </nav>
 <div class="row">
   <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
   <br>
   <br>
+  <!--Code for Java Questions-->
     <div class="col-sm-6">
       <h3 style="color: white; font-size:300%">Java practice questions</h3>
       <br>
@@ -101,7 +100,7 @@
             contains the iterator method that returns an Iterator instance.
             Iterator are capable of removing elements from the underlying
             collection during the iteration. </p></div>
-
+        <br>
         <li><a href="#java2" data-toggle="collapse">What does the "static" keyword mean?
                           Can you override private or static method in Java?</a></li>
         <div id="java2" class="collapse">
@@ -112,7 +111,7 @@
            and static methods are statically binded at compile time.  A static
            method is not associated with any instance of a class so the concept
            is not applicable.</p></div>
-
+        <br>
         <li><a href="#java3" data-toggle="collapse">What is the tradeoff between using
                             an unordered array versus and ordered array?</a></li>
         <div id="java3" class="collapse">
@@ -125,7 +124,14 @@
            constant time of O(1).</p></div>
       </ul>
     </div>
-      <div class="col-sm-6"><img src="static/javalogo.jpg" class="img-rounded" alt="whiteboard interview" width="700" height="550">
+    <style>
+    .col-sm-6 {
+      padding: 50px 50px 50px 50px;
+    }
+    </style>
+    
+    <!--Code for java logo image-->
+      <div class="col-sm-6"><img src="static/javalogo.jpg" class="img-rounded" alt="Java Logo" width="450" height="500">
     </div>
   </div>
 </body/>
