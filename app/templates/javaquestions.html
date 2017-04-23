@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!--backgroung color-->
+<!--background color-->
   <style>
   body{
   background-color: black;
@@ -61,7 +61,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/careeropportunities">PostCareers</a></li>
+            <li><a href="/alumnijobposts">PostCareers</a></li>
           </ul>
       </li>
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
@@ -77,7 +77,8 @@
 
     <!-- Code for buttons to appear to the far right of the nav bar-->
       <ul class="nav navbar-nav navbar-right">
-
+		<!--Text to display the users name-->
+		<li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
         <!-- Link to Sign out-->
         <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
       </ul>
@@ -122,6 +123,9 @@
            elements with higher values must be moved to make room for the new
            element.  Instead, the insertion operation for unordered array takes
            constant time of O(1).</p></div>
+         <br>
+         <li class="active"><a href="/interviewtipsstudent">Back to interview tips</a></li>  
+           
       </ul>
     </div>
     <style>

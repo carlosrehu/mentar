@@ -23,10 +23,18 @@ class ServerError(Exception):pass
 @application.route('/')
 @application.route('/homepage', methods = ['POST', 'GET'])
 def homepage():
-    print session
-    if 'username' not in session:
-        return redirect(url_for('signin'))
-    print session
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+
+            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
+
+            data = cur.fetchone()
+            print data
+            print cur.fetchone()
+            return render_template('homepage.html', items=data)
+
+    return redirect(url_for('signin'))
     return render_template('homepage.html')
 
 ##    3session.clear()
@@ -91,20 +99,38 @@ def alumnipostquestion():
 
     forms =  InterviewTips(request.form)
 
-    cur.execute(""" SELECT * FROM interview_tips """)
-    tip = cur.fetchall()
-    print tip
+    cur.execute(""" SELECT tips FROM interview_tips """)
+    stored_tip = cur.fetchall()
+
+##    stored_tip = []
+##
+##    for tip in cur:
+##        stored_tip.append(tip)
+##        print(tip)
+        
+    print stored_tip
+    print "Testing??"
     if request.method == 'POST':
         if forms.validate() == False:
             flash('AN INTERVIEW TIP IS REQUIRED')
             return render_template('alumnipostquestion.html')
         else:
-            cur.execute(""" INSERT INTO interview_tips(tips) VALUES(%S)""", (forms.tip.data))
+            cur.execute(""" INSERT INTO interview_tips(tips) VALUES(%s)""", [forms.tip.data])
+            print "cur.execute(''' INSERT INTO interview_tips(tips) VALUES(%s)''', (forms.tip.data))"
+            print "hmmm"
+            interviewTips = cur.fetchall()
+            forms.stored_tip = [(row[1], row[1]) for row in interviewTips ]
             conn.commit
             conn.autocommit(True)
-            return redirect_(url_for('alumnipostquestion.html'))
-    elif request.method == 'GET':
-        return render_template('alumnipostquestion.html', forms = forms)
+            return redirect(url_for('alumnipostquestion'))
+    if request.method == 'GET':
+
+        cur.execute("SELECT tips FROM interview_tips")
+        
+        print "another test"
+
+        print cur.fetchone()
+        return render_template('alumnipostquestion.html', forms=forms, items=stored_tip)
 
 
 @application.route('/careeropportunities')
@@ -233,6 +259,18 @@ def interviewtipsstudent():
 
 @application.route('/javaquestions')
 def javaquestions():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+
+            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
+
+            data = cur.fetchone()
+            print data
+            print cur.fetchone()
+            return render_template('javaquestions.html', items=data)
+
+    return redirect(url_for('signin'))
     return render_template('javaquestions.html')
 
 @application.route('/javascriptquestions')
@@ -267,7 +305,7 @@ def practicequestionsgeneral():
 def practicequestionsmath():
     return render_template('practicequestionsmath.html')
 
-@application.route('/profilepage', methods=['GET', 'POST'])
+@application.route('/profilepage', methods=['GET', 'POST']) 
 def profilepage():
 
     if request.method == 'GET':

@@ -24,9 +24,6 @@ class SignupForm(Form):
     city = StringField("City")
     state = StringField("State")
 
-    
-    
-
     submit = SubmitField("Submit")
 
 class InterviewTips(Form):
