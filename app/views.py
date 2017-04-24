@@ -355,19 +355,19 @@ def interviewtipsstudent():
 
 @application.route('/javaquestions')
 def javaquestions():
-    if request.method == 'GET':
-        if 'username' in session:
-            username=session['username']
+            if request.method == 'GET':
+                if 'username' in session:
+                    username=session['username']
 
-            cur.execute("SELECT f_name, FROM user WHERE user_name = %s", [username])
+                    cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
 
-            data = cur.fetchone()
-            print data
-            print cur.fetchone()
-            return render_template('javaquestions.html', items=data)
+                    data = cur.fetchone()
+                    print data
+                    print cur.fetchone()
+                    return render_template('javaquestions.html', items=data)
 
-    return redirect(url_for('signin'))
-    return render_template('javaquestions.html')
+            return redirect(url_for('signin'))
+            return render_template('javaquestions.html')
 
 @application.route('/javascriptquestions')
 def javascriptquestions():
