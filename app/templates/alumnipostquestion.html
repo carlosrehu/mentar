@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <title>Alumni Post a question</title>
+  <title>About Us</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!--backgroung color-->
+<!--backgroun color-->
   <style>
   body{
   background-color: black;
@@ -18,14 +19,12 @@
 
 <!--main body-->
 <body>
-
   <!--header needs to be on all pages-->
   <div class="container">
-    <img class="img-responsive" src="MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
+    <img class="img-responsive" src="static/MenTar-02.png" alt="Logo and Name" width="1110" height="380" >
       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
     </div>
   </div>
-
 <!-- CSS code for the header-->
   <style>
   .container {
@@ -43,12 +42,12 @@
 }
 </style>
 
-  <!--Navigation Bar needs to be on all pages-->
+  <!--Navigation Bar-->
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-    <a class="navbar-brand redtext" href="#">MenTar</a>
-    </div>
+    <a class="navbar-brand" href="#">MenTar</a>
+  </div>
   <ul class="nav navbar-nav">
       <li class="active"><a href="/homepage">Home</a></li>
 
@@ -66,7 +65,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/careeropportunities">PostCareers</a></li>
+            <li><a href="/alumnijobpost">PostCareers</a></li>
           </ul>
       </li>
 
@@ -81,18 +80,12 @@
       <li class="active"><a href="/aboutus">About Us</a></li>
       <li class="active"><a href="/contactus">Contact Us</a></li>
     </ul>
-    <!--Email address, password box plus login and sign up -->
+
+    <!--Displays that the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-        <li><form class="form-signin navbar-form">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          </form>
-        </li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="/createprofile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    </ul>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+      <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
+    </ul>-->
   </div>
 </nav>
 <!-- List of choices for interview tips page-->
@@ -113,28 +106,28 @@
   <form action="/alumnipostquestion" method="post">
 	  {{ forms.hidden_tag() }}
 
-                     {{forms.tip}} 
+                     {{forms.tip}}
 			{{forms.tip.label}}
-			
+
 			{% for message in forms.tip.errors %}
 			{{message}}
 			{% endfor %}
     {{ forms.submit }}
-    
+
       </form>
 </div>
 
 <div class="container-interview">
 
   <form action="" method="get">
-	  
-	  			
+
+
 				{% for row in items %}
-			
+
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome {{ row[0] }}</a></li>
 			{% endfor %}
 
-		
+
   </form>
 </div>
 

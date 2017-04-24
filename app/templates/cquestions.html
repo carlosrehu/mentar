@@ -73,19 +73,15 @@
       <li class="active"><a href="/aboutus">About Us</a></li>
       <li class="active"><a href="/contactus">Contact Us</a></li>
     </ul>
+
+    <!--Displays that the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-        <li><form class="form-signin navbar-form">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          </form>
-        </li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="/createprofile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    </ul>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+      <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
+    </ul>-->
   </div>
 </nav>
+
 <div class="row">
   <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
   <br>
@@ -128,7 +124,7 @@
            output number.  The number after the decimal point sets the number
            of decimal places, in this case, it's 2 decimal places.</p></div>
         <br>
-        <li class="active"><a href="/interviewtipsstudent">Back to interview tips</a></li> 
+        <li class="active"><a href="/interviewtipsstudent">Back to interview tips</a></li>
       </ul>
     </div>
       <div class="col-sm-6"><img src="static/clogo.png" class="img-rounded" alt="whiteboard interview" width="700" height="550">

@@ -35,7 +35,7 @@
   </style>
 
   <!--Navigation Bar-->
-  <nav class="navbar navbar-inverse">
+  <!--<nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">MenTar</a>
@@ -43,7 +43,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/homepage">Home</a></li>
 
-      <!-- drop down selection for Student-->
+       drop down selection for Student
         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="/interviewtipsstudent">Interview Tips</a></li>
@@ -52,7 +52,7 @@
       </ul>
         </li>
 
-      <!-- drop down selection for Student-->
+       drop down selection for Student
         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#">Post Interview Tips</a></li>
@@ -61,7 +61,7 @@
       </ul>
         </li>
 
-      <!-- drop down selection for Student-->
+       drop down selection for Student
         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#">Post Interview Tips</a></li>
@@ -72,174 +72,152 @@
         <li class="active"><a href="/aboutus">About Us</a></li>
         <li class="active"><a href="/contactus+">Contact Us</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-
-      <!-- drop down selection for Student-->
-        <li><form class="form-signin navbar-form">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        </form>
-        </li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-
-      <!-- Link to create profile-->
-        <li><a href="createprofile.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      </ul>
     </div>
-  </nav>
+  </nav>-->
 <br>
 <br>
+
 <!--Page heading-->
     <h2 style="text-align:center; color:white; font-size:300%">Create your profile</h2>
-    <style>
-      .col-sm-5{
-        background-color: #BDBDBD;
-      }
-    </style>
-    
+
    <!--CSS code for sign up form-->
    <style>
    .container{
-	 text-color:white;
-	 text-align:center;  
+	 text-align:left;
    }
    </style>
    <style>
    .form-group{
 	   text-align:left;
+     color: white;
+     padding: 5px 5px 5px 5px;
+   }
+   </style>
+   <!--CSS for picture-->
+   <style>
+   .col-sm-6{
+	 padding: 100px 100px 100px 150px;
    }
    </style>
 
+   <div class="col-sm-6"><img src="static/fox.jpg" class="img-rounded" alt="fox Picture" width="350" height="400">
+ </div>
+
   <!--sign up form  -->
   <div class="container">
-
     <!--Personal information section-->
-    <h3 style="align:center; color:white">Personal Information</h3>
+    <h3 style="align:left; color:white">Personal Information</h3>
     <form action="/createprofile" method = "POST" class="form-horizontal">
 		{{ forms.hidden_tag() }}
 		<fieldset>
-      <div class="form-group">
-        <!--<label class="control-label col-sm-2" style="color:#BDBDBD" for="firstname">First Name:</label>-->
-        
-		<div class="col-sm-5">
-		{{forms.firstname.label}}
+
+    <div class="form-group">
+		<div class="col-sm-10">
 		{{forms.firstname}}
-		
+    {{forms.firstname.label}}
+
 		{% for message in forms.firstname.errors %}
 			{{message}}
 			{% endfor %}
-          <!--<input type="firstname" class="form-control" id="firstname" placeholder="Enter first name">-->
-        </div>
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="lastname">Last name:</label>
-        <div class="col-sm-5">
-			{{forms.lastname.label}}
+        <div class="col-sm-10">
 			{{forms.lastname}}
-			
+      {{forms.lastname.label}}
 			{% for message in forms.lastname.errors %}
 			{{message}}
 			{% endfor %}
-          <!--<input type="lastname" class="form-control" id="lastname" placeholder="Enter last name">-->
-        </div>
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="age">Age:</label>
-        <div class="col-sm-5">
-			{{forms.age.label}}
+        <div class="col-sm-10">
 			{{forms.age}}
-			
+      {{forms.age.label}}
 			{% for message in forms.age.errors %}
 			{{message}}
 			{% endfor %}
-          <!--<input type="lastname" class="form-control" id="lastname" placeholder="Enter last name">-->
-        </div>
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="email">Email:</label>
-        <div class="col-sm-5">
-			{{forms.email.label}}
+        <div class="col-sm-10">
 			{{forms.email }}
+      {{forms.email.label}}
 			{% for message in forms.email.errors %}
 			{{message}}
 			{% endfor %}
-          <!--<<input type="email" class="form-control" id="email" placeholder="Enter email address">-->
-        </div>
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="username">User name:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-10">
+      {{forms.username}}
 			{{forms.username.label}}
-			{{forms.username}}
 			{% for message in forms.username.errors %}
 			{{message}}
 			{% endfor %}
-          <!--<input type="username" class="form-control" id="username" placeholder="Create user name">-->
-        </div>
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="password">Password:</label>
-        <div class="col-sm-5">
-			{{forms.password.label}}
+        <div class="col-sm-10">
 			{{forms.password}}
+      {{forms.password.label}}
 			{% for message in forms.password.errors %}
 			<div style="color = red">
 			{{message}}
 			</div>
+
 			{% endfor %}
-          <!--<input type="password" class="form-control" id="password" placeholder="Create password">-->
-        </div>
+
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="phonenumber">Phone Number:</label>
-        <div class="col-sm-5">
-			{{forms.phonenumber.label}}
+      <div class="col-sm-10">
 			{{forms.phonenumber}}
+      {{forms.phonenumber.label}}
 			{% for message in forms.phonenumber.errors %}
 			<div style="color = red">
 			{{message}}
 			</div>
+
 			{% endfor %}
-          <!--<input type="password" class="form-control" id="password" placeholder="Create password">-->
-        </div>
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="city">City:</label>
-        <div class="col-sm-5">
-			{{forms.city.label}}
+      <div class="col-sm-10">
 			{{forms.city}}
+      {{forms.city.label}}
 			{% for message in forms.city.errors %}
 			{{message}}
 			{% endfor %}
-          <!--<input type="city" class="form-control" id="city" placeholder="Enter city">-->
-        </div>
+
       </div>
+      </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="state">State:</label>
-        <div class="col-sm-5">
-			{{forms.state.label}}
+      <div class="col-sm-10">
 			{{forms.state}}
+      {{forms.state.label}}
 			{% for message in forms.state.errors %}
 			{{message}}
 			{% endfor %}
-          <!--<input type="state" class="form-control" id="state" placeholder="Enter state">-->
-        </div>
       </div>
+      </div>
+
       <div class="dropdown">
-        <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="profiletype">Profile Type:</label>
-        <div class="col-sm-5">
-<!--
-
-
-
--->			{{forms.profiletype.label}}
-			{{forms.profiletype  }}
-			{% for message in forms.profiletype.errors %}
-			{{message}}
-			{% endfor %}
+      <div class="form-group">
+      <div class="col-sm-10">
+		    {{forms.profiletype  }}
+        {{forms.profiletype.label}}
+			  {% for message in forms.profiletype.errors %}
+			  {{message}}
+			  {% endfor %}
           <!--<input type="profiletype" class="form-control" id="profiletype" placeholder="Select profile type">-->
             <!--<select class="form-control" id="profiletype">
               <option>Student</option>
@@ -251,19 +229,18 @@
       </div>
 
         <!--Education information section-->
-      <h3 style="align:center; color:white">Education Information</h3>
+      <h3 style="align:left; color:white">Education Information</h3>
       <div class="dropdown">
         <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="major">Major:</label>
-        <div class="col-sm-5">
-			{{forms.major}} 
+        <div class="col-sm-10">
+			{{forms.major}}
 			{{forms.major.label}}
-			
+
 			{% for message in forms.major.errors %}
 			{{message}}
 			{% endfor %}
-			
-          <input type="major" class="form-control" id="major" placeholder="Select major">
+
+        <!--  <input type="major" class="form-control" id="major" placeholder="Select major">
           <select class="form-control" id="major">
               <option>African and African American Students</option>
               <option>American Studies</option>
@@ -320,22 +297,22 @@
               <option>Theatre Arts</option>
               <option>Sexuality, Women's and Gender Studies</option>
               <option>Writing</option>
-            </select>
+            </select>-->
           </div>
       </div>
     </div>
+
     <div class="dropdown">
       <div class="form-group">
-      <label class="control-label col-sm-2" style="color:#BDBDBD" for="minor">Minor:</label>
-      <div class="col-sm-5">
+      <div class="col-sm-10">
 		  {{forms.minor}}
 		  {{forms.minor.label}}
-		  
+
 		  {% for message in forms.minor.errors %}
 		  {{message}}
 		  {% endfor %}
-		 
-        <input type="minor" class="form-control" id="minor" placeholder="Select minor">
+
+      <!--  <input type="minor" class="form-control" id="minor" placeholder="Select minor">
         <select class="form-control" id="minor">
             <option>African and African American Students</option>
             <option>American Studies</option>
@@ -392,59 +369,59 @@
             <option>Theatre Arts</option>
             <option>Sexuality, Women's and Gender Studies</option>
             <option>Writing</option>
-          </select>
-          
+          </select>-->
+
         </div>
     </div>
   </div>
+
       <div class="form-group">
-        <!--<label class="control-label col-sm-2" style="color:#BDBDBD" for="graddate">Graduation date:</label>-->
-        	{{forms.graddate}} 
+        <div class="col-sm-10">
+      {{forms.graddate}}
 			{{forms.graddate.label}}
-			
+
 			{% for message in forms.graddate.errors %}
 			{{message}}
 			{% endfor %}
-        <div class="col-sm-5">
-          <!--<input type="graddate" class="form-control" id="graddate" placeholder="Enter graduation date">-->
+
         </div>
       </div>
-      
+
         <!--Other information section-->
-      <h3 style="align:center; color:white">Other Information</h3>
+      <h3 style="align:left; color:white">Other Information</h3>
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="profession">Profession:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-10">
           <input type="profession" class="form-control" id="profession" placeholder="Enter profession">
         </div>
       </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="interests">Interests:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-10">
           <input type="interests" class="form-control" id="interests" placeholder="Enter interests (seperated by a comma)">
         </div>
       </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="skills">Skills:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-10">
           <input type="skills" class="form-control" id="skills" placeholder="Enter skills (seperated by a comma)">
         </div>
       </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="aboutme">About me:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-10">
           <input type="aboutme" class="form-control" id="aboutme" placeholder="Enter about me">
         </div>
       </div>
+
       <div class="form-group">
-        <label class="control-label col-sm-2" style="color:#BDBDBD" for="submit"></label>
-          <button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">
-            Submit</button>
+        <!--<button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">-->
             {{ forms.submit }}
+            Submit</button>
       </div>
       </fieldset>
     </form>
     <!--end of form-->
+
   </div>
 
   </body>

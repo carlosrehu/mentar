@@ -63,7 +63,7 @@
            <ul class="dropdown-menu">
              <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
              <li><a href="/studentconnection">Student Connection</a></li>
-             <li><a href="/careeropportunities">PostCareers</a></li>
+             <li><a href="/alumnijobpost">PostCareers</a></li>
            </ul>
        </li>
        <!-- drop down selection for Faculty-->
@@ -78,20 +78,14 @@
        <li class="active"><a href="/aboutus">About Us</a></li>
        <li class="active"><a href="/contactus">Contact Us</a></li>
      </ul>
-       <ul class="nav navbar-nav navbar-right">
-         <!--Email address, password box plus login and sign up -->
-         <li><form class="form-signin navbar-form">
-           <label for="inputEmail" class="sr-only">Email address</label>
-           <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-           <label for="inputPassword" class="sr-only">Password</label>
-           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-           </form>
-         </li>
-         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-       <li><a href="/createprofile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-     </ul>
-   </div>
- </nav>
+
+         <!--Displays that the user name and sign out button -->
+           <ul class="nav navbar-nav navbar-right">
+            <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+           <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
+         </ul>-->
+       </div>
+     </nav>
  <div class="row">
      <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
   <br>
@@ -109,7 +103,7 @@
           by using namespace std or std: : throughout the code. Namespace is used to differentiate
           the same functions in a library by defining the name.
         </p></div>
-
+        <br>
 
          <li><a href="#java2" data-toggle="collapse">Explain what are Access specifiers in C++ class? What are the types?</a></li>
          <div id="java2" class="collapse">
@@ -117,11 +111,11 @@
            that follow it until the end of class or another specifier is included. Access
            specifiers decide how the members of the class can be accessed. <br>There are three types
            of specifiers:<br>
-           •	Private<br>
+           • Private<br>
            • Public<br>
            • Protected
          </p></div>
-
+         <br>
 
         <li><a href="#java3" data-toggle="collapse">Explain what is C++ exceptional handling?</a></li>
          <div id="java3" class="collapse">
@@ -133,11 +127,11 @@
           • Throw: When a problem exists while running the code, the program throws an exception.
         </p></div>
         <br>
-        <li class="active"><a href="/interviewtipsstudent">Back to interview tips</a></li> 
+        <li class="active"><a href="/interviewtipsstudent">Back to interview tips</a></li>
        </ul>
     </div>
     <!--Language type logo-->
-      <div class="col-sm-6"><img src="static/cplus.png" class="img-rounded" alt="csharp logo" width="600" height="450">
+      <div class="col-sm-6"><img src="static/cplus.png" class="img-rounded" alt="csharp logo" width="400" height="400">
     </div>
   </div>
  </body/>
