@@ -64,7 +64,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/careeropportunities">PostCareers</a></li>
+            <li><a href="/alumnijobpost">PostCareers</a></li>
           </ul>
       </li>
 
@@ -79,19 +79,14 @@
       <li class="active"><a href="/aboutus">About Us</a></li>
       <li class="active"><a href="/contactus">Contact Us</a></li>
     </ul>
+
+    <!--Displays that the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-        <li><form class="form-signin navbar-form">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          </form>
-        </li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="/createprofile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    </ul>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+      <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
+    </ul>-->
   </div>
-</nav>
+  </nav>
 
 <!--css code for list-->
 <style>
@@ -105,7 +100,7 @@
 
   <!-- practice question list-->
   <div class="row">
-    <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
+    <h2 style="text-align:center; color:white; font-size:400%">Computer Science Interview Questions</h2>
     <br>
     <br>
       <div class="col-sm-6">
@@ -134,9 +129,16 @@
         </ul>
       </div>
 
-
+      <style>
+      .col-sm-4{
+        padding-left: 20px;
+        padding-right:200px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+      </style>
         <div class="col-sm-4">
-          <img src="static/whiteboard-interview.png" class="img-rounded" alt="whiteboard interview" width="700" height="550">
+          <img src="static/whiteboard-interview.png" class="img-rounded" alt="whiteboard interview" width="500" height="550">
       </div>
     </div>
 
