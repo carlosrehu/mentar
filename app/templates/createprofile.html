@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!--CCS backgroung color-->
+<!--CCS background color-->
   <style>
   body{
   background-color: black;
@@ -93,6 +93,14 @@
      padding: 5px 5px 5px 5px;
    }
    </style>
+
+   <!--CSS code for text on forms-->
+   <style>
+   .form-label{
+    color: black;
+   }
+   </style>
+
    <!--CSS for picture-->
    <style>
    .col-sm-6{
@@ -113,7 +121,7 @@
 
     <div class="form-group">
 		<div class="col-sm-10">
-		{{forms.firstname}}
+		{{forms.firstname(class='form-label')}}
     {{forms.firstname.label}}
 
 		{% for message in forms.firstname.errors %}
@@ -124,7 +132,7 @@
 
       <div class="form-group">
         <div class="col-sm-10">
-			{{forms.lastname}}
+			{{forms.lastname(class='form-label')}}
       {{forms.lastname.label}}
 			{% for message in forms.lastname.errors %}
 			{{message}}
@@ -134,7 +142,7 @@
 
       <div class="form-group">
         <div class="col-sm-10">
-			{{forms.age}}
+			{{forms.age(class='form-label')}}
       {{forms.age.label}}
 			{% for message in forms.age.errors %}
 			{{message}}
@@ -144,7 +152,7 @@
 
       <div class="form-group">
         <div class="col-sm-10">
-			{{forms.email }}
+			{{forms.email(class='form-label') }}
       {{forms.email.label}}
 			{% for message in forms.email.errors %}
 			{{message}}
@@ -154,7 +162,7 @@
 
       <div class="form-group">
         <div class="col-sm-10">
-      {{forms.username}}
+      {{forms.username(class='form-label')}}
 			{{forms.username.label}}
 			{% for message in forms.username.errors %}
 			{{message}}
@@ -164,7 +172,7 @@
 
       <div class="form-group">
         <div class="col-sm-10">
-			{{forms.password}}
+			{{forms.password(class='form-label')}}
       {{forms.password.label}}
 			{% for message in forms.password.errors %}
 			<div style="color = red">
@@ -178,7 +186,7 @@
 
       <div class="form-group">
       <div class="col-sm-10">
-			{{forms.phonenumber}}
+			{{forms.phonenumber(class='form-label')}}
       {{forms.phonenumber.label}}
 			{% for message in forms.phonenumber.errors %}
 			<div style="color = red">
@@ -191,7 +199,7 @@
 
       <div class="form-group">
       <div class="col-sm-10">
-			{{forms.city}}
+			{{forms.city(class='form-label')}}
       {{forms.city.label}}
 			{% for message in forms.city.errors %}
 			{{message}}
@@ -202,7 +210,7 @@
 
       <div class="form-group">
       <div class="col-sm-10">
-			{{forms.state}}
+			{{forms.state(class='form-label')}}
       {{forms.state.label}}
 			{% for message in forms.state.errors %}
 			{{message}}
@@ -213,7 +221,7 @@
       <div class="dropdown">
       <div class="form-group">
       <div class="col-sm-10">
-		    {{forms.profiletype  }}
+		    {{forms.profiletype(class='form-label')  }}
         {{forms.profiletype.label}}
 			  {% for message in forms.profiletype.errors %}
 			  {{message}}
@@ -233,71 +241,14 @@
       <div class="dropdown">
         <div class="form-group">
         <div class="col-sm-10">
-			{{forms.major}}
+			{{forms.major(class='form-label')}}
 			{{forms.major.label}}
 
 			{% for message in forms.major.errors %}
 			{{message}}
 			{% endfor %}
 
-        <!--  <input type="major" class="form-control" id="major" placeholder="Select major">
-          <select class="form-control" id="major">
-              <option>African and African American Students</option>
-              <option>American Studies</option>
-              <option>Anthropology</option>
-              <option>Archeology</option>
-              <option>Art(Studio)</option>
-              <option>Art History</option>
-              <option>Asian Studies</option>
-              <option>Australian Studies</option>
-              <option>Biochemistry/Molecular Biology</option>
-              <option>Biology</option>
-              <option>Business(Management Concentration)</option>
-              <option>Business(Social Entrepreneurship)</option>
-              <option>Chemistry</option>
-              <option>Classical Studies</option>
-              <option>Communication Studies</option>
-              <option>Computer Science</option>
-              <option>Critical Media and Cultural Studies</option>
-              <option>Cultural Anthropology</option>
-              <option>Dance</option>
-              <option>Economics</option>
-              <option>Education(Elementary)</option>
-              <option>Education(Secondary)</option>
-              <option>English</option>
-              <option>Environmental Studies</option>
-              <option>Film Studies</option>
-              <option>French</option>
-              <option>German</option>
-              <option>Global Health</option>
-              <option>Healthcare Management</option>
-              <option>History</option>
-              <option>Humanities</option>
-              <option>International Affairs</option>
-              <option>International Business</option>
-              <option>International Relations</option>
-              <option>Jewish Studies</option>
-              <option>Latin American and Caribbean Studies</option>
-              <option>Marine Biology</option>
-              <option>Mathmatics</option>
-              <option>Middle Eastern and North African Studies</option>
-              <option>Music</option>
-              <option>Neuroscience</option>
-              <option>Organizational Behavior</option>
-              <option>Philosphy</option>
-              <option>Physcis</option>
-              <option>Political Science</option>
-              <option>Psychology</option>
-              <option>Public Policy and Political Economy</option>
-              <option>Religious Studies</option>
-              <option>Russian</option>
-              <option>Sociology</option>
-              <option>Spanish</option>
-              <option>Sustainable Development and the Environment</option>
-              <option>Theatre Arts</option>
-              <option>Sexuality, Women's and Gender Studies</option>
-              <option>Writing</option>
-            </select>-->
+
           </div>
       </div>
     </div>
@@ -305,71 +256,14 @@
     <div class="dropdown">
       <div class="form-group">
       <div class="col-sm-10">
-		  {{forms.minor}}
+		  {{forms.minor(class='form-label')}}
 		  {{forms.minor.label}}
 
 		  {% for message in forms.minor.errors %}
 		  {{message}}
 		  {% endfor %}
 
-      <!--  <input type="minor" class="form-control" id="minor" placeholder="Select minor">
-        <select class="form-control" id="minor">
-            <option>African and African American Students</option>
-            <option>American Studies</option>
-            <option>Anthropology</option>
-            <option>Archeology</option>
-            <option>Art(Studio)</option>
-            <option>Art History</option>
-            <option>Asian Studies</option>
-            <option>Australian Studies</option>
-            <option>Biochemistry/Molecular Biology</option>
-            <option>Biology</option>
-            <option>Business(Management Concentration)</option>
-            <option>Business(Social Entrepreneurship)</option>
-            <option>Chemistry</option>
-            <option>Classical Studies</option>
-            <option>Communication Studies</option>
-            <option>Computer Science</option>
-            <option>Critical Media and Cultural Studies</option>
-            <option>Cultural Anthropology</option>
-            <option>Dance</option>
-            <option>Economics</option>
-            <option>Education(Elementary)</option>
-            <option>Education(Secondary)</option>
-            <option>English</option>
-            <option>Environmental Studies</option>
-            <option>Film Studies</option>
-            <option>French</option>
-            <option>German</option>
-            <option>Global Health</option>
-            <option>Healthcare Management</option>
-            <option>History</option>
-            <option>Humanities</option>
-            <option>International Affairs</option>
-            <option>International Business</option>
-            <option>International Relations</option>
-            <option>Jewish Studies</option>
-            <option>Latin American and Caribbean Studies</option>
-            <option>Marine Biology</option>
-            <option>Mathmatics</option>
-            <option>Middle Eastern and North African Studies</option>
-            <option>Music</option>
-            <option>Neuroscience</option>
-            <option>Organizational Behavior</option>
-            <option>Philosphy</option>
-            <option>Physcis</option>
-            <option>Political Science</option>
-            <option>Psychology</option>
-            <option>Public Policy and Political Economy</option>
-            <option>Religious Studies</option>
-            <option>Russian</option>
-            <option>Sociology</option>
-            <option>Spanish</option>
-            <option>Sustainable Development and the Environment</option>
-            <option>Theatre Arts</option>
-            <option>Sexuality, Women's and Gender Studies</option>
-            <option>Writing</option>
-          </select>-->
+     
 
         </div>
     </div>
@@ -377,7 +271,7 @@
 
       <div class="form-group">
         <div class="col-sm-10">
-      {{forms.graddate}}
+      {{forms.graddate(class='form-label')}}
 			{{forms.graddate.label}}
 
 			{% for message in forms.graddate.errors %}
@@ -415,7 +309,7 @@
 
       <div class="form-group">
         <!--<button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">-->
-            {{ forms.submit }}
+            {{ forms.submit(class="form-label") }}
             Submit</button>
       </div>
       </fieldset>

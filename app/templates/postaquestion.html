@@ -109,8 +109,28 @@
   <p>Post your question/comments here!!</p>
   <form>
     <div class="form-group">
-      <label for="comment">Comment:</label>
-      <textarea class="form-control" rows="10" id="comment"></textarea>
+      <!--<label for="comment">Comment:</label>
+      <textarea class="form-control" rows="10" id="comment"></textarea>-->
+      
+      	  {{ forms.hidden_tag() }}
+
+            {{forms.question}}
+			{{forms.question.label}}
+
+			{% for message in forms.question.errors %}
+			{{message}}
+			{% endfor %}
+    {{ forms.submit }}
+    
+
+                     {{forms.answer}}
+			{{forms.answer.label}}
+
+			{% for message in forms.answer.errors %}
+			{{message}}
+			{% endfor %}
+    {{ forms.submit }}
+      
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>

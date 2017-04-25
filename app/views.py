@@ -379,6 +379,41 @@ def phpquestions():
 
 @application.route('/postaquestion')
 def postaquestion():
+
+    forms =  PostAQuestion(request.form)
+
+    question = cur.execute(""" SELECT question FROM questions """), 'testing1'
+    question = cur.fetchall()
+    answer = cur.execute(""" SELECT answer FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """), 'testing'
+    answer = cur.fetchall()
+
+
+    print question
+    print answer
+    print "Testing??"
+    if request.method == 'POST':
+        if forms.validate() == False:
+            flash('AN INTERVIEW TIP IS REQUIRED')
+            return render_template('alumnipostquestion.html')
+        else:
+            cur.execute(""" INSERT INTO question(questions) VALUES(%s)""", [forms.question.data])
+            print "cur.execute(''' INSERT INTO question(questions) VALUES(%s)''', (forms.question.data))"
+            cur.execute(""" INSERT INTO answer(answers) VALUES(%s)""", [forms.answer.data])
+            print "hmmm"
+##            interviewTips = cur.fetchall()
+##            forms.stored_tip = [(row[1], row[1]) for row in interviewTips ]
+            conn.commit
+            conn.autocommit(True)
+            return redirect(url_for('postaquestion'))
+    if request.method == 'GET':
+##
+        cur.execute("SELECT tips FROM interview_tips")
+##
+        print "another test"
+##
+        print cur.fetchone()
+        return render_template('postaquestion.html', forms=forms, question=question, answer=answer)
+##    
     return render_template('postaquestion.html')
 
 @application.route('/practicequestions')

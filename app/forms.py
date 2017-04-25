@@ -31,3 +31,10 @@ class InterviewTips(Form):
 
     submit = SubmitField("Submit")
 
+class PostAQuestion(Form):
+
+    question = StringField("Question", validators = [ DataRequired("A question is necesary.")])
+
+    answer = StringField("Answer", validators = [ DataRequired("Please type a response.")])
+
+    submit = SubmitField("Submit")
