@@ -377,42 +377,51 @@ def javascriptquestions():
 def phpquestions():
     return render_template('phpquestions.html')
 
-@application.route('/postaquestion')
+@application.route('/postaquestion', methods=['GET', 'POST'])
 def postaquestion():
 
     forms =  PostAQuestion(request.form)
 
-    question = cur.execute(""" SELECT question FROM questions """), 'testing1'
-    question = cur.fetchall()
-    answer = cur.execute(""" SELECT answer FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """), 'testing'
-    answer = cur.fetchall()
+    quesans = cur.execute(""" SELECT quesans FROM mentarquestions """)
+    quesans = cur.fetchall()
+    #answer = cur.execute(""" SELECT answer FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
+    #answer = cur.fetchall()
 
-
-    print question
-    print answer
     print "Testing??"
     if request.method == 'POST':
         if forms.validate() == False:
             flash('AN INTERVIEW TIP IS REQUIRED')
             return render_template('alumnipostquestion.html')
         else:
-            cur.execute(""" INSERT INTO question(questions) VALUES(%s)""", [forms.question.data])
-            print "cur.execute(''' INSERT INTO question(questions) VALUES(%s)''', (forms.question.data))"
-            cur.execute(""" INSERT INTO answer(answers) VALUES(%s)""", [forms.answer.data])
+            cur.execute(""" INSERT INTO mentarquestions(quesans) VALUES(%s)""", [forms.question.data])
+            #print "cur.execute(''' INSERT INTO questions(question) VALUES(%s)''', (forms.question.data))"
+            conn.commit
+            conn.autocommit(True)
+            #cur.execute(""" INSERT INTO answers(answer, question_id) VALUES(%s, %s)""", [forms.answer.data], questionid)
             print "hmmm"
 ##            interviewTips = cur.fetchall()
 ##            forms.stored_tip = [(row[1], row[1]) for row in interviewTips ]
             conn.commit
             conn.autocommit(True)
+            
             return redirect(url_for('postaquestion'))
     if request.method == 'GET':
 ##
-        cur.execute("SELECT tips FROM interview_tips")
+        #cur.execute("SELECT tips FROM interview_tips")
 ##
         print "another test"
+
+        questiontest = cur.execute(""" SELECT quesans FROM mentarquestions """)
+        questiontest = cur.fetchall()
+        #answertest = cur.execute(""" SELECT question FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
+        #answertest = cur.fetchall()
 ##
-        print cur.fetchone()
-        return render_template('postaquestion.html', forms=forms, question=question, answer=answer)
+        print cur.fetchall()
+        print 'printing tests'
+        #print questiontest
+        #print answertest
+        print 'done printing tests'
+        return render_template('postaquestion.html', forms=forms, question=quesans)
 ##    
     return render_template('postaquestion.html')
 
