@@ -73,22 +73,28 @@
     <!-- drop down selection for Faculty-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/underconstruction">Post Interview Tips</a></li>
-            <li><a href="/underconstruction">Student Connection</a></li>
-            <li><a href="/underconstruction">PostCareers</a></li>
+            <li><a href="#">Post Interview Tips</a></li>
+            <li><a href="#">Student Connection</a></li>
+            <li><a href="#">PostCareers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
       <li class="active"><a href="/contactus">Contact Us</a></li>
     </ul>
-    
-    <!--Displays that the user name and sign out button -->
+    <!--Email address, password box plus login and sign up -->
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
-      <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
-    </ul>-->
+        <li><form class="form-signin navbar-form">
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          </form>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="/createprofile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    </ul>
   </div>
-  </nav>
+</nav>
 <!-- List of choices for interview tips page-->
 
 <style>
@@ -105,7 +111,7 @@
     <div class="form-group">
       <!--<label for="comment">Comment:</label>
       <textarea class="form-control" rows="10" id="comment"></textarea>-->
-
+      
       	  {{ forms.hidden_tag() }}
 
             {{forms.question}}
@@ -123,9 +129,9 @@
 			{% endfor %}
 			
     {{ forms.submit }}
+    
 
-
-
+    
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
@@ -140,10 +146,10 @@
 
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your question {{ q[0] }}</a></li>
 			{% endfor %}
-
+			
 							{% for a in answer  %}
 
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your a {{ a[0] }}</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your answer {{ a[0] }}</a></li>
 			{% endfor %}
 
 
