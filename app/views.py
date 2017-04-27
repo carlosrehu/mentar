@@ -396,23 +396,17 @@ def postaquestion():
 
     quesans = cur.execute(""" SELECT quesans FROM mentarquestions """)
     quesans = cur.fetchall()
-    #answer = cur.execute(""" SELECT answer FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
-    #answer = cur.fetchall()
 
-    print "Testing??"
+
     if request.method == 'POST':
-        if forms.validate() == False:
-            flash('AN INTERVIEW TIP IS REQUIRED')
-            return render_template('alumnipostquestion.html')
-        else:
             cur.execute(""" INSERT INTO mentarquestions(quesans) VALUES(%s)""", [forms.question.data])
             #print "cur.execute(''' INSERT INTO questions(question) VALUES(%s)''', (forms.question.data))"
             conn.commit
             conn.autocommit(True)
             #cur.execute(""" INSERT INTO answers(answer, question_id) VALUES(%s, %s)""", [forms.answer.data], questionid)
-            print "hmmm"
 ##            interviewTips = cur.fetchall()
 ##            forms.stored_tip = [(row[1], row[1]) for row in interviewTips ]
+            cur.execute(""" INSERT INTO answers(answer) VALUES(%s)""", [forms.answer.data])
             conn.commit
             conn.autocommit(True)
 
@@ -425,6 +419,9 @@ def postaquestion():
 
         questiontest = cur.execute(""" SELECT quesans FROM mentarquestions """)
         questiontest = cur.fetchall()
+        answer = cur.execute(""" SELECT answer FROM answers """)
+        answer = cur.fetchall()
+        
         #answertest = cur.execute(""" SELECT question FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
         #answertest = cur.fetchall()
 ##
@@ -433,7 +430,7 @@ def postaquestion():
         #print questiontest
         #print answertest
         print 'done printing tests'
-        return render_template('postaquestion.html', forms=forms, question=quesans)
+        return render_template('postaquestion.html', forms=forms, question=quesans, answer=answer)
 ##
     return render_template('postaquestion.html')
 

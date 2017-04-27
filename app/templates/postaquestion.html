@@ -114,6 +114,14 @@
 			{% for message in forms.question.errors %}
 			{{message}}
 			{% endfor %}
+
+            {{forms.answer}}
+			{{forms.answer.label}}
+
+			{% for message in forms.answer.errors %}
+			{{message}}
+			{% endfor %}
+			
     {{ forms.submit }}
 
 
@@ -135,7 +143,7 @@
 
 							{% for a in answer  %}
 
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your question {{ a[0] }}</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your a {{ a[0] }}</a></li>
 			{% endfor %}
 
 
