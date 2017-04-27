@@ -293,9 +293,21 @@ def clearsession():
 def csharpquestions():
     return render_template('csharpquestions.html')
 
-##@application.route('/experience')
-##def experience():
-##    return render_template('experience.html')
+@application.route('/experiences')
+def experiences():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+
+            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
+
+            data = cur.fetchone()
+            print data
+            print cur.fetchone()
+            return render_template('experiences.html', items=data)
+
+    return redirect(url_for('signin'))
+    return render_template('experiences.html')
 
 @application.route('/internships')
 def internships():
@@ -403,7 +415,7 @@ def postaquestion():
 ##            forms.stored_tip = [(row[1], row[1]) for row in interviewTips ]
             conn.commit
             conn.autocommit(True)
-            
+
             return redirect(url_for('postaquestion'))
     if request.method == 'GET':
 ##
@@ -422,7 +434,7 @@ def postaquestion():
         #print answertest
         print 'done printing tests'
         return render_template('postaquestion.html', forms=forms, question=quesans)
-##    
+##
     return render_template('postaquestion.html')
 
 @application.route('/practicequestions')
