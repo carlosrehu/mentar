@@ -79,7 +79,7 @@ def aboutus():
             return render_template('aboutus.html', items=data)
 
     return redirect(url_for('signin'))
-    return render_template('aboutus.html')
+    return render_template('aboutus.html', items=data)
 
 ##3        return render_template('aboutus.html')
 
@@ -394,21 +394,23 @@ def postaquestion():
 
     forms =  PostAQuestion(request.form)
 
-    quesans = cur.execute(""" SELECT quesans FROM mentarquestions """)
-    quesans = cur.fetchall()
+##    quesans = cur.execute(""" SELECT quesans FROM mentarquestions """)
+##    quesans = cur.fetchall()
 
 
     if request.method == 'POST':
-            cur.execute(""" INSERT INTO mentarquestions(quesans) VALUES(%s)""", [forms.question.data])
+            if forms.question.data != None:
+                cur.execute(""" INSERT INTO mentarquestions(quesans) VALUES(%s)""", [forms.question.data])
             #print "cur.execute(''' INSERT INTO questions(question) VALUES(%s)''', (forms.question.data))"
-            conn.commit
-            conn.autocommit(True)
+                conn.commit
+                conn.autocommit(True)
             #cur.execute(""" INSERT INTO answers(answer, question_id) VALUES(%s, %s)""", [forms.answer.data], questionid)
 ##            interviewTips = cur.fetchall()
 ##            forms.stored_tip = [(row[1], row[1]) for row in interviewTips ]
-            cur.execute(""" INSERT INTO answers(answer) VALUES(%s)""", [forms.answer.data])
-            conn.commit
-            conn.autocommit(True)
+            if forms.answer.data != None:
+                cur.execute(""" INSERT INTO answers(answer) VALUES(%s)""", [forms.answer.data])
+                conn.commit
+                conn.autocommit(True)
 
             return redirect(url_for('postaquestion'))
     if request.method == 'GET':
@@ -430,7 +432,7 @@ def postaquestion():
         #print questiontest
         #print answertest
         print 'done printing tests'
-        return render_template('postaquestion.html', forms=forms, question=quesans, answer=answer)
+        return render_template('postaquestion.html', forms=forms, question=questiontest, answer=answer)
 ##
     return render_template('postaquestion.html')
 
