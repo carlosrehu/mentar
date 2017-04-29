@@ -99,6 +99,14 @@
 }
 </style>
 
+
+<!--CSS code for text on forms-->
+<style>
+   .form-label{
+    color: black;
+}
+</style>
+
 <style>
 .form-group {
   padding: 40px 40px;
@@ -110,19 +118,23 @@
 
   <div class="form-group">
     <label for="comment" style="font-size:45px">Post a tip!:</label>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
-
+    
+	<!--Reference the class from views.py to interact with the database and store the information-->
     <form action="/alumnipostquestion" method="post">
 
-	  {{ forms.hidden_tag() }}
+	{{ forms.hidden_tag() }}
+			
+		<!--Use flask framework to create the text field-->
+		{{forms.tip(class="form-label", cols="150", rows="6")}}
 
-            {{forms.tip(col="400", rows="20")}}
-			{{forms.tip.label}}
-
-			{% for message in forms.tip.errors %}
+		<!--If there are any errors they should be raised-->
+		{% for message in forms.tip.errors %}
 			{{message}}
-			{% endfor %}
-      {{ forms.submit }}
+		{% endfor %}
+			
+		<br>
+		<br>
+      <button type="submit" class="btn btn-success">Submit</button>
 
       </form>
 </div>
@@ -131,11 +143,10 @@
 
   <form action="" method="get">
 
-
-				{% for row in items %}
-
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ row[0] }}</a></li>
-			{% endfor %}
+	<!--Use the flask framework to retrieve data from the database-->
+	{% for row in items %}
+		<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ row[0] }}</a></li>
+	{% endfor %}
 
 
   </form>

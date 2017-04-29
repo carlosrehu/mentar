@@ -3,6 +3,7 @@ from wtforms import StringField, IntegerField, TextAreaField, SubmitField, Radio
 from wtforms import validators, ValidationError
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
+from wtforms.widgets import TextArea
 
 class SignupForm(Form):
     firstname = StringField("First Name", validators = [ DataRequired("Please enter your name.")])
@@ -27,13 +28,13 @@ class SignupForm(Form):
     submit = SubmitField("Submit")
 
 class InterviewTips(Form):
-    tip = StringField("Tip", validators = [ DataRequired("Please post an interview tip.")])
+    tip = StringField("Tip" ,widget=TextArea())
 
     submit = SubmitField("Submit")
 
 class PostAQuestion(Form):
 
-    question = StringField("Question", validators = [ DataRequired("A question is necesary.")])
+    question = StringField("Question", widget=TextArea())
 
     answer = StringField("Answer", validators = [ DataRequired("Please type a response.")])
 
