@@ -71,6 +71,8 @@ def aboutus():
         if 'username' in session:
             username=session['username']
 
+            print username
+
             cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
 
             data = cur.fetchone()
@@ -415,26 +417,28 @@ def postaquestion():
 ##
         #cur.execute("SELECT tips FROM interview_tips")
 ##
-
+        print "Do i Get here?"
         if 'username' in session:
-                    username=session['username']
-                    cur.execute("SELECT f_name FROM user")
-                    name =  cur.fetchone()
-                    cur.execute("SELECT profile_type FROM user")
-                    profile = cur.fetchone()
-        
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            print "I definitely got here"
+            print username
 ##        return render_template('alumnipostquestion.html', forms=forms, items=stored_tip, name=name, profile = profile)cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
 
 ##                    data = cur.fetchone()
 
-                    questiontest = cur.execute(""" SELECT quesans FROM mentarquestions """)
-                    questiontest = cur.fetchall()
-                    answer = cur.execute(""" SELECT answer FROM answers """)
-                    answer = cur.fetchall()
+            questiontest = cur.execute(""" SELECT quesans FROM mentarquestions """)
+            questiontest = cur.fetchall()
+            answer = cur.execute(""" SELECT answer FROM answers """)
+            answer = cur.fetchall()
         
         #answertest = cur.execute(""" SELECT question FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
         #answertest = cur.fetchall()
-                    return render_template('postaquestion.html', forms=forms, name=name, profile=profile, question=questiontest)
+            return render_template('postaquestion.html', forms=forms, name=name, profile=profile, question=questiontest)
         else:
             return redirect(url_for('signin'))
     return render_template('postaquestion.html')
