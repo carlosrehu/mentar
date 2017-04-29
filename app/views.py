@@ -111,8 +111,7 @@ def alumnipostquestion():
 
     forms =  InterviewTips(request.form)
 
-    cur.execute(""" SELECT tips FROM interview_tips """)
-    stored_tip = cur.fetchall()
+
 
 ##    stored_tip = []
 ##
@@ -120,16 +119,12 @@ def alumnipostquestion():
 ##        stored_tip.append(tip)
 ##        print(tip)
 
-    print stored_tip
-    print "Testing??"
     if request.method == 'POST':
         if forms.validate() == False:
             flash('AN INTERVIEW TIP IS REQUIRED')
             return render_template('alumnipostquestion.html')
         else:
             cur.execute(""" INSERT INTO interview_tips(tips) VALUES(%s)""", [forms.tip.data])
-            print "cur.execute(''' INSERT INTO interview_tips(tips) VALUES(%s)''', (forms.tip.data))"
-            print "hmmm"
             interviewTips = cur.fetchall()
             forms.stored_tip = [(row[1], row[1]) for row in interviewTips ]
             conn.commit
@@ -137,12 +132,15 @@ def alumnipostquestion():
             return redirect(url_for('alumnipostquestion'))
     if request.method == 'GET':
 
-        cur.execute("SELECT tips FROM interview_tips")
-
-        print "another test"
-
-        print cur.fetchone()
-        return render_template('alumnipostquestion.html', forms=forms, items=stored_tip)
+##        cur.execute("SELECT tips FROM interview_tips")
+        cur.execute(""" SELECT tips FROM interview_tips """)
+        stored_tip = cur.fetchall()
+        cur.execute("SELECT f_name FROM user")
+        name =  cur.fetchall()
+        cur.execute("SELECT profile_type FROM user")
+        profile = cur.fetchall()
+        
+        return render_template('alumnipostquestion.html', forms=forms, items=stored_tip, name=name, profile = profile)
 
 
 @application.route('/careeropportunities')
