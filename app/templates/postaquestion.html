@@ -85,7 +85,8 @@
 
     <!--Displays that the user name and sign out button-->
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+       <li><a href="/postaquestion"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+       <li><a href="/postaquestion"></span> Profile Type {{profile[0] }}</a></li>
       <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
     </ul>
   </div>
@@ -132,37 +133,23 @@
       <!--<label for="comment">Comment:</label>
       <textarea class="form-control" rows="10" id="comment"></textarea>-->
 
-
-		<div id="wrap">
-
-      	  {{ forms.hidden_tag() }}
-
-			<div id="left_cl">
-            {{forms.question(class='form-question')}}
-			{{forms.question.label}}
-
-			{% for message in forms.question.errors %}
-			{{message}}
-			{% endfor %}
-			</div>
-
       <!--CSS code for text of questions-->
       <style>
       .form-question{
        color: #F3EC42;
       }
       </style>
-			<div id="right_cl">
-            {{forms.answer(class='form-question')}}
-			{{forms.answer.label}}
+	
+      
+      	  {{ forms.hidden_tag() }}
 
-			{% for message in forms.answer.errors %}
+		
+            {{forms.question(class="form-label", cols="200", rows="6")}}
+
+			{% for message in forms.question.errors %}
 			{{message}}
 			{% endfor %}
-			</div>
-
-
-		</div>
+			
 
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
@@ -176,13 +163,10 @@
 
 				{% for q in question  %}
 
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your question {{ q[0] }}</a></li>
+			<li><a href="#"> {{ q[0] }}</a></li>
 			{% endfor %}
 
-							{% for a in answer  %}
 
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your answer {{ a[0] }}</a></li>
-			{% endfor %}
 
 
   </form>

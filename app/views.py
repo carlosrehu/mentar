@@ -418,10 +418,14 @@ def postaquestion():
 
         if 'username' in session:
                     username=session['username']
+                    cur.execute("SELECT f_name FROM user")
+                    name =  cur.fetchone()
+                    cur.execute("SELECT profile_type FROM user")
+                    profile = cur.fetchone()
+        
+##        return render_template('alumnipostquestion.html', forms=forms, items=stored_tip, name=name, profile = profile)cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
 
-                    cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-                    data = cur.fetchone()
+##                    data = cur.fetchone()
 
                     questiontest = cur.execute(""" SELECT quesans FROM mentarquestions """)
                     questiontest = cur.fetchall()
@@ -430,13 +434,9 @@ def postaquestion():
         
         #answertest = cur.execute(""" SELECT question FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
         #answertest = cur.fetchall()
-##test
-##        print cur.fetchall()
-##        print 'printing tests'
-        #print questiontest
-        #print answertest
-##        print 'done printing tests'
-                    return render_template('postaquestion.html', forms=forms, items=data, question=questiontest, answer=answer)
+                    return render_template('postaquestion.html', forms=forms, name=name, profile=profile, question=questiontest)
+        else:
+            return redirect(url_for('signin'))
     return render_template('postaquestion.html')
 
 @application.route('/practicequestions')
