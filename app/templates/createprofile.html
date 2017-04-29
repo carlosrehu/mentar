@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!--Bootstrap-->
 <head>
   <title>Create Profile</title>
   <meta charset="utf-8">
@@ -8,7 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!--CCS background color-->
+    <!--CCS background color-->
   <style>
   body{
   background-color: black;
@@ -43,7 +45,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/homepage">Home</a></li>
 
-       drop down selection for Student
+       <!-drop down selection for Student-->
         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="/interviewtipsstudent">Interview Tips</a></li>
@@ -52,7 +54,7 @@
       </ul>
         </li>
 
-       drop down selection for Student
+       <!-drop down selection for Student-->
         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#">Post Interview Tips</a></li>
@@ -61,7 +63,7 @@
       </ul>
         </li>
 
-       drop down selection for Student
+       <!-drop down selection for Student-->
         <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#">Post Interview Tips</a></li>
@@ -113,12 +115,14 @@
 
   <!--sign up form  -->
   <div class="container">
+  
     <!--Personal information section-->
     <h3 style="align:left; color:white">Personal Information</h3>
     <form action="/createprofile" method = "POST" class="form-horizontal">
 		{{ forms.hidden_tag() }}
 		<fieldset>
 
+    <!--First Name Form-->
     <div class="form-group">
 		<div class="col-sm-10">
 		{{forms.firstname(class='form-label')}}
@@ -130,6 +134,7 @@
       </div>
       </div>
 
+      <!--Last Name Form-->
       <div class="form-group">
         <div class="col-sm-10">
 			{{forms.lastname(class='form-label')}}
@@ -140,6 +145,7 @@
       </div>
       </div>
 
+      <!--Age From-->
       <div class="form-group">
         <div class="col-sm-10">
 			{{forms.age(class='form-label')}}
@@ -159,7 +165,8 @@
 			{% endfor %}
       </div>
       </div>
-
+    
+      <!--Username Form-->  
       <div class="form-group">
         <div class="col-sm-10">
       {{forms.username(class='form-label')}}
@@ -184,6 +191,7 @@
       </div>
       </div>
 
+      <!--Phonenumber From-->
       <div class="form-group">
       <div class="col-sm-10">
 			{{forms.phonenumber(class='form-label')}}
@@ -197,6 +205,7 @@
       </div>
       </div>
 
+      <!--City Form-->  
       <div class="form-group">
       <div class="col-sm-10">
 			{{forms.city(class='form-label')}}
@@ -208,6 +217,7 @@
       </div>
       </div>
 
+      <!--State From-->
       <div class="form-group">
       <div class="col-sm-10">
 			{{forms.state(class='form-label')}}
@@ -218,6 +228,7 @@
       </div>
       </div>
 
+      <!--Profile Type Dropdown Menu-->
       <div class="dropdown">
       <div class="form-group">
       <div class="col-sm-10">
@@ -239,6 +250,8 @@
         <!--Education information section-->
       <h3 style="align:left; color:white">Education Information</h3>
       <div class="dropdown">
+
+        <!--Major Dropdown Menu-->
         <div class="form-group">
         <div class="col-sm-10">
 			{{forms.major(class='form-label')}}
@@ -254,6 +267,8 @@
     </div>
 
     <div class="dropdown">
+
+      <!--Minor Dropdown Menu-->
       <div class="form-group">
       <div class="col-sm-10">
 		  {{forms.minor(class='form-label')}}
@@ -269,6 +284,7 @@
     </div>
   </div>
 
+      <!--Graduation Date From-->    
       <div class="form-group">
         <div class="col-sm-10">
       {{forms.graddate(class='form-label')}}
@@ -283,30 +299,36 @@
 
         <!--Other information section-->
       <h3 style="align:left; color:white">Other Information</h3>
+
+      <!--Profession Form-->
       <div class="form-group">
         <div class="col-sm-10">
           <input type="profession" class="form-control" id="profession" placeholder="Enter profession">
         </div>
       </div>
 
+      <!--Interests Form-->
       <div class="form-group">
         <div class="col-sm-10">
           <input type="interests" class="form-control" id="interests" placeholder="Enter interests (seperated by a comma)">
         </div>
       </div>
 
+      <!--Skills From-->    
       <div class="form-group">
         <div class="col-sm-10">
           <input type="skills" class="form-control" id="skills" placeholder="Enter skills (seperated by a comma)">
         </div>
       </div>
 
+      <!--About Me From-->
       <div class="form-group">
         <div class="col-sm-10">
           <input type="aboutme" class="form-control" id="aboutme" placeholder="Enter about me">
         </div>
       </div>
 
+      <!--Submit Button-->
       <div class="form-group">
         <!--<button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">-->
             {{ forms.submit(class="form-label") }}

@@ -116,7 +116,7 @@
 
 	  {{ forms.hidden_tag() }}
 
-            {{forms.tip}}
+            {{forms.tip(col="400", rows="20")}}
 			{{forms.tip.label}}
 
 			{% for message in forms.tip.errors %}
