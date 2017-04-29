@@ -415,23 +415,28 @@ def postaquestion():
 ##
         #cur.execute("SELECT tips FROM interview_tips")
 ##
-        print "another test"
 
-        questiontest = cur.execute(""" SELECT quesans FROM mentarquestions """)
-        questiontest = cur.fetchall()
-        answer = cur.execute(""" SELECT answer FROM answers """)
-        answer = cur.fetchall()
+        if 'username' in session:
+                    username=session['username']
+
+                    cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
+
+                    data = cur.fetchone()
+
+                    questiontest = cur.execute(""" SELECT quesans FROM mentarquestions """)
+                    questiontest = cur.fetchall()
+                    answer = cur.execute(""" SELECT answer FROM answers """)
+                    answer = cur.fetchall()
         
         #answertest = cur.execute(""" SELECT question FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
         #answertest = cur.fetchall()
 ##test
-        print cur.fetchall()
-        print 'printing tests'
+##        print cur.fetchall()
+##        print 'printing tests'
         #print questiontest
         #print answertest
-        print 'done printing tests'
-        return render_template('postaquestion.html', forms=forms, question=questiontest, answer=answer)
-##
+##        print 'done printing tests'
+                    return render_template('postaquestion.html', forms=forms, items=data, question=questiontest, answer=answer)
     return render_template('postaquestion.html')
 
 @application.route('/practicequestions')
