@@ -136,9 +136,9 @@ def alumnipostquestion():
         cur.execute(""" SELECT tips FROM interview_tips """)
         stored_tip = cur.fetchall()
         cur.execute("SELECT f_name FROM user")
-        name =  cur.fetchall()
+        name =  cur.fetchone()
         cur.execute("SELECT profile_type FROM user")
-        profile = cur.fetchall()
+        profile = cur.fetchone()
         
         return render_template('alumnipostquestion.html', forms=forms, items=stored_tip, name=name, profile = profile)
 

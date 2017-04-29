@@ -127,6 +127,13 @@
 			  }
 			  
 		</style>
+		
+<style>
+   .form-label{
+    color: black;
+}
+
+</style>
 <!-- Post a question box -->
 <div class="container-interview">
   <h2>Ask a question</h2>
@@ -137,31 +144,20 @@
       <textarea class="form-control" rows="10" id="comment"></textarea>-->
       
 
-		<div id="wrap">
+	
       
       	  {{ forms.hidden_tag() }}
 
-			<div id="left_cl">
-            {{forms.question}}
-			{{forms.question.label}}
+		
+            {{forms.question(class="form-label", cols="200", rows="15")}}
 
 			{% for message in forms.question.errors %}
 			{{message}}
 			{% endfor %}
-			</div>
 			
-			<div id="right_cl">
-            {{forms.answer}}
-			{{forms.answer.label}}
-
-			{% for message in forms.answer.errors %}
-			{{message}}
-			{% endfor %}
-			</div>
 			
     
-		</div>
-    
+	
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
@@ -174,12 +170,7 @@
 
 				{% for q in question  %}
 
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your question {{ q[0] }}</a></li>
-			{% endfor %}
-			
-							{% for a in answer  %}
-
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> this is your answer {{ a[0] }}</a></li>
+			<li><a href="#"></span> {{ q[0] }}</a></li>
 			{% endfor %}
 
 
