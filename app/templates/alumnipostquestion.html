@@ -116,13 +116,13 @@
 
 	  {{ forms.hidden_tag() }}
 
-                     {{forms.tip}}
+            {{forms.tip}}
 			{{forms.tip.label}}
 
 			{% for message in forms.tip.errors %}
 			{{message}}
 			{% endfor %}
-    {{ forms.submit }}
+      {{ forms.submit }}
 
       </form>
 </div>
@@ -134,7 +134,7 @@
 
 				{% for row in items %}
 
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome {{ row[0] }}</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ row[0] }}</a></li>
 			{% endfor %}
 
 

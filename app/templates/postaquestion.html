@@ -103,6 +103,23 @@
   color: white;
 }
 </style>
+
+      <style type="text/css">
+		  
+		  #wrap {
+			  width:600px;
+			  margin:0 auto;
+			  }
+		  #left_col {
+			  float:left;
+			  width:300px;
+			  }
+		  #right_col {
+			  float:right;
+			  width:300px;
+			  }
+			  
+		</style>
 <!-- Post a question box -->
 <div class="container-interview">
   <h2>Ask a question</h2>
@@ -112,25 +129,31 @@
       <!--<label for="comment">Comment:</label>
       <textarea class="form-control" rows="10" id="comment"></textarea>-->
       
+
+		<div id="wrap">
+      
       	  {{ forms.hidden_tag() }}
 
+			<div id="left_cl">
             {{forms.question}}
 			{{forms.question.label}}
 
 			{% for message in forms.question.errors %}
 			{{message}}
 			{% endfor %}
-
+			</div>
+			
+			<div id="right_cl">
             {{forms.answer}}
 			{{forms.answer.label}}
 
 			{% for message in forms.answer.errors %}
 			{{message}}
 			{% endfor %}
+			</div>
 			
-    {{ forms.submit }}
     
-
+		</div>
     
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
