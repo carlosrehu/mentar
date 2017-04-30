@@ -327,20 +327,51 @@ def internships():
                 return redirect(url_for('signin'))
             return render_template('internships.html')
 
-@application.route('/partfulltime')
+@application.route('/partfulltime', methods=['POST', 'GET'])
 def partfulltime():
-        if request.method == 'GET':
-            if 'username' in session:
-                username=session['username']
-                cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
-                name =  cur.fetchone()
-                cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
-                profile = cur.fetchone()
+    # if request.method == 'GET':
+    #     if 'username' in session:
+    #         username=session['username']
+    #         cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+    #         name =  cur.fetchone()
+    #         cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+    #         profile = cur.fetchone()
+    #
+    #         return render_template('partfulltime.html', forms=forms, name=name, profile=profile)
+    #     else:
+    #         return redirect(url_for('signin'))
+    #     return render_template('partfulltime.html')
 
-                return render_template('partfulltime.html', forms=forms, name=name, profile=profile)
-            else:
-                return redirect(url_for('signin'))
+
+    forms =  alumniJobs(request.form)
+
+    #Post Method
+    if request.method == 'POST':
+        if forms.validate() == False:
+            flash('A JOB IS REQUIRED')
             return render_template('partfulltime.html')
+        else:
+            cur.execute(""" INSERT INTO alumnijobs(job) VALUES(%s)""", [forms.job.data])
+            alumnijobs = cur.fetchall()
+            forms.stored_job = [(row[1], row[1]) for row in alumnijobs ]
+            conn.commit
+            conn.autocommit(True)
+            return redirect(url_for('partfulltime'))
+
+    #Get method
+    if request.method == 'GET':
+
+##        cur.execute("SELECT job FROM job_id")
+        cur.execute(""" SELECT job FROM alumnijobs """)
+        stored_job = cur.fetchall()
+        cur.execute("SELECT f_name FROM user")
+        name =  cur.fetchone()
+        cur.execute("SELECT profile_type FROM user")
+        profile = cur.fetchone()
+
+        return render_template('partfulltime.html', forms=forms, items=stored_job, name=name, profile = profile)
+
+
 
 @application.route('/internationalstudentsposts')
 def internationalstudentsposts():
@@ -362,6 +393,7 @@ def alumnijobpost():
 
     forms =  alumniJobs(request.form)
 
+    #Post Method
     if request.method == 'POST':
         if forms.validate() == False:
             flash('A JOB IS REQUIRED')
@@ -373,6 +405,10 @@ def alumnijobpost():
             conn.commit
             conn.autocommit(True)
             return redirect(url_for('alumnijobpost'))
+
+
+
+    #Get method
     if request.method == 'GET':
 
 ##        cur.execute("SELECT job FROM job_id")
