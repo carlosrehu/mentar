@@ -113,6 +113,17 @@
    <br>
 
 <!--Flask implentation to pull the alumni posts on to the page-->
+<!--Use the flask framework to retrieve data from the database-->
+<div class="container-interview">
+
+  <form action="" method="get" style="color:#F3EC42; font-size:30px">
+
+	<!--Use the flask framework to retrieve data from the database-->
+	{% for row in items %}
+		<li><span class="glyphicon glyphicon-user"></span> {{ row[0] }}</li>
+	{% endfor %}
+  </form>
+</div>
 
 
  </div>
