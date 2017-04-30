@@ -27,6 +27,7 @@
       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
     </div>
   </div>
+
 <!-- CSS code for the header-->
   <style>
   .container {
@@ -58,7 +59,7 @@
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="/careeropportunities">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
 
@@ -67,7 +68,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/alumnijobpost">PostCareers</a></li>
+            <li><a href="/alumnijobpost">Post Careers</a></li>
           </ul>
       </li>
 
@@ -76,7 +77,7 @@
           <ul class="dropdown-menu">
             <li><a href="/underconstruction">Post Interview Tips</a></li>
             <li><a href="/underconstruction">Student Connection</a></li>
-            <li><a href="/underconstruction">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
@@ -85,7 +86,8 @@
 
     <!--Displays that the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+       <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
       <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
     </ul>
   </div>
@@ -159,10 +161,10 @@
   <p style="color:white">We have created a website to make your transition into
     the big bad world easier</p>
     <br>
-    
+
     <!--Team pictures and profiles-->
     <div class="row text-center">
-    
+
       <!--Carlos Profile-->
       <div class="col-sm-3">
         <div class="thumbnail">
@@ -173,7 +175,7 @@
         <p>Loves to debug code!!!</p>
       </div>
       </div>
-      
+
       <!--David Profile-->
       <div class="col-sm-3">
         <div class="thumbnail">
@@ -184,7 +186,7 @@
         <p>The best trouble shooter in town</p>
         </div>
       </div>
-      
+
       <!--Julie Anna Profile-->
       <div class="col-sm-3">
         <div class="thumbnail">
@@ -195,7 +197,7 @@
         <p>Loves to code in Python</p>
         </div>
       </div>
-      
+
       <!--Olivia Profile-->
       <div class="col-sm-3">
         <div class="thumbnail">
@@ -208,7 +210,7 @@
         </div>
       </div>
 
-</div>
+    </div>
 
 </body>
 </html>

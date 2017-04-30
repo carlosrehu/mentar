@@ -57,7 +57,7 @@
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="#">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
 
@@ -66,35 +66,31 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/alumnijobpost">PostCareers</a></li>
+            <li><a href="/alumnijobpost">Post Careers</a></li>
           </ul>
 
     <!-- drop down selection for Faculty-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Post Interview Tips</a></li>
-            <li><a href="#">Student Connection</a></li>
-            <li><a href="#">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Interview Tips</a></li>
+            <li><a href="/underconstruction">Student Connection</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
       <li class="active"><a href="/contactus">Contact Us</a></li>
     </ul>
 
-    <!-- Section to log in-->
-      <ul class="nav navbar-nav navbar-right">
-
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
-          <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
-<!--li><a href="#"><span class="glyphicon glyphicon-user"></span> Your name {{ items[1] }}</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your lastname {{ items[2] }}</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your email {{ email }}</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your gender {{ gender }}</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your major {{ major }}</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your minor {{ minor }}</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your age {{ age }}</a></li>-->
-
+    <!-- Code for buttons to appear to the far right of the nav bar-->
+    <ul class="nav navbar-nav navbar-right">
+		<!--Text to display the users name-->
+		<li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+    <!--Text to display the profile type-->
+    <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
+    <!-- Link to Sign out-->
+    <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
     </ul>
+
   </div>
 </nav>
 
@@ -111,6 +107,7 @@
   <h2 style="text-align:center; color:white; font-size:400%">Your Profile</h2>
   <br>
   <br>
+</div>
 
   <div class="container">
 

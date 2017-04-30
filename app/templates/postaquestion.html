@@ -57,7 +57,7 @@
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="/careeropportunities">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
 
@@ -66,16 +66,16 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/careeropportunities">PostCareers</a></li>
+            <li><a href="/careeropportunities">Post Careers</a></li>
           </ul>
       </li>
 
     <!-- drop down selection for Faculty-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Post Interview Tips</a></li>
-            <li><a href="#">Student Connection</a></li>
-            <li><a href="#">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Interview Tips</a></li>
+            <li><a href="/underconstruction">Student Connection</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
@@ -91,8 +91,6 @@
     </ul>
   </div>
 </nav>
-
-<!-- List of choices for interview tips page-->
 
 <style>
 .container-interview {
@@ -130,19 +128,15 @@
   <p>Post your question/comments here!!</p>
   <form action="/postaquestion" method="post">
     <div class="form-group">
-      <!--<label for="comment">Comment:</label>
-      <textarea class="form-control" rows="10" id="comment"></textarea>-->
-
+      
       <!--CSS code for text of questions-->
       <style>
       .form-question{
        color: #F3EC42;
       }
       </style>
-
-
+      <!--Flask code for the text box functionality with DB-->
       	  {{ forms.hidden_tag() }}
-
 
             {{forms.question(class="form-label", cols="200", rows="6")}}
 
@@ -150,25 +144,17 @@
 			{{message}}
 			{% endfor %}
 
-
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
 
+<!--Flask code to display the question that was submitted-->
 <div class="container-interview">
-
-  <form action="" method="get" style="color:#F3EC42; font-size:40px">
-
-
+  <form action="" method="get" style="color:#F3EC42; font-size:30px">
 				{% for q in question  %}
-
 			 <li>{{ q[0] }}</li>
 			{% endfor %}
-
-
-
-
   </form>
 </div>
 

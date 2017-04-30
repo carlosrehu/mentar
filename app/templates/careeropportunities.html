@@ -36,7 +36,7 @@
     border-color: #424242;
   }
   </style>
-  
+
 <!-- CSS code for the nav bar -->
 <style>
 .navbar-header{
@@ -59,7 +59,7 @@
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="/careeropportunities">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
 
@@ -68,7 +68,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/careeropportunities">PostCareers</a></li>
+            <li><a href="/careeropportunities">Post Careers</a></li>
           </ul>
       </li>
 
@@ -77,17 +77,18 @@
           <ul class="dropdown-menu">
             <li><a href="/underconstruction">Post Interview Tips</a></li>
             <li><a href="/underconstruction">Student Connection</a></li>
-            <li><a href="/underconstruction">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
       <li class="active"><a href="/contactusl">Contact Us</a></li>
     </ul>
 
-    
+
         <!--Displays the user name and sign out button -->
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+           <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+           <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
           <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
         </ul>-->
       </div>
@@ -109,11 +110,10 @@
 
 <!-- code for selection on what the student would like to know about-->
 <div class="list-group-interview">
-  <h3 style="color: white">Please select a field of interest</h3>
+  <h3 style="color: white">Please select a area of interest</h3>
   <a href="/internships" class="list-group-item">Internships - Paid and Unpaid</a>
-  <a href="/partfulltime" class="list-group-item">Part Time and Full Time Positions </a>
+  <a href="/partfulltime" class="list-group-item">Career Center</a>
   <a href="/internationalstudentsposts" class="list-group-item">Positions available for International Students</a>
-  <a href="/alumnijobpost" class="list-group-item">Alumni Job Posts</a>
 </div>
 </body>
 

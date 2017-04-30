@@ -43,7 +43,6 @@
   }
   </style>
 
-
   <!--Navigation Bar-->
   <nav class="navbar navbar-inverse">
    <div class="container-fluid">
@@ -57,7 +56,7 @@
          <ul class="dropdown-menu">
            <li><a href="/interviewtipsstudent">Interview Tips</a></li>
            <li><a href="/alumniconnection">Alumni Connection</a></li>
-           <li><a href="/careeropportunities">Careers</a></li>
+           <li><a href="/careeropportunities">Career Center</a></li>
          </ul>
        </li>
        <!-- drop down selection for Alumni-->
@@ -65,7 +64,7 @@
            <ul class="dropdown-menu">
              <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
              <li><a href="/studentconnection">Student Connection</a></li>
-             <li><a href="/alumnijobpost">PostCareers</a></li>
+             <li><a href="/alumnijobpost">Post Careers</a></li>
            </ul>
        </li>
        <!-- drop down selection for Faculty-->
@@ -73,7 +72,7 @@
            <ul class="dropdown-menu">
              <li><a href="#">Post Interview Tips</a></li>
              <li><a href="#">Student Connection</a></li>
-             <li><a href="#">PostCareers</a></li>
+             <li><a href="#">Post Careers</a></li>
            </ul>
        </li>
        <!-- to read about the team or contact the team-->
@@ -83,9 +82,10 @@
 
          <!--Displays that the user name and sign out button -->
            <ul class="nav navbar-nav navbar-right">
-            <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+            <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+            <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
            <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
-         </ul>-->
+         </ul>
        </div>
      </nav>
 
@@ -101,11 +101,11 @@
   <br>
   <br>
     <div class="col-sm-6">
-    
+
       <!--Language type header-->
       <h3 style="color: white; font-size:300%">C++ Practice Questions</h3>
       <br>
-      
+
       <!--Questions for specific language-->
       <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
         <li><a href="#cplus1" data-toggle="collapse" class="link-colors">What is namespace std; and what is consists of?</a></li>
@@ -146,9 +146,11 @@
         <li class="active"><a href="/interviewtipsstudent" class="link-colors">Back to interview tips</a></li>
        </ul>
     </div>
+
     <!--Language type logo-->
       <div class="col-sm-6"><img src="static/cplus.png" class="img-rounded" alt="csharp logo" width="400" height="400">
     </div>
   </div>
+  
  </body/>
 </html>

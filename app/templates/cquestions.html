@@ -51,25 +51,31 @@
     </div>
   <ul class="nav navbar-nav">
       <li class="active"><a href="homepage.html">Home</a></li>
+
+      <!-- drop down selection for Student-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="/careeropportunities">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
+
+      <!-- drop down selection for Alumni-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/careeropportunities">PostCareers</a></li>
+            <li><a href="/careeropportunities">Post Careers</a></li>
           </ul>
       </li>
+
+      <!-- drop down selection for Faculty-->
       <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Post Interview Tips</a></li>
-            <li><a href="#">Student Connection</a></li>
-            <li><a href="#">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Interview Tips</a></li>
+            <li><a href="/underconstruction">Student Connection</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
@@ -78,7 +84,8 @@
 
     <!--Displays that the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+       <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
       <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
     </ul>
   </div>
@@ -95,6 +102,13 @@
   <h2 style="text-align:center; color:white; font-size:400%"> Interview Questions</h2>
   <br>
   <br>
+
+  <style>
+  .col-sm-6 {
+    padding: 50px 50px 50px 50px;
+  }
+  </style>
+
     <div class="col-sm-6">
       <h3 style="color: white; font-size:300%">C practice questions</h3>
       <br>
@@ -113,7 +127,7 @@
             by 1.  Another way of writing increment statements is to use the
             conventional + plus sign or - minus sign.  In the case of "x++",
             another way to write it is "x = x +1".</p></div>
-
+            <br>
         <!--Question -->
         <li><a href="#c2" data-toggle="collapse" class="link-color">What are the header files and
                           what are its uses in C programming</a></li>
@@ -127,7 +141,7 @@
            header files.  Each header file contains a set of functions.  For
            example: stdio.h is a header file that contains definition and
            prototypes of commands like printf and scanf.</p></div>
-
+           <br>
         <!--Question -->
         <li><a href="#c3" data-toggle="collapse" class="link-color">What does the format %10.2
                             mean when included in a printf statement?</a></li>
@@ -146,7 +160,7 @@
         <li class="active"><a href="/interviewtipsstudent" class="link-color">Back to interview tips</a></li>
       </ul>
     </div>
-      <div class="col-sm-6"><img src="static/clogo.png" class="img-rounded" alt="whiteboard interview" width="700" height="550">
+      <div class="col-sm-6"><img src="static/clogo.png" class="img-rounded" alt="whiteboard interview" width="450" height="450">
     </div>
   </div>
 </body/>

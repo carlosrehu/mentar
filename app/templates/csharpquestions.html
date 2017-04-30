@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  <html lang="en">
 
- <!-Bootstrap -->
+ <!--Bootstrap -->
  <head>
    <title>C# Questions</title>
    <meta charset="utf-8">
@@ -43,7 +43,6 @@
   }
   </style>
 
-
   <!--Navigation Bar-->
   <nav class="navbar navbar-inverse">
    <div class="container-fluid">
@@ -52,45 +51,44 @@
      </div>
    <ul class="nav navbar-nav">
        <li class="active"><a href="/homepage">Home</a></li>
+
        <!-- drop down selection for Student-->
        <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student <span class="caret"></span></a>
          <ul class="dropdown-menu">
            <li><a href="/interviewtipsstudent">Interview Tips</a></li>
            <li><a href="/alumniconnection">Alumni Connection</a></li>
-           <li><a href="/careeropportunities">Careers</a></li>
+           <li><a href="/careeropportunities">Career Center</a></li>
          </ul>
        </li>
+
        <!-- drop down selection for Alumni-->
        <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Alumni <span class="caret"></span></a>
            <ul class="dropdown-menu">
              <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
              <li><a href="/studentconnection">Student Connection</a></li>
-             <li><a href="/careeropportunities">PostCareers</a></li>
+             <li><a href="/careeropportunities">Post Careers</a></li>
            </ul>
        </li>
+
        <!-- drop down selection for Faculty-->
        <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown"<a href="#">Faculty <span class="caret"></span></a>
            <ul class="dropdown-menu">
-             <li><a href="#">Post Interview Tips</a></li>
-             <li><a href="#">Student Connection</a></li>
-             <li><a href="#">PostCareers</a></li>
+             <li><a href="/underconstruction">Post Interview Tips</a></li>
+             <li><a href="/underconstruction">Student Connection</a></li>
+             <li><a href="/underconstruction">Post Careers</a></li>
            </ul>
        </li>
+
        <!-- to read about the team or contact the team-->
        <li class="active"><a href="/aboutus">About Us</a></li>
        <li class="active"><a href="/contactus">Contact Us</a></li>
      </ul>
+
+     <!--Displays that the user name and sign out button -->
        <ul class="nav navbar-nav navbar-right">
-         <!--Email address, password box plus login and sign up -->
-         <!--<li><form class="form-signin navbar-form">
-           <label for="inputEmail" class="sr-only">Email address</label>
-           <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-           <label for="inputPassword" class="sr-only">Password</label>
-           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-           </form>
-         </li>
-         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-       <li><a href="/signuppage"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+        <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+        <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
+       <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
      </ul>
    </div>
  </nav>
@@ -113,21 +111,21 @@
       <!--Questions for specific language-->
       <ul class="menu-questions" style="text-align:left; color:#FFFFFF; font-size:200%">
 
-        <!-Question -->
+        <!--Question -->
         <li><a href="#csharp1" data-toggle="collapse" class="link-color">Can multiple catch blocks be executed?</a></li>
         <div id="csharp1" class="collapse">
 
-        <!-Answer -->
+        <!--Answer -->
         <p> No, Multiple catch blocks can’t be executed. Once the proper catch code
           executed, the control is transferred to the finally block and then the
           code that follows the finally block gets executed.
         </p></div>
-
-         <!-Question -->
+        <br>
+         <!--Question -->
          <li><a href="#csharp2" data-toggle="collapse" class="link-color">What are Custom Control and User Control?</a></li>
          <div id="csharp2" class="collapse">
 
-         <!-Answer -->
+         <!--Answer -->
          <p>Custom Controls are controls generated as compiled code (Dlls), those are
            easier to use and can be added to toolbox. Developers can drag and drop
            controls to their web forms. Attributes can be set at design time. We can
@@ -138,12 +136,12 @@
            the toolbox and dragged – dropped from it. They have their design and code
            behind. The file extension for user controls is ascx.
          </p></div>
-
-        <!-Question -->
+         <br>
+        <!--Question -->
         <li><a href="#csharp3" data-toggle="collapse" class="link-color">What are sealed classes in C#?</a></li>
          <div id="csharp3" class="collapse">
 
-         <!-Answer -->
+         <!--Answer -->
         <p>We create sealed classes when we want to restrict the class to be
           inherited. Sealed modifier used to prevent derivation from a class.
           If we forcefully specify a sealed class as base class then a compile-time
@@ -151,12 +149,12 @@
         </p></div>
         <br>
 
-        <!-Back link -->
-        <li class="active"><a href="/interviewtipsstudent" class="link-color">Back to interview tips</a></li> 
+        <!--Back link -->
+        <li class="active"><a href="/interviewtipsstudent" class="link-color">Back to interview tips</a></li>
        </ul>
     </div>
     <!--Language type logo-->
-      <div class="col-sm-6"><img src="static/csharplogo.jpg" class="img-rounded" alt="csharp logo" width="600" height="450">
+      <div class="col-sm-6"><img src="static/csharplogo.jpg" class="img-rounded" alt="csharp logo" width="500" height="450">
     </div>
   </div>
  </body/>

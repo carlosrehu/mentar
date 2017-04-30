@@ -2,7 +2,7 @@
 
 <html lang="en">
 
-<!-Bootstrap -->
+<!--Bootstrap -->
 <head>
   <title>About Us</title>
   <meta charset="utf-8">
@@ -27,7 +27,7 @@
       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
     </div>
   </div>
-  
+
 <!-- CSS code for the header-->
   <style>
   .container {
@@ -59,7 +59,7 @@
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="/careeropportunities">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
 
@@ -68,7 +68,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/alumnijobpost">PostCareers</a></li>
+            <li><a href="/alumnijobpost">Post Careers</a></li>
           </ul>
       </li>
 
@@ -77,7 +77,7 @@
           <ul class="dropdown-menu">
             <li><a href="/underconstruction">Post Interview Tips</a></li>
             <li><a href="/underconstruction">Student Connection</a></li>
-            <li><a href="/underconstruction">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
@@ -86,7 +86,8 @@
 
     <!--Displays the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+       <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
       <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
     </ul>
   </div>
@@ -113,13 +114,7 @@
 
 <!-- Wrapper for photo slides -->
 <div class="carousel-inner" role="listbox">
-  <!--<div class="item active">
-    <img src="static/orlandohall.jpg" alt="Orlando Hall" width=500 height=300>
-    <div class="carousel-caption">
-      <h3>Orlando Hall</h3>
-      <p>Home to English majors</p>
-    </div>
-  </div>-->
+
   <div class="item active">
         <img src="static/flagchurch.png" alt="Church and American Flag" width=450 height=500>
         <div class="carousel-caption">
@@ -250,7 +245,7 @@
       }
      </style>
 
-     <!-Rollins Mission Statement-->
+     <!--Rollins Mission Statement-->
      <div class="container">
        <h2 style="color:white">Rollins College Mission Statement</h2>
        <p style="color:white; font-size:20px">"Rollins College educates students for global citizenship and responsible leadership,

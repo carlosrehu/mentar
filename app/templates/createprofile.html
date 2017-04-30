@@ -48,6 +48,7 @@
 	 text-align:left;
    }
    </style>
+
    <style>
    .form-group{
 	   text-align:left;
@@ -75,7 +76,7 @@
 
   <!--sign up form  -->
   <div class="container">
-  
+
     <!--Personal information section-->
     <h3 style="align:left; color:white">Personal Information</h3>
     <form action="/createprofile" method = "POST" class="form-horizontal">
@@ -105,7 +106,7 @@
       </div>
       </div>
 
-      <!--Age From-->
+      <!--Age Form-->
       <div class="form-group">
         <div class="col-sm-10">
 			{{forms.age(class='form-label')}}
@@ -116,6 +117,7 @@
       </div>
       </div>
 
+      <!--Email Form-->
       <div class="form-group">
         <div class="col-sm-10">
 			{{forms.email(class='form-label') }}
@@ -125,8 +127,8 @@
 			{% endfor %}
       </div>
       </div>
-    
-      <!--Username Form-->  
+
+      <!--Username Form-->
       <div class="form-group">
         <div class="col-sm-10">
       {{forms.username(class='form-label')}}
@@ -137,6 +139,7 @@
       </div>
       </div>
 
+      <!--Password Form-->
       <div class="form-group">
         <div class="col-sm-10">
 			{{forms.password(class='form-label')}}
@@ -165,7 +168,7 @@
       </div>
       </div>
 
-      <!--City Form-->  
+      <!--City Form-->
       <div class="form-group">
       <div class="col-sm-10">
 			{{forms.city(class='form-label')}}
@@ -190,19 +193,13 @@
 
       <!--Profile Type Dropdown Menu-->
       <div class="dropdown">
-      <div class="form-group">
-      <div class="col-sm-10">
-		    {{forms.profiletype(class='form-label')  }}
-        {{forms.profiletype.label}}
-			  {% for message in forms.profiletype.errors %}
-			  {{message}}
-			  {% endfor %}
-          <!--<input type="profiletype" class="form-control" id="profiletype" placeholder="Select profile type">-->
-            <!--<select class="form-control" id="profiletype">
-              <option>Student</option>
-              <option>Alumni</option>
-              <option>Faculty</option>
-            </select>-->
+        <div class="form-group">
+          <div class="col-sm-10">
+		          {{forms.profiletype(class='form-label')  }}
+              {{forms.profiletype.label}}
+			           {% for message in forms.profiletype.errors %}
+			              {{message}}
+			                 {% endfor %}
           </div>
         </div>
       </div>
@@ -213,47 +210,40 @@
 
         <!--Major Dropdown Menu-->
         <div class="form-group">
-        <div class="col-sm-10">
-			{{forms.major(class='form-label')}}
-			{{forms.major.label}}
+          <div class="col-sm-10">
+			         {{forms.major(class='form-label')}}
+			            {{forms.major.label}}
 
-			{% for message in forms.major.errors %}
-			{{message}}
-			{% endfor %}
-
-
+			               {% for message in forms.major.errors %}
+			                  {{message}}
+			                     {% endfor %}
           </div>
+        </div>
+      </div>
+
+    <div class="dropdown">
+      <!--Minor Dropdown Menu-->
+      <div class="form-group">
+        <div class="col-sm-10">
+		        {{forms.minor(class='form-label')}}
+		          {{forms.minor.label}}
+
+		            {% for message in forms.minor.errors %}
+		              {{message}}
+		                {% endfor %}
+        </div>
       </div>
     </div>
 
-    <div class="dropdown">
-
-      <!--Minor Dropdown Menu-->
-      <div class="form-group">
-      <div class="col-sm-10">
-		  {{forms.minor(class='form-label')}}
-		  {{forms.minor.label}}
-
-		  {% for message in forms.minor.errors %}
-		  {{message}}
-		  {% endfor %}
-
-     
-
-        </div>
-    </div>
-  </div>
-
-      <!--Graduation Date From-->    
+      <!--Graduation Date Form-->
       <div class="form-group">
         <div class="col-sm-10">
-      {{forms.graddate(class='form-label')}}
-			{{forms.graddate.label}}
+          {{forms.graddate(class='form-label')}}
+			       {{forms.graddate.label}}
 
-			{% for message in forms.graddate.errors %}
-			{{message}}
-			{% endfor %}
-
+			          {% for message in forms.graddate.errors %}
+			             {{message}}
+			                {% endfor %}
         </div>
       </div>
 
@@ -267,21 +257,21 @@
         </div>
       </div>
 
-      <!--Interests Form-->
+      <!--Interests form-->
       <div class="form-group">
         <div class="col-sm-10">
           <input type="interests" class="form-control" id="interests" placeholder="Enter interests (seperated by a comma)">
         </div>
       </div>
 
-      <!--Skills From-->    
+      <!--Skills Form-->
       <div class="form-group">
         <div class="col-sm-10">
           <input type="skills" class="form-control" id="skills" placeholder="Enter skills (seperated by a comma)">
         </div>
       </div>
 
-      <!--About Me From-->
+      <!--About Me Form-->
       <div class="form-group">
         <div class="col-sm-10">
           <input type="aboutme" class="form-control" id="aboutme" placeholder="Enter about me">
@@ -290,9 +280,8 @@
 
       <!--Submit Button-->
       <div class="form-group">
-        <!--<button type="submit" class="control-button col-sm-5" style="background-color:#084B8A; color:#BDBDBD; align:center">-->
-            {{ forms.submit(class="form-label") }}
-            Submit</button>
+          {{ forms.submit(class="form-label") }}
+            
       </div>
       </fieldset>
     </form>

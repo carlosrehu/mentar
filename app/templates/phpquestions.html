@@ -54,7 +54,7 @@
          <ul class="dropdown-menu">
            <li><a href="/interviewtipsstudent">Interview Tips</a></li>
            <li><a href="/alumniconnection">Alumni Connection</a></li>
-           <li><a href="/careeropportunities">Careers</a></li>
+           <li><a href="/careeropportunities">Career Center</a></li>
          </ul>
        </li>
        <!-- drop down selection for Alumni-->
@@ -62,7 +62,7 @@
            <ul class="dropdown-menu">
              <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
              <li><a href="/studentconnection">Student Connection</a></li>
-             <li><a href="/careeropportunities">PostCareers</a></li>
+             <li><a href="/careeropportunities">Post Careers</a></li>
            </ul>
        </li>
        <!-- drop down selection for Faculty-->
@@ -70,7 +70,7 @@
            <ul class="dropdown-menu">
              <li><a href="#">Post Interview Tips</a></li>
              <li><a href="#">Student Connection</a></li>
-             <li><a href="#">PostCareers</a></li>
+             <li><a href="#">Post Careers</a></li>
            </ul>
        </li>
        <!-- to read about the team or contact the team-->
@@ -78,19 +78,19 @@
        <li class="active"><a href="/contactus">Contact Us</a></li>
      </ul>
        <ul class="nav navbar-nav navbar-right">
-         <!--Email address, password box plus login and sign up -->
-         <li><form class="form-signin navbar-form">
-           <label for="inputEmail" class="sr-only">Email address</label>
-           <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-           <label for="inputPassword" class="sr-only">Password</label>
-           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-           </form>
-         </li>
-         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-       <li><a href="/createprofile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-     </ul>
-   </div>
- </nav>
+
+        <!-- Code for buttons to appear to the far right of the nav bar-->
+        <ul class="nav navbar-nav navbar-right">
+     		<!--Text to display the users name-->
+     		<li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+         <!--Text to display the profile type-->
+        <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
+             <!-- Link to Sign out-->
+        <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+        </ul>
+
+       </div>
+     </nav>
 
 <!--CSS Code for links-->
 <style>
@@ -114,14 +114,14 @@
         <p> To be able to display the output directly to the browser, we have
             to use the special tags <?=, and ?>.
         </p></div>
-
+        <br>
 
          <li><a href="#php2" data-toggle="collapse" class="link-color">How can we check the value of a given variable is a number?</a></li>
          <div id="php2" class="collapse">
          <p>It is possible to use the dedicated function, is_numeric() to
             check whether it is a number or not.
          </p></div>
-
+         <br>
 
         <li><a href="#php3" data-toggle="collapse" class="link-color">What is the most convenient hashing method to be used to hash passwords?</a></li>
          <div id="php3" class="collapse">
@@ -132,11 +132,11 @@
           Hence, hashing passwords with these algorithms can vulnerability.
         </p></div>
         <br>
-        <li class="active"><a href="/interviewtipsstudent" class="link-color">Back to interview tips</a></li> 
+        <li class="active"><a href="/interviewtipsstudent" class="link-color">Back to interview tips</a></li>
        </ul>
     </div>
     <!--Language type logo-->
-      <div class="col-sm-6"><img src="static/phplogo.png" class="img-rounded" alt="PHP logo" width="600" height="450">
+      <div class="col-sm-6"><img src="static/phplogo.png" class="img-rounded" alt="PHP logo" width="500" height="450">
     </div>
   </div>
  </body/>

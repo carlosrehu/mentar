@@ -24,7 +24,7 @@
       <!--<p style="text-align:right; color:white">Making the transition easier!!</p>-->
     </div>
   </div>
-  
+
 <!-- CSS code for the header-->
   <style>
   .container {
@@ -56,7 +56,7 @@
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="/careeropportunities">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
 
@@ -65,7 +65,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
              <li><a href="/studentconnection">Student Connection</a></li>
-             <li><a href="/alumnijobpost">PostCareers</a></li>
+             <li><a href="/alumnijobpost">Post Careers</a></li>
           </ul>
       </li>
 
@@ -74,7 +74,7 @@
           <ul class="dropdown-menu">
             <li><a href="/underconstruction">Post Interview Tips</a></li>
             <li><a href="/underconstruction">Student Connection</a></li>
-            <li><a href="/underconstruction">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
@@ -83,7 +83,8 @@
 
     <!--Displays that the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+       <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
       <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
     </ul>
   </div>
@@ -179,12 +180,12 @@
     Questions: Other students, Alumni and Faculty have posted frequently
   asked Interview Questions. Take a look and try them yourself!!</a>
 
-  <!-Post a Quetion-->
+  <!--Post a Quetion-->
   <a href="/postaquestion" class="list-group-item">Post a Question: Were
     you asked a specific question in an interview?
   Post it here for others to look at or help with an answer.</a>
 
-  <!-Alumni Interview Tips-->
+  <!--Alumni Interview Tips-->
   <a href="/experiences" class="list-group-item">Alumni interview tips.</a>
 
 </div>

@@ -56,7 +56,7 @@
         <ul class="dropdown-menu">
           <li><a href="/interviewtipsstudent">Interview Tips</a></li>
           <li><a href="/alumniconnection">Alumni Connection</a></li>
-          <li><a href="/careeropportunities">Careers</a></li>
+          <li><a href="/careeropportunities">Career Center</a></li>
         </ul>
       </li>
 
@@ -65,7 +65,7 @@
           <ul class="dropdown-menu">
             <li><a href="/alumnipostquestion">Post Interview Tips</a></li>
             <li><a href="/studentconnection">Student Connection</a></li>
-            <li><a href="/careeropportunities">PostCareers</a></li>
+            <li><a href="/careeropportunities">Post Careers</a></li>
           </ul>
       </li>
 
@@ -74,7 +74,7 @@
           <ul class="dropdown-menu">
             <li><a href="/underconstruction">Post Interview Tips</a></li>
             <li><a href="/underconstruction">Student Connection</a></li>
-            <li><a href="/underconstruction">PostCareers</a></li>
+            <li><a href="/underconstruction">Post Careers</a></li>
           </ul>
       </li>
       <li class="active"><a href="/aboutus">About Us</a></li>
@@ -83,15 +83,65 @@
 
     <!--Displays that the user name and sign out button -->
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ items[0] }}</a></li>
+       <li><a href="/profilepage"><span class="glyphicon glyphicon-user"></span> Welcome {{ name[0] }}</a></li>
+       <li><a href="/postaquestion"></span>  {{profile[0] }}</a></li>
       <li><a href="/signinpage"><span class="glyphicon glyphicon-user"></span> Sign Out </a></li>
     </ul>-->
   </div>
 </nav>
 
 <div class="container text-center">
-  <h3 style="color:white">Alumni Job Post</h3>
+  <h1 style="color:white">Alumni Job Post</h1>
 
+</div>
+
+<!--CSS code for text on forms-->
+  <style>
+   .form-label{
+    color: black;
+  }
+  </style>
+
+  <style>
+  .form-group {
+    padding: 40px 40px;
+    color: white;
+  }
+  </style>
+
+<!-- Post a question box -->
+  <div class="form-group">
+    <label for="comment" style="font-size:35px">Post a Job!:</label>
+
+	<!--Reference the class from views.py to interact with the database and store the information-->
+    <form action="/alumnijobpost" method="post" >
+
+	{{ forms.hidden_tag() }}
+
+		<!--Use flask framework to create the text field-->
+		{{forms.job(class="form-label", cols="150", rows="6")}}
+
+		<!--If there are any errors they should be raised-->
+		{% for message in forms.job.errors %}
+			{{message}}
+		{% endfor %}
+
+		<br>
+		<br>
+      <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+</div>
+
+<div class="container-interview">
+
+  <form action="" method="get" style="color:#F3EC42; font-size:30px">
+
+	<!--Use the flask framework to retrieve data from the database-->
+	{% for row in items %}
+		<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ row[0] }}</a></li>
+	{% endfor %}
+  </form>
 </div>
 
 </body>
