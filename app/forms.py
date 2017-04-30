@@ -32,6 +32,11 @@ class InterviewTips(Form):
 
     submit = SubmitField("Submit")
 
+class alumniJobs(Form):
+    job = StringField("Job" ,widget=TextArea())
+
+    submit = SubmitField("Submit")
+
 class PostAQuestion(Form):
 
     question = StringField("Question", widget=TextArea())

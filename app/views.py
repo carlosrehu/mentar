@@ -26,16 +26,15 @@ def homepage():
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
 
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-            data = cur.fetchone()
-            print data
-            print cur.fetchone()
-            return render_template('homepage.html', items=data)
-
-    return redirect(url_for('signin'))
-    return render_template('homepage.html')
+            return render_template('homepage.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+        return render_template('homepage.html')
 
 ##    3session.clear()
 ##    3if 'username' in session:
@@ -70,18 +69,15 @@ def aboutus():
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
 
-            print username
-
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-            data = cur.fetchone()
-            print data
-            print cur.fetchone()
-            return render_template('aboutus.html', items=data)
-
-    return redirect(url_for('signin'))
-    return render_template('aboutus.html', items=data)
+            return render_template('aboutus.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+    return render_template('aboutus.html')
 
 ##3        return render_template('aboutus.html')
 
@@ -141,7 +137,7 @@ def alumnipostquestion():
         name =  cur.fetchone()
         cur.execute("SELECT profile_type FROM user")
         profile = cur.fetchone()
-        
+
         return render_template('alumnipostquestion.html', forms=forms, items=stored_tip, name=name, profile = profile)
 
 
@@ -150,15 +146,14 @@ def careeropportunities():
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
+                cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                name =  cur.fetchone()
+                cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                profile = cur.fetchone()
 
-                cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-                data = cur.fetchone()
-                print data
-                print cur.fetchone()
-                return render_template('careeropportunities.html', items=data)
-
-        return redirect(url_for('signin'))
+                return render_template('careeropportunities.html', forms=forms, name=name, profile=profile)
+            else:
+                return redirect(url_for('signin'))
         return render_template('careeropportunities.html')
 
 @application.route('/contactus')
@@ -182,15 +177,14 @@ def cplusquestions():
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
+                cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                name =  cur.fetchone()
+                cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                profile = cur.fetchone()
 
-                cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-                data = cur.fetchone()
-                print data
-                print cur.fetchone()
-                return render_template('cplusquestions.html', items=data)
-
-        return redirect(url_for('signin'))
+                return render_template('cplusquestions.html', forms=forms, name=name, profile=profile)
+            else:
+                return redirect(url_for('signin'))
         return render_template('cplusquestions.html')
 
 @application.route('/cquestions')
@@ -198,15 +192,14 @@ def cquestions():
             if request.method == 'GET':
                 if 'username' in session:
                     username=session['username']
+                    cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                    name =  cur.fetchone()
+                    cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                    profile = cur.fetchone()
 
-                    cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-                    data = cur.fetchone()
-                    print data
-                    print cur.fetchone()
-                    return render_template('cquestions.html', items=data)
-
-            return redirect(url_for('signin'))
+                    return render_template('cquestions.html', forms=forms, name=name, profile=profile)
+                else:
+                    return redirect(url_for('signin'))
             return render_template('cquestions.html')
 
 @application.route('/createprofile', methods = ['POST', 'GET'])
@@ -291,103 +284,166 @@ def clearsession():
 
 @application.route('/csharpquestions')
 def csharpquestions():
-    return render_template('csharpquestions.html')
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('csharpquestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+        return render_template('csharpquestions.html')
 
 @application.route('/experiences')
 def experiences():
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
 
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-            data = cur.fetchone()
-            print data
-            print cur.fetchone()
-            return render_template('experiences.html', items=data)
-
-    return redirect(url_for('signin'))
-    return render_template('experiences.html')
+            return render_template('experiences.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+        return render_template('experiences.html')
 
 @application.route('/internships')
 def internships():
-    return render_template('internships.html')
-
-@application.route('/partfulltime')
-def partfulltime():
-    if request.method == 'GET':
-        if 'username' in session:
-            username=session['username']
-
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-            data = cur.fetchone()
-            print data
-            print cur.fetchone()
-            return render_template('partfulltime.html', items=data)
-
-    return redirect(url_for('signin'))
-    return render_template('partfulltime.html')
-
-@application.route('/internationalstudentsposts')
-def internationalstudentsposts():
-    return render_template('internationalstudentsposts.html')
-
-@application.route('/alumnijobpost')
-def alumnijobpost():
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
+                cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                name =  cur.fetchone()
+                cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                profile = cur.fetchone()
 
-                cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
+                return render_template('internships.html', forms=forms, name=name, profile=profile)
+            else:
+                return redirect(url_for('signin'))
+            return render_template('internships.html')
 
-                data = cur.fetchone()
-                print data
-                print cur.fetchone()
-                return render_template('alumnijobpost.html', items=data)
+@application.route('/partfulltime')
+def partfulltime():
+        if request.method == 'GET':
+            if 'username' in session:
+                username=session['username']
+                cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                name =  cur.fetchone()
+                cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                profile = cur.fetchone()
 
-        return redirect(url_for('signin'))
-        return render_template('alumnijobpost.html')
+                return render_template('partfulltime.html', forms=forms, name=name, profile=profile)
+            else:
+                return redirect(url_for('signin'))
+            return render_template('partfulltime.html')
+
+@application.route('/internationalstudentsposts')
+def internationalstudentsposts():
+        if request.method == 'GET':
+            if 'username' in session:
+                username=session['username']
+                cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                name =  cur.fetchone()
+                cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                profile = cur.fetchone()
+
+                return render_template('internationalstudentsposts.html', forms=forms, name=name, profile=profile)
+            else:
+                return redirect(url_for('signin'))
+            return render_template('internationalstudentsposts.html')
+
+@application.route('/alumnijobpost', methods = ['POST', 'GET'])
+def alumnijobpost():
+
+    forms =  alumniJobs(request.form)
+
+    if request.method == 'POST':
+        if forms.validate() == False:
+            flash('A JOB IS REQUIRED')
+            return render_template('alumnijobpost.html')
+        else:
+            cur.execute(""" INSERT INTO alumnijobs(job) VALUES(%s)""", [forms.job.data])
+            alumnijobs = cur.fetchall()
+            forms.stored_job = [(row[1], row[1]) for row in alumnijobs ]
+            conn.commit
+            conn.autocommit(True)
+            return redirect(url_for('alumnijobpost'))
+    if request.method == 'GET':
+
+##        cur.execute("SELECT job FROM job_id")
+        cur.execute(""" SELECT job FROM alumnijobs """)
+        stored_job = cur.fetchall()
+        cur.execute("SELECT f_name FROM user")
+        name =  cur.fetchone()
+        cur.execute("SELECT profile_type FROM user")
+        profile = cur.fetchone()
+
+        return render_template('alumnijobpost.html', forms=forms, items=stored_job, name=name, profile = profile)
 
 @application.route('/interviewtipsstudent')
 def interviewtipsstudent():
-    if request.method == 'GET':
-        if 'username' in session:
-            username=session['username']
+            if request.method == 'GET':
+                if 'username' in session:
+                    username=session['username']
+                    cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                    name =  cur.fetchone()
+                    cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                    profile = cur.fetchone()
 
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-            data = cur.fetchone()
-            print data
-            print cur.fetchone()
-            return render_template('interviewtipsstudent.html', items=data)
-
-    return redirect(url_for('signin'))
-    return render_template('interviewtipsstudent.html')
+                    return render_template('interviewtipsstudent.html', forms=forms, name=name, profile=profile)
+                else:
+                    return redirect(url_for('signin'))
+                return render_template('interviewtipsstudent.html')
 
 @application.route('/javaquestions')
 def javaquestions():
             if request.method == 'GET':
                 if 'username' in session:
                     username=session['username']
+                    cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                    name =  cur.fetchone()
+                    cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                    profile = cur.fetchone()
 
-                    cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-                    data = cur.fetchone()
-                    print data
-                    print cur.fetchone()
-                    return render_template('javaquestions.html', items=data)
-
-            return redirect(url_for('signin'))
-            return render_template('javaquestions.html')
+                    return render_template('javaquestions.html', forms=forms, name=name, profile=profile)
+                else:
+                    return redirect(url_for('signin'))
+                return render_template('javaquestions.html')
 
 @application.route('/javascriptquestions')
 def javascriptquestions():
-    return render_template('javascriptquestions.html')
+            if request.method == 'GET':
+                if 'username' in session:
+                    username=session['username']
+                    cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+                    name =  cur.fetchone()
+                    cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+                    profile = cur.fetchone()
+
+                    return render_template('javascriptquestions.html', forms=forms, name=name, profile=profile)
+                else:
+                    return redirect(url_for('signin'))
+                return render_template('javascriptquestions.html')
 
 @application.route('/phpquestions')
 def phpquestions():
-    return render_template('phpquestions.html')
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('phpquestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+        return render_template('phpquestions.html')
 
 @application.route('/postaquestion', methods=['GET', 'POST'])
 def postaquestion():
@@ -425,7 +481,7 @@ def postaquestion():
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
 
-            print "I definitely got here"
+
             print username
 ##        return render_template('alumnipostquestion.html', forms=forms, items=stored_tip, name=name, profile = profile)cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
 
@@ -435,7 +491,7 @@ def postaquestion():
             questiontest = cur.fetchall()
             answer = cur.execute(""" SELECT answer FROM answers """)
             answer = cur.fetchall()
-        
+
         #answertest = cur.execute(""" SELECT question FROM answers LEFT JOIN questions ON answers.answer_id = question_id  """)
         #answertest = cur.fetchall()
             return render_template('postaquestion.html', forms=forms, name=name, profile=profile, question=questiontest)
@@ -445,68 +501,139 @@ def postaquestion():
 
 @application.route('/practicequestions')
 def practicequestions():
-                if request.method == 'GET':
-                    if 'username' in session:
-                        username=session['username']
-
-                        cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-                        data = cur.fetchone()
-                        print data
-                        print cur.fetchone()
-                        return render_template('practicequestions.html', items=data)
-
-                return redirect(url_for('signin'))
-                return render_template('practicequestions.html')
-
-@application.route('/practicequestionsbiology')
-def practicequestionsbiology():
-    return render_template('practicequestionsbiology.html')
-
-@application.route('/practicequestionsbusiness')
-def practicequestionsbusiness():
-    return render_template('practicequestionsbusiness.html')
-
-@application.route('/practicequestionsgeneral')
-def practicequestionsgeneral():
-    return render_template('practicequestionsgeneral.html')
-
-@application.route('/practicequestionsmath')
-def practicequestionsmath():
-    return render_template('practicequestionsmath.html')
-
-@application.route('/profilepage', methods=['GET', 'POST'])
-def profilepage():
-
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
 
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-##            cur.fetchone()
+            return render_template('practicequestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('practicequestions.html')
 
+@application.route('/practicequestionsbiology')
+def practicequestionsbiology():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
 
-            data = cur.fetchone()
-            print data
-##            print test
-##            print major_user, 'numer', firstname
-##          print name
-            print cur.fetchone()
-            return render_template('profilepage.html', items=data)
+            return render_template('practicequestionsbiology.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('practicequestionsbiology.html')
 
-    return redirect(url_for('signinpage'))
+@application.route('/practicequestionsbusiness')
+def practicequestionsbusiness():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('practicequestionsbusiness.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('practicequestionsbusiness.html')
+
+@application.route('/practicequestionsgeneral')
+def practicequestionsgeneral():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('practicequestionsgeneral.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('practicequestionsgeneral.html')
+
+@application.route('/practicequestionsmath')
+def practicequestionsmath():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('practicequestionsmath.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('practicequestionsmath.html')
+
+@application.route('/profilepage', methods=['GET', 'POST'])
+def profilepage():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('profilepage.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('profilepage.html')
 
 @application.route('/pythonquestions')
 def pythonquestions():
-    return render_template('pythonquestions.html')
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('pythonquestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('pythonquestions.html')
 
 @application.route('/rubyquestions')
 def rubyquestions():
-    return render_template('rubyquestions.html')
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('rubyquestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('rubyquestions.html')
+
 
 @application.route('/sqlquestions')
 def sqlquestions():
-    return render_template('sqlquestions.html')
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('sqlquestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('sqlquestions.html')
 
 @application.route('/studentmainpage', methods=['GET', 'POST'])
 def studentmainpage():
@@ -526,17 +653,42 @@ def typeofquestions():
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
 
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
-            data = cur.fetchone()
-            print data
-            print cur.fetchone()
-            return render_template('typeofquestions.html', items=data)
-
-    return redirect(url_for('signin'))
-    return render_template('typeofquestions.html')
+            return render_template('typeofquestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('typeofquestions.html')
 
 @application.route('/verbalquestions')
 def verbalquestions():
-    return render_template('verbalquestions.html')
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('verbalquestions.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('verbalquestions.html')
+
+@application.route('/underconstruction')
+def underconstruction():
+    if request.method == 'GET':
+        if 'username' in session:
+            username=session['username']
+            cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
+            name =  cur.fetchone()
+            cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
+            profile = cur.fetchone()
+
+            return render_template('underconstruction.html', forms=forms, name=name, profile=profile)
+        else:
+            return redirect(url_for('signin'))
+            return render_template('underconstruction.html')
