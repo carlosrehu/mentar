@@ -361,15 +361,18 @@ def partfulltime():
     #Get method
     if request.method == 'GET':
 
+         if 'username' in session:
+             username=session['username']
 ##        cur.execute("SELECT job FROM job_id")
-        cur.execute(""" SELECT job FROM alumnijobs """)
-        stored_job = cur.fetchall()
-        cur.execute("SELECT f_name FROM user")
-        name =  cur.fetchone()
-        cur.execute("SELECT profile_type FROM user")
-        profile = cur.fetchone()
+             cur.execute(""" SELECT job FROM alumnijobs """)
+             stored_job = cur.fetchall()
+             cur.execute("SELECT f_name FROM user WHERE user_name = %s""", [username])
+             name =  cur.fetchone()
+             cur.execute("SELECT profile_type FROM user WHERE user_name = %s""", [username])
+             profile = cur.fetchone()
 
-        return render_template('partfulltime.html', forms=forms, items=stored_job, name=name, profile = profile)
+             return render_template('partfulltime.html', forms=forms, items=stored_job, name=name, profile = profile)
+         return render_template('partfulltime.html')
 
 
 
@@ -410,16 +413,18 @@ def alumnijobpost():
 
     #Get method
     if request.method == 'GET':
-
+         if 'username' in session:
+             username=session['username']
 ##        cur.execute("SELECT job FROM job_id")
-        cur.execute(""" SELECT job FROM alumnijobs """)
-        stored_job = cur.fetchall()
-        cur.execute("SELECT f_name FROM user")
-        name =  cur.fetchone()
-        cur.execute("SELECT profile_type FROM user")
-        profile = cur.fetchone()
+             cur.execute(""" SELECT job FROM alumnijobs """)
+             stored_job = cur.fetchall()
+             cur.execute("SELECT f_name FROM user WHERE user_name = %s""", [username])
+             name =  cur.fetchone()
+             cur.execute("SELECT profile_type FROM user WHERE user_name = %s""", [username])
+             profile = cur.fetchone()
 
-        return render_template('alumnijobpost.html', forms=forms, items=stored_job, name=name, profile = profile)
+             return render_template('alumnijobpost.html', forms=forms, items=stored_job, name=name, profile = profile)
+         return render_template('alumnijobpost.html')
 
 @application.route('/interviewtipsstudent')
 def interviewtipsstudent():
