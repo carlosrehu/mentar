@@ -116,11 +116,11 @@
 <!--Use the flask framework to retrieve data from the database-->
 <div class="container-interview">
 
-  <form action="" method="get" style="color:#F3EC42; font-size:30px">
+  <form action="" method="get" style="color:#F3EC42; font-size:25px">
 
 	<!--Use the flask framework to retrieve data from the database-->
 	{% for row in items %}
-		<li><span class="glyphicon glyphicon-user"></span> {{ row[0] }}</li>
+		<li><a href="" class="link-color"><span class="glyphicon glyphicon-user"></span> {{ row[0] }}</a></li>
 	{% endfor %}
   </form>
 </div>
