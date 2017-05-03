@@ -5,6 +5,8 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
 from wtforms.widgets import TextArea
 
+## this class will be called by the signup function in the views.py
+## use the flask form functionalities and create variable names based on the input fields.
 class SignupForm(Form):
     firstname = StringField("First Name", validators = [ DataRequired("Please enter your name.")])
     lastname = StringField("Last Name", validators = [ DataRequired("Please enter your last name.")])

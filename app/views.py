@@ -8,7 +8,7 @@ from hashlib import md5
 import os
 
 
-
+##create connection to the database
 conn = MySQLdb.connect(host="localhost",
                        user = "root",
                        passwd = "raspberry",
@@ -19,53 +19,36 @@ application.secret_key = os.urandom(32)
 
 class ServerError(Exception):pass
 
-
+##  create the base route (main index) for the web
 @application.route('/')
+
+## Create the base route for the homepage
 @application.route('/homepage', methods = ['POST', 'GET'])
 def homepage():
+
+##  this will check whether or not the user in session is alreadi signed in. If the person is signed in
+##  then the database will be accessed and the user's name and profile type will be displayed.
+##  If the user is not in session, then the user will be sent to the signin page where s/he can create a profile
+##  or sign in.
     if request.method == 'GET':
         if 'username' in session:
+            ##assign the current user name to the username variable so we can retrieve information from the DB
             username=session['username']
             cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('homepage.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
         return render_template('homepage.html')
 
-##    3session.clear()
-##    3if 'username' in session:
-##     3   return redirect(url_for('studentmainpage'))
-##    error = None
-##    try:
-##        if request.method == 'POST':
-##            username_form = request.form['username']
-##            print username_form
-##            cur.execute("SELECT COUNT(1) FROM user WHERE user_name = %s", [username_form])
-##            if not cur.fetchone()[0]:
-##                raise ServerError('Invalid username')
-##            print cur.fetchone()
-##            password_form = request.form['password']
-##
-##            cur.execute("SELECT password FROM user WHERE user_name = %s", [username_form])
-##
-##            for row in cur.fetchall():
-##                if password_form == row[0]:
-##                    session['username'] = request.form['username']
-##
-##                    return redirect(url_for('studentmainpage'))
-##            raise ServerError('Invalid password')
-##    except ServerError as e:
-##        error = str(e)
-##    return render_template('homepage.html')
-
-
-
 @application.route('/aboutus', methods = ['GET'])
 def aboutus():
+
+##  Checks login session
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -74,24 +57,24 @@ def aboutus():
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
 
-            return render_template('aboutus.html', forms=forms, name=name, profile=profile)
+            return render_template('aboutus.html', name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
     return render_template('aboutus.html')
 
-##3        return render_template('aboutus.html')
+
 
 @application.route('/alumniconnection')
 def alumniconnection():
+
+##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
 
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
+            cur.execute("SELECT f_name FROM user WHERE user_name = %s", [username])
 
             data = cur.fetchone()
-            print data
-            print cur.fetchone()
             return render_template('alumniconnection.html', items=data)
 
     return redirect(url_for('signin'))
@@ -99,6 +82,9 @@ def alumniconnection():
 
 @application.route('/alumnipostquestion', methods = ['POST', 'GET'])
 def alumnipostquestion():
+
+##      FUNCTION UNDER CONSTRUCTION. WORKING ON MANAGING SESSIONS. SESSION VALIDATION WIL NEED TO BE
+##      MOVED TO THE 'GET' STATEMENT AND LOG THE QUESTIONS TO THE USER
 
 ##    if 'username' in session:
 ##        name=session['username']
@@ -143,6 +129,7 @@ def alumnipostquestion():
 
 @application.route('/careeropportunities')
 def careeropportunities():
+##  Checks login session and assigns variables
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
@@ -151,19 +138,19 @@ def careeropportunities():
                 cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                 profile = cur.fetchone()
 
-                return render_template('careeropportunities.html', forms=forms, name=name, profile=profile)
+                return render_template('careeropportunities.html', name=name, profile=profile)
             else:
                 return redirect(url_for('signin'))
         return render_template('careeropportunities.html')
 
 @application.route('/contactus')
 def contactus():
+
+##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
-
-            cur.execute("SELECT f_name, l_name, email, gender, major, minor, age, user_name, password, phone_number, profile_type, graduate_date, profession, about_me, interests, skills, city, state FROM user WHERE user_name = %s", [username])
-
+            cur.execute("SELECT f_name FROM user WHERE user_name = %s", [username])
             data = cur.fetchone()
             print data
             print cur.fetchone()
@@ -174,6 +161,7 @@ def contactus():
 
 @application.route('/cplusquestions')
 def cplusquestions():
+##  Checks login session and assigns variables 
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
@@ -181,7 +169,7 @@ def cplusquestions():
                 name =  cur.fetchone()
                 cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                 profile = cur.fetchone()
-
+##              forms variable will be used in future iterations.
                 return render_template('cplusquestions.html', forms=forms, name=name, profile=profile)
             else:
                 return redirect(url_for('signin'))
@@ -189,6 +177,8 @@ def cplusquestions():
 
 @application.route('/cquestions')
 def cquestions():
+
+##  Checks login session and assigns variables
             if request.method == 'GET':
                 if 'username' in session:
                     username=session['username']
@@ -196,7 +186,7 @@ def cquestions():
                     name =  cur.fetchone()
                     cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                     profile = cur.fetchone()
-
+##              forms variable will be used in future iterations.
                     return render_template('cquestions.html', forms=forms, name=name, profile=profile)
                 else:
                     return redirect(url_for('signin'))
@@ -204,27 +194,38 @@ def cquestions():
 
 @application.route('/createprofile', methods = ['POST', 'GET'])
 def createprofile():
-    forms = SignupForm(request.form)
 
+    ## call the SignupForm class from the forms.py file and assigns it to the variable forms
+    ## this forms variable will be hae access to the variables defined in the SignupForm class.
+    forms = SignupForm(request.form)
+    
+    ## gather major information from the degrees table. 
     cur.execute(""" SELECT * FROM degrees ORDER BY degree_type """)
     major_data = cur.fetchall()
-    print major_data
+    
+    ## create a flask list of major choices that will be displayed in the html file.
     forms.major.choices = [(row [1], row[1]) for row in major_data ]
-
+    
+    ## gather information from the degrees table and generate a choices list for the minor as well.
     cur.execute(""" SELECT * FROM degrees WHERE minor = 1 ORDER BY degree_type ASC """)
     minor_data = cur.fetchall()
     forms.minor.choices = [(row[1], row[1]) for row in minor_data ]
-
+    
+    ## gather information from profile_types table and generate a list of profile types.
     cur.execute(""" SELECT * FROM profile_type ORDER BY type ASC """)
     profile_data = cur.fetchall()
     forms.profiletype.choices = [(row[1], row[1]) for row in profile_data ]
 
+    ## if the method is post. then the information will be grabbed from the html and posted into the
+    ## database if all the required information is provided
     if request.method == 'POST':
-        print forms.validate(), 'somemmmmm'
         if forms.validate() == False:
             flash('ALL FIELDS ARE REQURIED')
             return render_template('createprofile.html', forms = forms)
         else:
+
+    ## if all the required information is provided then flask will collect and assign those input fields
+    ## to the forms variables and these will be sent into the data table. 
             cur.execute(""" INSERT INTO user(f_name, l_name, email, gender, major, minor,
                             age, user_name, password, phone_number, profile_type, graduate_date,
                             profession, about_me, interests, skills, city, state) VALUES(%s, %s, %s,
@@ -233,34 +234,51 @@ def createprofile():
                           forms.major.data, forms.minor.data, forms.age.data, forms.username.data,
                           forms.password.data, forms.phonenumber.data, forms.profiletype.data, forms.graddate.data,
                           forms.profession.data, forms.aboutme.data, forms.interests.data, forms.skills.data, forms.city.data, forms.state.data))
+
+    ## commit changes into the database
             conn.commit
             conn.autocommit(True)
 
-            print "cur.execute(''' INSERT INTO users ( major) values(%s)''', (forms.major.data))", "db.commit", "db.autocommit(True)", forms.major.data
             return redirect(url_for('studentmainpage'))
     elif request.method == 'GET':
         return render_template('createprofile.html', forms = forms)
 
 
-
+##  
 @application.route('/signinpage', methods=['GET', 'POST'])
 def signin():
+    ## as extra precaution, the session should be cleared before signing 
     session.clear()
+
+    ## we have encountered situations in which the session did not clear so we
+    ## decided to send the user to the home page if that was the case.
     if 'username' in session:
         return redirect(url_for('homepage'))
     error = None
     try:
+
+        ## gather information from the html file and create a variable to be used
+        ## when querying the information from the data table
         if request.method == 'POST':
             username_form = request.form['username']
             cur.execute("SELECT COUNT(1) FROM user WHERE user_name = %s", [username_form])
             if not cur.fetchone()[0]:
+                ## error if the user name is invalid
                 raise ServerError('Invalid username')
             print cur.fetchone()
+
+            ## get the password typed in by the user in the html file and store it into a
+            ## variable
             password_form = request.form['password']
 
+            ## get the actual user's password from the table
             cur.execute("SELECT password FROM user WHERE user_name = %s", [username_form])
 
+            ## got through the password (hashing to be implemented)
             for row in cur.fetchall():
+                ## if the password collected from the table is the same as the one the user
+                ## typed in AND the user in session is the same as the user requesting to
+                ## sign in, then allow access and send user to the homepage.
                 if password_form == row[0]:
                     session['username'] = request.form['username']
 
@@ -272,18 +290,27 @@ def signin():
 
 @application.route('/signout')
 def signout():
+
+    ## since we were having issues with clearing sessions, we want to make sure the sessions
+    ## are cleared when user signs out.
     session.pop('username', None)
     session.clear()
     session.clear()
+
+    ## call the clearsession function to make sure the session is cleared.
     return redirect(url_for('clearsession'))
 
 @application.route('/clearsession')
 def clearsession():
+
+    ## makes sure the session is cleared (one can never be too sure) and redirect to the signin page
     session.clear()
-    return redirect('homepage')
+    return redirect('signin')
 
 @application.route('/csharpquestions')
 def csharpquestions():
+
+##  Checks login session and assigns variables  
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -291,7 +318,7 @@ def csharpquestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          forms variable will be used in future iterations.
             return render_template('csharpquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
@@ -299,6 +326,8 @@ def csharpquestions():
 
 @application.route('/experiences')
 def experiences():
+
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -306,7 +335,8 @@ def experiences():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+            
+##          forms variable will be used in future iterations.
             return render_template('experiences.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
@@ -314,6 +344,8 @@ def experiences():
 
 @application.route('/internships')
 def internships():
+
+##  Checks login session and assigns variables
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
@@ -322,6 +354,7 @@ def internships():
                 cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                 profile = cur.fetchone()
 
+##          forms variable will be used in future iterations.
                 return render_template('internships.html', forms=forms, name=name, profile=profile)
             else:
                 return redirect(url_for('signin'))
@@ -329,23 +362,11 @@ def internships():
 
 @application.route('/partfulltime', methods=['POST', 'GET'])
 def partfulltime():
-    # if request.method == 'GET':
-    #     if 'username' in session:
-    #         username=session['username']
-    #         cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
-    #         name =  cur.fetchone()
-    #         cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
-    #         profile = cur.fetchone()
-    #
-    #         return render_template('partfulltime.html', forms=forms, name=name, profile=profile)
-    #     else:
-    #         return redirect(url_for('signin'))
-    #     return render_template('partfulltime.html')
-
 
     forms =  alumniJobs(request.form)
 
-    #Post Method
+    ## Post Method seems to be required as the program was breaking since the post was requested
+    ## this sessions will be used in the future to 
     if request.method == 'POST':
         if forms.validate() == False:
             flash('A JOB IS REQUIRED')
