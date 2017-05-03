@@ -45,41 +45,44 @@ def homepage():
             return redirect(url_for('signin'))
         return render_template('homepage.html')
 
+## Create the base route for the aboutus
 @application.route('/aboutus', methods = ['GET'])
 def aboutus():
 
 ##  Checks login session
     if request.method == 'GET':
         if 'username' in session:
+            ##assign the current user name to the username variable so we can retrieve information from the DB
             username=session['username']
             cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('aboutus.html', name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
     return render_template('aboutus.html')
 
 
-
+## Create the base route for the alumniconnection
 @application.route('/alumniconnection')
 def alumniconnection():
 
 ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
+            ##assign the current user name to the username variable so we can retrieve information from the DB
             username=session['username']
-
             cur.execute("SELECT f_name FROM user WHERE user_name = %s", [username])
-
             data = cur.fetchone()
             return render_template('alumniconnection.html', items=data)
 
     return redirect(url_for('signin'))
     return render_template('alumniconnection.html')
 
+## Create the base route for the alumnipostquestion
 @application.route('/alumnipostquestion', methods = ['POST', 'GET'])
 def alumnipostquestion():
 
@@ -92,11 +95,7 @@ def alumnipostquestion():
 ##        return render_template('alumnipostquestion.html', username=name)
 ##    else:
 ##        return redirect(url_for('homepage'))
-
     forms =  InterviewTips(request.form)
-
-
-
 ##    stored_tip = []
 ##
 ##    for tip in cur:
@@ -123,10 +122,11 @@ def alumnipostquestion():
         name =  cur.fetchone()
         cur.execute("SELECT profile_type FROM user")
         profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
         return render_template('alumnipostquestion.html', forms=forms, items=stored_tip, name=name, profile = profile)
 
-
+## Create the base route for the careeropportunities
 @application.route('/careeropportunities')
 def careeropportunities():
 ##  Checks login session and assigns variables
@@ -137,12 +137,14 @@ def careeropportunities():
                 name =  cur.fetchone()
                 cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                 profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
                 return render_template('careeropportunities.html', name=name, profile=profile)
             else:
                 return redirect(url_for('signin'))
         return render_template('careeropportunities.html')
 
+## Create the base route for the contactus
 @application.route('/contactus')
 def contactus():
 
@@ -159,9 +161,10 @@ def contactus():
     return redirect(url_for('signin'))
     return render_template('contactus.html')
 
+## Create the base route for the cplusquestions
 @application.route('/cplusquestions')
 def cplusquestions():
-##  Checks login session and assigns variables 
+##  Checks login session and assigns variables
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
@@ -175,6 +178,7 @@ def cplusquestions():
                 return redirect(url_for('signin'))
         return render_template('cplusquestions.html')
 
+## Create the base route for the cplusquestions
 @application.route('/cquestions')
 def cquestions():
 
@@ -198,19 +202,19 @@ def createprofile():
     ## call the SignupForm class from the forms.py file and assigns it to the variable forms
     ## this forms variable will be hae access to the variables defined in the SignupForm class.
     forms = SignupForm(request.form)
-    
-    ## gather major information from the degrees table. 
+
+    ## gather major information from the degrees table.
     cur.execute(""" SELECT * FROM degrees ORDER BY degree_type """)
     major_data = cur.fetchall()
-    
+
     ## create a flask list of major choices that will be displayed in the html file.
     forms.major.choices = [(row [1], row[1]) for row in major_data ]
-    
+
     ## gather information from the degrees table and generate a choices list for the minor as well.
     cur.execute(""" SELECT * FROM degrees WHERE minor = 1 ORDER BY degree_type ASC """)
     minor_data = cur.fetchall()
     forms.minor.choices = [(row[1], row[1]) for row in minor_data ]
-    
+
     ## gather information from profile_types table and generate a list of profile types.
     cur.execute(""" SELECT * FROM profile_type ORDER BY type ASC """)
     profile_data = cur.fetchall()
@@ -225,7 +229,7 @@ def createprofile():
         else:
 
     ## if all the required information is provided then flask will collect and assign those input fields
-    ## to the forms variables and these will be sent into the data table. 
+    ## to the forms variables and these will be sent into the data table.
             cur.execute(""" INSERT INTO user(f_name, l_name, email, gender, major, minor,
                             age, user_name, password, phone_number, profile_type, graduate_date,
                             profession, about_me, interests, skills, city, state) VALUES(%s, %s, %s,
@@ -244,10 +248,10 @@ def createprofile():
         return render_template('createprofile.html', forms = forms)
 
 
-##  
+## Create the base route for the signin
 @application.route('/signinpage', methods=['GET', 'POST'])
 def signin():
-    ## as extra precaution, the session should be cleared before signing 
+    ## as extra precaution, the session should be cleared before signing
     session.clear()
 
     ## we have encountered situations in which the session did not clear so we
@@ -300,6 +304,7 @@ def signout():
     ## call the clearsession function to make sure the session is cleared.
     return redirect(url_for('clearsession'))
 
+## Create the base route for the clearsession
 @application.route('/clearsession')
 def clearsession():
 
@@ -307,10 +312,11 @@ def clearsession():
     session.clear()
     return redirect('signin')
 
+## Create the base route for the csharpquestions
 @application.route('/csharpquestions')
 def csharpquestions():
 
-##  Checks login session and assigns variables  
+##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -319,11 +325,14 @@ def csharpquestions():
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
 ##          forms variable will be used in future iterations.
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('csharpquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
         return render_template('csharpquestions.html')
 
+## Create the base route for the cplusquestions
 @application.route('/experiences')
 def experiences():
 
@@ -335,13 +344,14 @@ def experiences():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-            
+
 ##          forms variable will be used in future iterations.
             return render_template('experiences.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
         return render_template('experiences.html')
 
+## Create the base route for the internships
 @application.route('/internships')
 def internships():
 
@@ -360,13 +370,14 @@ def internships():
                 return redirect(url_for('signin'))
             return render_template('internships.html')
 
+## Create the base route for the partfulltime
 @application.route('/partfulltime', methods=['POST', 'GET'])
 def partfulltime():
 
     forms =  alumniJobs(request.form)
 
     ## Post Method seems to be required as the program was breaking since the post was requested
-    ## this sessions will be used in the future to 
+    ## this sessions will be used in the future to
     if request.method == 'POST':
         if forms.validate() == False:
             flash('A JOB IS REQUIRED')
@@ -396,9 +407,10 @@ def partfulltime():
          return render_template('partfulltime.html')
 
 
-
+## Create the base route for the internationalstudentsposts
 @application.route('/internationalstudentsposts')
 def internationalstudentsposts():
+    ##  Checks login session and assigns variables
         if request.method == 'GET':
             if 'username' in session:
                 username=session['username']
@@ -406,12 +418,14 @@ def internationalstudentsposts():
                 name =  cur.fetchone()
                 cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                 profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
                 return render_template('internationalstudentsposts.html', forms=forms, name=name, profile=profile)
             else:
                 return redirect(url_for('signin'))
             return render_template('internationalstudentsposts.html')
 
+## Create the base route for the alumnijobpost
 @application.route('/alumnijobpost', methods = ['POST', 'GET'])
 def alumnijobpost():
 
@@ -447,8 +461,10 @@ def alumnijobpost():
              return render_template('alumnijobpost.html', forms=forms, items=stored_job, name=name, profile = profile)
          return render_template('alumnijobpost.html')
 
+## Create the base route for the interviewtipsstudent
 @application.route('/interviewtipsstudent')
 def interviewtipsstudent():
+    ##  Checks login session and assigns variables
             if request.method == 'GET':
                 if 'username' in session:
                     username=session['username']
@@ -456,14 +472,17 @@ def interviewtipsstudent():
                     name =  cur.fetchone()
                     cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                     profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
                     return render_template('interviewtipsstudent.html', forms=forms, name=name, profile=profile)
                 else:
                     return redirect(url_for('signin'))
                 return render_template('interviewtipsstudent.html')
 
+## Create the base route for the javaquestions
 @application.route('/javaquestions')
 def javaquestions():
+    ##  Checks login session and assigns variables
             if request.method == 'GET':
                 if 'username' in session:
                     username=session['username']
@@ -471,14 +490,17 @@ def javaquestions():
                     name =  cur.fetchone()
                     cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                     profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
                     return render_template('javaquestions.html', forms=forms, name=name, profile=profile)
                 else:
                     return redirect(url_for('signin'))
                 return render_template('javaquestions.html')
 
+## Create the base route for the javascriptquestions
 @application.route('/javascriptquestions')
 def javascriptquestions():
+    ##  Checks login session and assigns variables
             if request.method == 'GET':
                 if 'username' in session:
                     username=session['username']
@@ -486,14 +508,17 @@ def javascriptquestions():
                     name =  cur.fetchone()
                     cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
                     profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
                     return render_template('javascriptquestions.html', forms=forms, name=name, profile=profile)
                 else:
                     return redirect(url_for('signin'))
                 return render_template('javascriptquestions.html')
 
+## Create the base route for the phpquestions
 @application.route('/phpquestions')
 def phpquestions():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -501,12 +526,14 @@ def phpquestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('phpquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
         return render_template('phpquestions.html')
 
+## Create the base route for the postaquestion
 @application.route('/postaquestion', methods=['GET', 'POST'])
 def postaquestion():
 
@@ -561,8 +588,10 @@ def postaquestion():
             return redirect(url_for('signin'))
     return render_template('postaquestion.html')
 
+## Create the base route for the practicequestions
 @application.route('/practicequestions')
 def practicequestions():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -570,14 +599,17 @@ def practicequestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('practicequestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('practicequestions.html')
 
+## Create the base route for the practicequestionsbiology
 @application.route('/practicequestionsbiology')
 def practicequestionsbiology():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -585,14 +617,17 @@ def practicequestionsbiology():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('practicequestionsbiology.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('practicequestionsbiology.html')
 
+## Create the base route for the practicequestionsbusiness
 @application.route('/practicequestionsbusiness')
 def practicequestionsbusiness():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -600,14 +635,17 @@ def practicequestionsbusiness():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('practicequestionsbusiness.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('practicequestionsbusiness.html')
 
+## Create the base route for the practicequestionsgeneral
 @application.route('/practicequestionsgeneral')
 def practicequestionsgeneral():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -615,14 +653,17 @@ def practicequestionsgeneral():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('practicequestionsgeneral.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('practicequestionsgeneral.html')
 
+## Create the base route for the practicequestionsmath
 @application.route('/practicequestionsmath')
 def practicequestionsmath():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -630,14 +671,17 @@ def practicequestionsmath():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('practicequestionsmath.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('practicequestionsmath.html')
 
+## Create the base route for the profilepage
 @application.route('/profilepage', methods=['GET', 'POST'])
 def profilepage():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -645,14 +689,17 @@ def profilepage():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('profilepage.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('profilepage.html')
 
+## Create the base route for the pythonquestions
 @application.route('/pythonquestions')
 def pythonquestions():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -660,14 +707,17 @@ def pythonquestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('pythonquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('pythonquestions.html')
 
+## Create the base route for the rubyquestions
 @application.route('/rubyquestions')
 def rubyquestions():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -675,15 +725,17 @@ def rubyquestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('rubyquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('rubyquestions.html')
 
-
+## Create the base route for the sqlquestions
 @application.route('/sqlquestions')
 def sqlquestions():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -691,14 +743,17 @@ def sqlquestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('sqlquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('sqlquestions.html')
 
+## Create the base route for the studentmainpage
 @application.route('/studentmainpage', methods=['GET', 'POST'])
 def studentmainpage():
+    ##  Checks login session and assigns variables
     if 'username' in session:
         name=session['username']
         print name
@@ -706,12 +761,15 @@ def studentmainpage():
 
     return redirect(url_for('homepage'))
 
+## Create the base route for the studentconnection
 @application.route('/studentconnection')
 def studentconnection():
     return render_template('studentconnection.html')
 
+## Create the base route for the typeofquestions
 @application.route('/typeofquestions')
 def typeofquestions():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -719,14 +777,17 @@ def typeofquestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('typeofquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('typeofquestions.html')
 
+## Create the base route for the verbalquestions
 @application.route('/verbalquestions')
 def verbalquestions():
+    ##  Checks login session and assigns variables
     if request.method == 'GET':
         if 'username' in session:
             username=session['username']
@@ -734,22 +795,26 @@ def verbalquestions():
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('verbalquestions.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
             return render_template('verbalquestions.html')
 
+## Create the base route for the underconstruction
 @application.route('/underconstruction')
 def underconstruction():
     if request.method == 'GET':
+        ##  Checks login session and assigns variables
         if 'username' in session:
             username=session['username']
             cur.execute("""SELECT f_name FROM user WHERE user_name = %s""", [username])
             name =  cur.fetchone()
             cur.execute("""SELECT profile_type FROM user WHERE user_name = %s""", [username])
             profile = cur.fetchone()
-
+##          name and profile will be assigned to name and profile variables respectively. the latter variables
+##          are the ones that will be called by the html files and display the requested data.
             return render_template('underconstruction.html', forms=forms, name=name, profile=profile)
         else:
             return redirect(url_for('signin'))
