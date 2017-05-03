@@ -27,18 +27,28 @@ class SignupForm(Form):
     city = StringField("City")
     state = StringField("State")
 
+##  submit button
     submit = SubmitField("Submit")
 
+    
+
+##  class will be used by the views.py to get an tip for a student. This provides a flask text area
+##  and will be displayed in the HTML file. This text area can be resized. 
 class InterviewTips(Form):
     tip = StringField("Tip" ,widget=TextArea())
 
     submit = SubmitField("Submit")
 
+
+##   Used by the views.py file to write jobs into the data table same idea as the previous classes from this file
 class alumniJobs(Form):
     job = StringField("Job" ,widget=TextArea())
 
     submit = SubmitField("Submit")
 
+
+##  Although only one variable is used, future iterations will call the answer variable to post the answer into
+##  a separate table and create a one to many relationship of questions and answers. 
 class PostAQuestion(Form):
 
     question = StringField("Question", widget=TextArea())
